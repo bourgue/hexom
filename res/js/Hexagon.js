@@ -1,6 +1,5 @@
 createParamsHexa();
-function grid()
-{
+function grid(){
 	createParamsHexa();
 
 	for(var i = 0; i < positions.length; ++i)
@@ -12,7 +11,6 @@ function Hexagon(pos,type)
 	var id = pos[0] + ";" + pos[1];
 	var f = [gridPos[0] - size[0] / 2 + pos[0] * size[0] + margin * pos[0] * scale, gridPos[1] - size[1]/4 + pos[1] * (size[1] - size[1]/4) + margin * pos[1] * scale];
 	
-
 	if(pos[1] % 2 != 0)
 		f[0] += (size[0] + margin) / 2;
 	
