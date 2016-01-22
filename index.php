@@ -24,7 +24,10 @@
 
 			document.body.style.background = "rgb(" + color[0] + "," + color[1] + "," + color[2] + ")";
 		</script>-->
-
+		<script src="res/js/script.js"></script>
+		<script src="res/js/ParamsWindow.js"></script>
+		<script src="res/js/ParamsWindowHexa.js"></script>
+		<script src="res/js/Grid.js"></script>
 		<script src="res/js/main.js"></script>
 	</body>
 </html>
