@@ -1,25 +1,24 @@
-var margin = 10;
-var scale = 1;
+// PARAMS WINDOW
+var backgroundColor = "#ff0000";
+var shadowColor = "#000000";
+var shadowSize = "200";
+var op = "0.4";
+var opHover = "1";
 
-var size = [100*scale,Math.round(Math.sqrt((100*scale)*(100*scale) + (58*scale) * (58*scale)) * 100) / 100];
+//PARAMS WINDOW HEXA
+var hexa_id;
+var posInArray;
+var hexaColor;
+var hexaLink;
 
+//PHP FILES
 var phpConnect = "res/php/connect.php";
 var phpSend = "res/php/newProperties.php";
 
-var key = "megusta";
-var keySize = 3;
-
-var contents;
-
-var positions = [];
-var colors = [];
-var links = [];
-
-var gridPos = [window.innerWidth/2,window.innerHeight/2];
-
-var grid_div = document.getElementById("grid");
+var keyMiniSize = 4;
 
 var params = false;
+
 var around = [[-1,-1],[0,-1],[1,0],
 			  [0,1],[-1,1],[-1,0]];
 
@@ -28,7 +27,9 @@ var editing = false;
 
 var tmp_hover;
 
-$.getScript('res/js/script.js');
-$.getScript('res/js/Hexagon.js');
-$.getScript('res/js/ParamsWindow.js');
-$.getScript('res/js/ParamsWindowHexa.js');
+var tools = new Tools();
+var properties = new Properties();
+var paramsWindow = new ParamsWindow();
+var grid = new Grid();
+
+window.addEventListener('resize', grid.redraw, false);

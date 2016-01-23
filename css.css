@@ -83,6 +83,10 @@ html,body{
     box-shadow: 0px 0px 30px -10px #000;
 }
 
+#paramsWindow{
+    display: none;
+}
+
 #paramsWindowHexa{
     width:235px;
     z-index:2;
