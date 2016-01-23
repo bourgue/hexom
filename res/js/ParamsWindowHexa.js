@@ -16,7 +16,7 @@ function ParamsWindowHexa(id){
 		'</div>');
 
 	$("#paramsWindowHexa" ).draggable({ containment: "body", scroll:false });
-	//Met la GUI a coté de paramsWindow
+	//Met la GUI a coté de paramsWindow (width de paramsWindow + width de paramsWindowHexa)
 	$("#paramsWindowHexa").css('left', parseInt($("#paramsWindow").css('width')) + parseInt($("#paramsWindow").css('padding-left'))*2);
 }
 
@@ -34,9 +34,9 @@ ParamsWindowHexa.prototype = {
 		grid.hexagons.positions.splice(posInArray, 1);
 		grid.hexagons.colors.splice(posInArray, 1);
 		grid.hexagons.links.splice(posInArray, 1);
-		redraw();
+		grid.redraw();
 		editing = false;
-		closeParamsWindowHexa();
+		this.close();
 	},
 	submit: function(){
 		editing = false;

@@ -74,7 +74,7 @@ ParamsWindow.prototype = {
 	newKeyClick: function(){
 		var value = $("#key").val();
 		if(value.length >= keyMiniSize)
-			sendProperties(value);
+			properties.send(value);
 		else
 			this.keyFail("La clé doit faire minimum " + keyMiniSize + " caractères.");
 	},

@@ -2,7 +2,7 @@ function Grid(){
 	this.div = document.getElementById("grid");
 	this.pos = [$(window).width()/2,$(window).height()/2];
 	this.scale = 1;
-	this.key = "megusta";
+	this.key = "menu";
 
 	this.hexagons = {
 		margin: 10,

@@ -14,17 +14,8 @@
 	<body>
 		<div id="grid"></div>
 
-		<!-- COULEUR DE FOND ALEATOIRE
-		<script type="text/javascript">
-			var color = [0,0,0];
-			for(var i = 0; i < 3; ++i){
-				var rand = Math.floor((Math.random() * 125) + 100);
-				color[i] = rand;
-			}
-
-			document.body.style.background = "rgb(" + color[0] + "," + color[1] + "," + color[2] + ")";
-		</script>-->
-		<script src="res/js/script.js"></script>
+		<script src="res/js/Tools.js"></script>
+		<script src="res/js/Properties.js"></script>
 		<script src="res/js/ParamsWindow.js"></script>
 		<script src="res/js/ParamsWindowHexa.js"></script>
 		<script src="res/js/Grid.js"></script>

@@ -28,13 +28,8 @@ var editing = false;
 var tmp_hover;
 
 var tools = new Tools();
+var properties = new Properties();
 var paramsWindow = new ParamsWindow();
 var grid = new Grid();
 
 window.addEventListener('resize', grid.redraw, false);
-
-/*
-$.getScript('res/js/script.js');
-$.getScript('res/js/Hexagon.js');
-$.getScript('res/js/ParamsWindow.js');
-$.getScript('res/js/ParamsWindowHexa.js');*/
