@@ -14,6 +14,7 @@
 	<body>
 		<div id="grid"></div>
 
+		<script src="res/js/Language.js"></script>
 		<script src="res/js/Tools.js"></script>
 		<script src="res/js/Properties.js"></script>
 		<script src="res/js/ParamsWindow.js"></script>

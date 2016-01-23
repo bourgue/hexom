@@ -1,19 +1,20 @@
 function ParamsWindow(){
 	$("body").prepend('<div id="paramsWindow" class="unselectable">' +
 		'<span id="dragIcon" class="ui-icon ui-icon-arrow-4"></span>' +
-		'<div class="titre ">Paramètres généraux</div>' +
+		'<div class="titre" id="paramsTitle"></div>' +
 	 	'<ul>' +
-	 	'<li>' + 'Couleur de fond :<input id="backgroundColor" type="color" onchange="ParamsWindow.prototype.backgroundColorChange(this.value);"/>' + '</li>' +
-		'<li>' + 'Couleur de l\'ombre :<input id="shadowColor" type="color" onchange="ParamsWindow.prototype.shadowColorChange(this.value);"/>' + '</li>' +
-		'<li>' + 'Taille de l\'ombre : ' + '<input id="shadowSize" value="200" max="300" min="0" step="5" type="range" onchange="ParamsWindow.prototype.shadowSizeChange(this.value)"/>' + '</li>' +
-		'<li>' + 'Taille des hexagones :' + '<input id="hexaSize" value="1" max="2" min="0.8" step="0.2" type="range" onchange="ParamsWindow.prototype.hexaSizeChange(this.value)"/>' + '</li>' +
-		'<li>' + 'Opacité des hexagones :' + '<input id="hexaOpacity" value="0.4" max="1" min="0.1" step="0.1" type="range" onchange="ParamsWindow.prototype.hexaOpacityChange(this.value)"/>' +
+	 	'<li>' + '<div id="lang"></div>' + '<img src="res/img/us.png" id="us" class="flag" onclick="ParamsWindow.prototype.languageChange(this.id);" />' + '<img src="res/img/fr.png" class="flag" id="fr" onclick="ParamsWindow.prototype.languageChange(this.id);"/>' + '</li>' +
+	 	'<li>' + '<div id="backcolor"></div>' + '<input id="backgroundColor" type="color" onchange="ParamsWindow.prototype.backgroundColorChange(this.value);"/>' + '</li>' +
+		'<li>' + '<div id="shadowcolor"></div>' + '<input id="shadowColor" type="color" onchange="ParamsWindow.prototype.shadowColorChange(this.value);"/>' + '</li>' +
+		'<li>' + '<div id="shadowsize"></div>' + '<input id="shadowSize" value="200" max="300" min="0" step="5" type="range" onchange="ParamsWindow.prototype.shadowSizeChange(this.value)"/>' + '</li>' +
+		'<li>' + '<div id="hexasize"></div>' + '<input id="hexaSize" value="1" max="2" min="0.8" step="0.2" type="range" onchange="ParamsWindow.prototype.hexaSizeChange(this.value)"/>' + '</li>' +
+		'<li>' + '<div id="hexaop"></div>' + '<input id="hexaOpacity" value="0.4" max="1" min="0.1" step="0.1" type="range" onchange="ParamsWindow.prototype.hexaOpacityChange(this.value)"/>' +
 		'<input id="hexaOpacityHover" value="1" max="1" min="0.1" step="0.1" type="range" onchange="ParamsWindow.prototype.hexaOpacityHoverChange(this.value)"/>' + '</li>' +
-		'<li>' + 'Clé de sauvegarde :' + '<input id="key" type="text"/>' +
-		'<div id="keyInfos">-</div>' + '</li>' +
-		'<li>' + '<div class="button" id="newKey" onclick="ParamsWindow.prototype.newKeyClick();">CREER</div>' + '</li>' +
-		'<li>' + '<div class="button" id="importButton">IMPORTER</div>' + '</li>' +
-		'<li>' + '<div class="button" id="saveButton">SAUVEGARDER</div>' + '</li>' +
+		'<li>' + '<div id="key"></div>' + '<input id="key" type="text"/>' +
+		'<div id="keyInfos"></div>' + '</li>' +
+		'<li>' + '<div class="button" id="newKey" onclick="ParamsWindow.prototype.newKeyClick();"></div>' + '</li>' +
+		'<li>' + '<div class="button" id="importButton"></div>' + '</li>' +
+		'<li>' + '<div class="button" id="saveButton"></div>' + '</li>' +
 		'</ul>' +
 		'</div>');
 
@@ -27,6 +28,10 @@ ParamsWindow.prototype = {
 	},
 	open: function(){
 		$("#paramsWindow").css('display', 'block');
+	},
+	languageChange: function(lang){
+		language = lang;
+		langManager.setLanguage();
 	},
 	backgroundColorChange: function(value){
 		$("body").css('background', value);

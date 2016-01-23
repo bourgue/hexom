@@ -27,9 +27,37 @@ var editing = false;
 
 var tmp_hover;
 
+var language = "us";
+
+var langId = {
+	"us":0,
+	"fr":1
+};
+
+var words = {
+	"PARAMS_GENE": 	["General settings :",	"Paramètres généraux :"],
+	"CHANGE_LANG": 	["Change language :",	"Changer la langue :"],
+	"BACK_COLOR": 	["Background color :", 	"Couleur de fond :"],
+	"SHADOW_COLOR": ["Shadow color :", 		"Couleur de l\'ombre :"],
+	"SHADOW_SIZE": 	["Shadow size :", 		"Taille de l\'ombre :"],
+	"HEXA_SIZE": 	["Hexagons size :", 	"Taille des hexagones :"],
+	"HEXA_OP": 		["Hexagons opacity :", 	"Opacité des hexagones :"],
+	"SAVE_KEY": 	["Save key :", 			"Clé de sauvegarde :"],
+	"CREATE": 		["CREATE", 				"CREER"],
+	"IMPORT": 		["IMPORT", 				"IMPORTER"],
+	"SAVE": 		["SAVE", 				"SAUVEGARDER"],
+	"PARAMS_HEXA": 	["Hexagon settings :",	"Paramètres de l\'hexagone :"],
+	"LINK": 		["Link :", 				"Lien :"],
+	"BACKCOLORHEXA":["Background color :", 	"Couleur de fond :"],
+	"DELETE": 		["DELETE", 				"SUPPRIMER"]
+};
+
+var langManager = new LangManager();
 var tools = new Tools();
 var properties = new Properties();
 var paramsWindow = new ParamsWindow();
 var grid = new Grid();
+
+langManager.setLanguage();
 
 window.addEventListener('resize', grid.redraw, false);

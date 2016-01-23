@@ -73,7 +73,7 @@ html,body{
 */
 
 #paramsWindow, #paramsWindowHexa{
-    width:200px;
+    width:205px;
     padding:10px;
 
     background: #fff;
@@ -88,7 +88,7 @@ html,body{
 }
 
 #paramsWindowHexa{
-    width:235px;
+    width:245px;
     z-index:2;
 }
 
@@ -109,6 +109,12 @@ li{
     margin-bottom:10px;
 }
 
+.flag{
+    margin-right: 10px;
+    margin-top:3px;
+    cursor:pointer;
+}
+
 .button{
     float:right;
     /*background: #00A1FF;*/
@@ -119,7 +125,6 @@ li{
     padding-right: 10px;
     cursor:pointer;
 }
-
 .unselectable{
     -webkit-touch-callout: none;
     -webkit-user-select: none;

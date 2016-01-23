@@ -7,14 +7,14 @@ function ParamsWindowHexa(id){
 
 	$("body").prepend('<div id="paramsWindowHexa" class="unselectable">' +
 		'<span id="dragIcon" class="ui-icon ui-icon-arrow-4"></span>' +
-		'<div class="titre">Paramètres de l\'hexagone</div>' +
+		'<div class="titre" id="paramsHexaTitle"></div>' +
 	 	'<ul>' +
-	 	'<li>' + 'Lien :<input id="url" type="text" value="'+ hexaLink +'"/>' + '</li>' +
-	 	'<li>' + 'Couleur de fond :<input id="colorHexa" type="color" value="'+ hexaColor + '" onchange="ParamsWindowHexa.prototype.colorChange(this.value);"/>' + '</li>' +
-	 	'<li>' + '<div id="deleteButton" class="button" onclick="ParamsWindowHexa.prototype.deleteHexa();">SUPPRIMER</div><div id="okButton" class="button" onclick="ParamsWindowHexa.prototype.submit()">OK</div>' + '</li>' +
+	 	'<li>' + '<div id="link"></div>' + '<input id="url" type="text" value="'+ hexaLink +'" placeholder="ex: google.fr"/>' + '</li>' +
+	 	'<li>' + '<div id="backcolorhexa"></div>' + '<input id="colorHexa" type="color" value="'+ hexaColor + '" onchange="ParamsWindowHexa.prototype.colorChange(this.value);"/>' + '</li>' +
+	 	'<li>' + '<div id="deleteButton" class="button" onclick="ParamsWindowHexa.prototype.deleteHexa();"></div><div id="okButton" class="button" onclick="ParamsWindowHexa.prototype.submit()">OK</div>' + '</li>' +
 		'</ul>' +
 		'</div>');
-
+	langManager.setLanguage();
 	$("#paramsWindowHexa" ).draggable({ containment: "body", scroll:false });
 	//Met la GUI a coté de paramsWindow (width de paramsWindow + width de paramsWindowHexa)
 	$("#paramsWindowHexa").css('left', parseInt($("#paramsWindow").css('width')) + parseInt($("#paramsWindow").css('padding-left'))*2);
