@@ -13,9 +13,9 @@ Tools.prototype = {
 
 		return pos;
 	},
-	getPosInArrays: function(pos){
-		for(var i = 0; i < grid.hexagons.positions.length; ++i)
-			if(pos.equals(grid.hexagons.positions[i]))
+	getPosInArrays: function(pos, parray){
+		for(var i = 0; i < parray.length; ++i)
+			if(pos.equals(parray[i]))
 				return i;
 	},
 
@@ -40,7 +40,7 @@ Tools.prototype = {
 
 	exist: function(pos,parent){
 		var exist = false;
-		for(var i = 0; i < parent.length && exist == false; ++i){
+		for(var i = 0; i < parent.length && exist === false; ++i){
 			if(pos.equals(parent[i]) || pos.equals([0,0])){
 				exist = true;
 			}
@@ -70,7 +70,7 @@ Tools.prototype = {
 		}
 		return compact;
 	}
-}
+};
 
 //POUR TEST EQUALITE ENTRE ARRAY
 Array.prototype.equals = function(array) {
@@ -83,13 +83,13 @@ Array.prototype.equals = function(array) {
     for (var i = 0, l=this.length; i < l; i++) {
         if (this[i] instanceof Array && array[i] instanceof Array) {
             if (!this[i].equals(array[i]))
-                return false;       
-        }           
-        else if (this[i] != array[i]) { 
-            return false;   
-        }           
-    }       
+                return false;
+        }
+        else if (this[i] != array[i]) {
+            return false;
+        }
+    }
     return true;
-}
+};
 
 Object.defineProperty(Array.prototype, "equals", {enumerable: false});

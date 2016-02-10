@@ -4,13 +4,13 @@ function Properties(){
 
 Properties.prototype = {
 	constructor: Properties,
-	send: function(mkey){
+	send: function(id){
 		$.ajax({
 			url: phpSend,
 			type: "POST",
-			data: 'key='+mkey+'&pos='+tools.compact(grid.hexagons.positions,true)+'&color='+tools.compact(grid.hexagons.colors,false)+'&link='+tools.compact(grid.hexagons.links,false)+'&backgroundColor='+backgroundColor+'&shadowColor='+shadowColor+'&shadowSize='+shadowSize+'&hexaSize='+grid.scale+'&hexaOpacity='+op+'&hexaOpacityHover='+opHover,
+			data: 'id='+id+'&pos='+tools.compact(grid.hexagons.positions,true)+'&color='+tools.compact(grid.hexagons.colors,false)+'&link='+tools.compact(grid.hexagons.links,false)+'&backgroundColor='+backgroundColor+'&shadowColor='+shadowColor+'&shadowSize='+shadowSize+'&hexaSize='+grid.scale+'&hexaOpacity='+op+'&hexaOpacityHover='+opHover,
 			success: function(data) {
-				ParamsWindow.prototype.keySuccess("La clé a bien été crée");
+				
 			},
 		});
 	}
