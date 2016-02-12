@@ -1,0 +1,16 @@
+#saveButton, #importButton, #deleteButton, #okButton  {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+
+
+.button {
+  background: #000;
+  color: #fff;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+}

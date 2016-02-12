@@ -10,23 +10,13 @@ function Grid() {
 
     positions: [],
     colors: [],
-    links: []
+    links: [],
+    backImg: []
   };
 
   this.difference = [this.hexagons.sizeXY[0] - 100, this.hexagons.sizeXY[1] - 58];
 
   this.addParamsHexa();
-
-  //DRAW LES HEXAGONES
-
-/*  for (var i = 0; i < this.hexagons.positions.length; ++i){
-    this.addHexagon(this.hexagons.positions[i], "hexagon");
-  }*/
-
-
-  //DRAW LES PREVIEWS
-  /*if (previewing)
-    this.addPreviewHexa();*/
 
   this.changePos();
 }
@@ -36,26 +26,27 @@ Grid.prototype = {
   //Hexagon
   addHexagon: function(pos, type) {
     var id = pos[0] + ";" + pos[1];
-    //var f = [this.pos[0] - this.hexagons.sizeXY[0] / 2 + pos[0] * this.hexagons.sizeXY[0] + this.hexagons.margin * pos[0] * this.scale, this.pos[1] - this.hexagons.sizeXY[1] / 4 + pos[1] * (this.hexagons.sizeXY[1] - this.hexagons.sizeXY[1] / 4) + this.hexagons.margin * pos[1] * this.scale];
     var truePos = this.setPos(pos);
 
-
     var hexa = document.createElement("div");
+    var color;
 
     hexa.setAttribute('id', id);
     if (type == "preview") {
       hexa.setAttribute('class', "preview");
       hexa.setAttribute('onclick', "grid.clickPreviewHexa(this)");
+      color = "#ffffff";
     } else if (type == "paramsHexa") {
       hexa.setAttribute('class', "hex");
       hexa.setAttribute('onclick', "grid.clickParamsHexa()");
+      color = "#000000";
     } else {
       hexa.setAttribute('class', "hex");
-      hexa.style.background = this.hexagons.colors[tools.getPosInArrays(pos, this.hexagons.positions)];
       hexa.setAttribute('onclick', "grid.clickHexagon(this)");
+      color = this.hexagons.colors[this.hexagons.colors.length - 1];
     }
-    hexa.innerHTML = '<div class="hex-in1" id="' + id + '"><div class="hex-in2" id="' + id + '"></div></div>';
-    hexa.style.transform = "scale(" + this.scale + ")";
+    hexa.innerHTML = '<div class="hex-in1" id="' + id + '"><div class="hex-in2" id="' + id + '" style="background-color:' + color + ';"></div></div>';
+    //hexa.style.transform = "scale(" + this.scale + ")";
     hexa.style.left = truePos[0] + "px";
     hexa.style.top = truePos[1] + "px";
     this.div.appendChild(hexa);
@@ -71,6 +62,7 @@ Grid.prototype = {
     else
       $("#paramsWindowHexa").effect("shake");
   },
+
   //Parameters Hexagon
   addParamsHexa: function() {
     this.addHexagon([0, 0], "paramsHexa");
@@ -79,6 +71,8 @@ Grid.prototype = {
     if (!previewing) {
       previewing = true;
       this.addPreviewHexa();
+    //  this.animPreviewHexa();
+
       paramsWindow.open();
     } else {
       $(".preview").remove();
@@ -119,6 +113,7 @@ Grid.prototype = {
       this.hexagons.positions.push(pos);
       this.hexagons.colors.push("#000000");
       this.hexagons.links.push("");
+      this.hexagons.backImg.push("");
 
       $("#" + pos[0] + "\\;" + pos[1]).remove();
 
@@ -132,9 +127,9 @@ Grid.prototype = {
 
   setPos: function(hexPos) {
     var f = [
-              this.pos[0] - this.hexagons.sizeXY[0] / 2 + this.difference[0] / 2 + 100 * this.scale * hexPos[0] + this.hexagons.margin * hexPos[0],
-              this.pos[1] - this.hexagons.sizeXY[1] / 2 + this.difference[1] / 2 + (58 * this.scale + (this.hexagons.sizeXY[1] - 58 * this.scale) / 2) * hexPos[1] + this.hexagons.margin * hexPos[1]
-            ];
+      this.pos[0] - this.hexagons.sizeXY[0] / 2 + this.difference[0] / 2 + 100 * this.scale * hexPos[0] + this.hexagons.margin * hexPos[0],
+      this.pos[1] - this.hexagons.sizeXY[1] / 2 + this.difference[1] / 2 + (58 * this.scale + (this.hexagons.sizeXY[1] - 58 * this.scale) / 2) * hexPos[1] + this.hexagons.margin * hexPos[1]
+    ];
 
     if (hexPos[1] % 2 !== 0)
       f[0] += (this.hexagons.sizeXY[0] + this.hexagons.margin) / 2;
@@ -171,30 +166,5 @@ Grid.prototype = {
           "top": previewPos[1]
         });
     }
-  },
-
-  editHexa: function() {
-
   }
-
-  /*  draw: function() {
-      //SUPPRESSION
-      $(".hex").remove();
-      $(".preview").remove();
-
-      //CHANGE LA POSITION DE LA GRILLE
-      this.pos = [$(window).width() / 2, $(window).height() / 2];
-
-      this.addParamsHexa();
-
-      //DRAW LES HEXAGONES
-      for (var i = 0; i < this.hexagons.positions.length; ++i)
-        this.addHexagon(this.hexagons.positions[i], "hexagon");
-
-      //DRAW LES PREVIEWS
-      if (previewing)
-        this.addPreviewHexa();
-
-
-    }*/
 };

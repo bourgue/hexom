@@ -10,6 +10,7 @@ var hexa_id;
 var posInArray;
 var hexaColor;
 var hexaLink;
+var hexaImg;
 
 //PHP FILES
 var phpConnect = "res/php/connect.php";
@@ -31,9 +32,7 @@ var around = [
 var previewing = false;
 var editing = false;
 
-
 var tmp_hover;
-
 
 var language = "fr";
 var langId = {
@@ -41,7 +40,7 @@ var langId = {
   "fr": 1
 };
 var words = {
-  "PARAMS_GENE": ["General settings :", "Paramètres généraux :"],
+  "PARAMS_GENE": ["General settings", "Paramètres généraux"],
   "CHANGE_LANG": ["Change language :", "Changer la langue :"],
   "BACK_COLOR": ["Background color :", "Couleur de fond :"],
   "SHADOW_COLOR": ["Shadow color :", "Couleur de l\'ombre :"],
@@ -52,22 +51,30 @@ var words = {
   "CREATE": ["CREATE", "CREER"],
   "IMPORT": ["IMPORT", "IMPORTER"],
   "SAVE": ["SAVE", "SAUVEGARDER"],
-  "PARAMS_HEXA": ["Hexagon settings :", "Paramètres de l\'hexagone :"],
+  "PARAMS_HEXA": ["Hexagon settings", "Paramètres de l\'hexagone"],
   "LINK": ["Link :", "Lien :"],
   "BACKCOLORHEXA": ["Background color :", "Couleur de fond :"],
   "DELETE": ["DELETE", "SUPPRIMER"],
-	"SEARCH_BAR": ["Search on Google","Chercher sur Google"]
+  "SEARCH_BAR": ["Search on Google", "Chercher sur Google"],
+  "IMG": ["Picture (url):", "Image (url):"],
+  "IMG_SIZE": ["Picture size :", "Taille de l'image :"]
     //"GOOGLE_SAVE": 	["Save your bookmarks with", "Sauvegardez votre menu avec"]
 };
 
 var langManager = new LangManager();
 var tools = new Tools();
 var properties = new Properties();
-var paramsWindow = new ParamsWindow();
 var search = new Search();
 var grid = new Grid();
+var paramsWindow = new ParamsWindow();
 
-$("#grid,#searchBar").css({"opacity":"0","top":"+=40px"}).animate({top: '-=40px', opacity: '1'},1000);
+$("#grid,#searchBar").css({
+  "opacity": "0",
+  "top": "+=40px"
+}).animate({
+  top: '-=40px',
+  opacity: '1'
+}, 1000);
 
 langManager.setLanguage();
 

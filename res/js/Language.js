@@ -19,6 +19,8 @@ LangManager.prototype = {
     $("#paramsHexaTitle").html(words.PARAMS_HEXA[langId[language]]);
     $("#deleteButton").html(words.DELETE[langId[language]]);
     $("#link").html(words.LINK[langId[language]]);
+    $("#img").html(words.IMG[langId[language]]);
+    $("#imgSize").html(words.IMG_SIZE[langId[language]]);
     $("#backcolorhexa").html(words.BACKCOLORHEXA[langId[language]]);
     $("#searchBar").attr("placeholder", words.SEARCH_BAR[langId[language]]);
     //$("#savetext").html(words[GOOGLE_SAVE][langId[language]]);

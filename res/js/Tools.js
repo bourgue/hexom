@@ -61,9 +61,9 @@ Tools.prototype = {
 				if(i < array.length-1)
 					compact += ';';
 			}else{
-				for(var i = 0; i < array.length; ++i){
-					compact += array[i];
-					if(i < array.length-1)
+				for(var j = 0; j < array.length; ++j){
+					compact += array[j];
+					if(j < array.length-1)
 						compact += ';';
 				}
 			}
