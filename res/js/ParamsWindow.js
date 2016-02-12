@@ -46,50 +46,11 @@ ParamsWindow.prototype = {
   shadowSizeChange: function(value) {
     $("body").css('box-shadow', '0 0 ' + value + 'px ' + shadowColor + ' inset');
     shadowSize = value;
-  },
-  hexaSizeChange: function(value) {
-    grid.scale = value;
-    grid.draw();
-  },
-  /*hexaOpacityChange: function(value) {
-    $(".hex-in2").parent().parent().css('opacity', value);
-    grid.hexagons.opacity = value;
-  },
-  hexaOpacityHoverChange: function(value) {
-
-    grid.hexagons.opacityhover = value;
-  },*/
-  keySuccess: function(message) {
-    $("#keyInfos").html(message);
-    $("#keyInfos").css('color', '#0BE300');
-  },
-  keyFail: function(message) {
-    $("#keyInfos").html(message);
-    $("#keyInfos").css('color', '#FF0000');
-  },
-  newKeyClick: function() {
-    var value = $("#key").val();
-    if (value.length >= keyMiniSize)
-      properties.send(value);
-    else
-      this.keyFail("La clé doit faire minimum " + keyMiniSize + " caractères.");
-  },
-  /*s	signOut: function() {
-  	    var auth2 = gapi.auth2.getAuthInstance();
-  	    auth2.signOut().then(function () {
-  	      console.log('User signed out.');
-  	    });
-  	},
-  	save: function() {
-  		var id_token_sub = id_token.substring(0, 30);
-  		console.log("TOKEN: " + id_token_sub);
-  		properties.send(id_token_sub);
-
-  	},*/
+  }
 
   //-----EN ATTENDANT LA BDD-----//
 
-  getShadowSize: function(css) {
+/*  getShadowSize: function(css) {
     var i = 0;
     var j = 0;
     var size = "";
@@ -117,19 +78,5 @@ ParamsWindow.prototype = {
     }
 
     return color;
-  }
+  }*/
 };
-
-//GOOGLE SIGN IN SUCCESS
-/*onSignIn = function (googleUser) {
-        profile = googleUser.getBasicProfile();
-	 	console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
-		console.log("Name: " + profile.getName());
-		console.log("Image URL: " + profile.getImageUrl());
-		console.log("Email: " + profile.getEmail());
-
-		id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-        $("#gSignInWrapper").css("display", "none");
-    };
-*/
