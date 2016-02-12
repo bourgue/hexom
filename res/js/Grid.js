@@ -1,8 +1,6 @@
 function Grid() {
-  this.div = document.getElementById("grid");
   this.pos = [$(window).width() / 2, $(window).height() / 2];
   this.scale = 1;
-  this.key = "menu";
   this.previewHexa = [];
   this.hexagons = {
     margin: 10,
@@ -28,28 +26,47 @@ Grid.prototype = {
     var id = pos[0] + ";" + pos[1];
     var truePos = this.setPos(pos);
 
-    var hexa = document.createElement("div");
+    var container = "grid";
+
+    var hexa = $("#grid").append('<div id="' + id + '"></div>');
+    hexa = $("#" + pos[0] + "\\;" + pos[1]);
+
     var color;
 
-    hexa.setAttribute('id', id);
-    if (type == "preview") {
-      hexa.setAttribute('class', "preview");
-      hexa.setAttribute('onclick', "grid.clickPreviewHexa(this)");
-      color = "#ffffff";
-    } else if (type == "paramsHexa") {
-      hexa.setAttribute('class', "hex");
-      hexa.setAttribute('onclick', "grid.clickParamsHexa()");
-      color = "#000000";
-    } else {
-      hexa.setAttribute('class', "hex");
-      hexa.setAttribute('onclick', "grid.clickHexagon(this)");
-      color = this.hexagons.colors[this.hexagons.colors.length - 1];
+    switch (type) {
+      case "preview":
+        hexa.attr({
+          'class': "preview",
+          'onclick': "grid.clickPreviewHexa(this)"
+        });
+        color = "#ffffff";
+        container = "previewContainer";
+        break;
+
+      case "paramsHexa":
+        hexa.attr({
+          'class': "hex",
+          'onclick': "grid.clickParamsHexa(this)"
+        });
+        color = "#000000";
+        break;
+
+      default:
+        hexa.attr({
+          'class': "hex",
+          'onclick': "grid.clickHexagon(this)"
+        });
+        color = this.hexagons.colors[this.hexagons.colors.length - 1];
     }
-    hexa.innerHTML = '<div class="hex-in1" id="' + id + '"><div class="hex-in2" id="' + id + '" style="background-color:' + color + ';"></div></div>';
-    //hexa.style.transform = "scale(" + this.scale + ")";
-    hexa.style.left = truePos[0] + "px";
-    hexa.style.top = truePos[1] + "px";
-    this.div.appendChild(hexa);
+
+    hexa.append('<div class="hex-in1" id="' + id + '"><div class="hex-in2" id="' + id + '" style="background-color:' + color + ';"></div></div>');
+
+    hexa.css({
+      left: truePos[0] + "px",
+      top: truePos[1] + "px"
+    });
+
+    $("#" + container).append(hexa);
   },
   clickHexagon: function(hexa) {
     if (!previewing) {
@@ -71,8 +88,6 @@ Grid.prototype = {
     if (!previewing) {
       previewing = true;
       this.addPreviewHexa();
-    //  this.animPreviewHexa();
-
       paramsWindow.open();
     } else {
       $(".preview").remove();
