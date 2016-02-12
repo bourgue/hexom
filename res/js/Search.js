@@ -4,7 +4,6 @@ function Search(){
             window.location = "http://www.google.com/search?q=" + $('#searchBar').val();
         }
     });
-    $('#searchBar :input').fancyInput();
 }
 
 $("#searchBar").autocomplete({
