@@ -27,8 +27,15 @@ function LangManager() {
     "IMG": ["Picture (url):", "Image (url):"],
     "IMG_SIZE": ["Picture size :", "Taille de l'image :"],
     "ADD_HEXA": ["Add hexagon", "Ajouter un hexagone"],
-    "MODIF_HEXA": ["Modify hexagon", "Modifier un hexagone"]
-      //"GOOGLE_SAVE": 	["Save your bookmarks with", "Sauvegardez votre menu avec"]
+    "MODIF_HEXA": ["Modify hexagon", "Modifier un hexagone"],
+    "LOGIN": ["Sign in", "Se connecter"],
+    "USERNAME": ["Username :", "Nom d'utilisateur :"],
+    "PASSWORD": ["Password :", "Mot de passe :"],
+    "REGISTER": ["Sign up", "S'enregistrer"],
+    "EMAIL": ["Email address :", "Adresse e-mail :"],
+    "MAXCHAR": ["Maximum " + inputMaxLength + " characters !", "Maximum " + inputMaxLength + " caractères !"],
+    "MINCHAR": ["Minimum " + inputMinLength + " characters !", "Minimum " + inputMinLength + " caractères !"],
+    "EMAIL_ERROR": ["Invalid email !", "E-mail invalide !"]
   };
 }
 
@@ -59,5 +66,19 @@ LangManager.prototype = {
     $("#addHexa").html(this.words.ADD_HEXA[this.langId[this.language]]);
     $("#generalParams").html(this.words.PARAMS_GENE[this.langId[this.language]]);
     $("#modifHexa").html(this.words.MODIF_HEXA[this.langId[this.language]]);
+    $("#connectButton").html(this.words.LOGIN[this.langId[this.language]]);
+    $("#connectTitle").html(this.words.LOGIN[this.langId[this.language]]);
+    $("#id").html(this.words.USERNAME[this.langId[this.language]]);
+    $("#mdp").html(this.words.PASSWORD[this.langId[this.language]]);
+    $("#connectSubmit").html(this.words.LOGIN[this.langId[this.language]]);
+    $("#registerTitle").html(this.words.REGISTER[this.langId[this.language]]);
+    $("#register").html(this.words.REGISTER[this.langId[this.language]]);
+    $("#registerId").html(this.words.USERNAME[this.langId[this.language]]);
+    $("#registerMdp").html(this.words.PASSWORD[this.langId[this.language]]);
+    $("#registerEmail").html(this.words.EMAIL[this.langId[this.language]]);
+    $("#registerSubmit").html(this.words.REGISTER[this.langId[this.language]]);
+    $("#maxError").html(this.words.MAXCHAR[this.langId[this.language]]);
+    $("#minError").html(this.words.MINCHAR[this.langId[this.language]]);
+    $("#emailError").html(this.words.EMAIL_ERROR[this.langId[this.language]]);
   }
 };

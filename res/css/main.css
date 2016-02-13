@@ -1,7 +1,11 @@
+@import "buttons.css";
+@import "window.css";
 @import "hexa.css";
 @import "paramsWindows.css";
 @import "searchBar.css";
 @import "paramsMenu.css";
+@import "connectWindow.css";
+@import "user.css";
 
 @font-face {
   font-family: Roboto;
@@ -17,7 +21,7 @@
 body {
   box-shadow: 0 0 200px #000 inset;
   overflow: hidden;
-  background: #c60000;
+  background: #a60000;
 }
 html, body {
   width: 100%;

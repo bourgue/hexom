@@ -4,17 +4,17 @@ function Properties(){
 
 Properties.prototype = {
 	constructor: Properties,
-	send: function(id){
+	/*send: function(id){
 		$.ajax({
 			url: phpSend,
 			type: "POST",
 			data: 'id='+id+'&pos='+tools.compact(grid.hexagons.positions,true)+'&color='+tools.compact(grid.hexagons.colors,false)+'&link='+tools.compact(grid.hexagons.links,false)+'&backgroundColor='+backgroundColor+'&shadowColor='+shadowColor+'&shadowSize='+shadowSize+'&hexaSize='+grid.scale+'&hexaOpacity='+op+'&hexaOpacityHover='+opHover,
 			success: function(data) {
-				
+
 			},
 		});
 	}
-/*
+
 	get: function(){
 		$.post(phpConnect, { key : key })
 			.done(function(data){
@@ -46,7 +46,7 @@ Properties.prototype = {
 				nb_s = "";
 
 				if(data[i] == ';' || data[i] == '|' || i == data.length-1){
-					
+
 					if(type == 0){
 						positions.push(tmp_pos);
 						tmp_pos = [];

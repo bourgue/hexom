@@ -12,10 +12,6 @@ var hexaColor;
 var hexaLink;
 var hexaImg;
 
-//PHP FILES
-var phpConnect = "res/php/connect.php";
-var phpSend = "res/php/newProperties.php";
-
 var keyMiniSize = 4;
 
 var params = false;
@@ -33,8 +29,12 @@ var around = [
 var previewing = false;
 var editing = false;
 var modifying = false;
+var registring = false;
 
 var tmp_hover;
+
+var inputMaxLength = 20;
+var inputMinLength = 5;
 
 var langManager = new LangManager();
 var tools = new Tools();
@@ -45,6 +45,8 @@ var paramsWindow = new ParamsWindow();
 var paramsMenu = new ParamsMenu();
 
 var fadeSpeed = 500;
+
+var user;
 
 $("#grid,#searchBar").css({
   "opacity": "0",

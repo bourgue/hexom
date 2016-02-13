@@ -1,10 +1,8 @@
-@import url("buttons.css");
-@import url("window.css");
-
 #paramsWindow {
   width:155px;
   display: none;
   z-index: 3;
+  height: auto;
 }
 #paramsWindowHexa {
   width: 185px;
@@ -43,7 +41,19 @@ li input {
 }
 
 
-[type="text"] {
+[type="text"],[type="password"], [type="email"] {
   border: 1px solid #ccc;
   cursor: text;
+}
+
+#connectWindow {
+  z-index:5;
+}
+
+#registerWindow {
+  z-index:6;
+}
+
+.error {
+  color: #ff0000;
 }

@@ -24,7 +24,6 @@ ParamsMenu.prototype = {
     paramsMenuOpen = false;
   },
   closeAll: function() {
-    console.log("aaa");
     ParamsMenu.prototype.close();
     paramsWindow.close();
     ParamsWindowHexa.prototype.close();
