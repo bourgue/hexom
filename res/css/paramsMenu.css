@@ -1,0 +1,21 @@
+#paramsMenu {
+  border-bottom: 1px solid #ccc;
+  width: 200px;
+  left:50%;
+  margin-left: -100px;
+  bottom:0;
+  position:absolute;
+  text-align: center;
+  box-shadow: 0px 0px 30px -10px #000;
+}
+#paramsMenu li{
+  cursor: pointer;
+  background-color: #fff;
+  padding: 5px 10px 5px 10px;
+  margin:0;
+  border: 1px solid #ccc;
+  border-bottom: 0;
+}
+#paramsMenu li:hover {
+  box-shadow: 0px 0px 5px #aaa inset;
+}

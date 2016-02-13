@@ -1,6 +1,6 @@
 function ParamsWindow() {
   $("body").prepend('<div id="paramsWindow" class="window unselectable">' +
-    '<span id="dragIcon" class="ui-icon ui-icon-arrow-4"></span>' +
+    '<span id="closeIcon" class="ui-icon ui-icon-close"></span>' +
     '<div class="titre" id="paramsTitle"></div>' +
     '<ul id="paramsList">' +
     '<li>' + '<div id="lang"></div>' + '<div id="flagContainer"><img src="res/img/us.png" id="us" class="flag" onclick="ParamsWindow.prototype.languageChange(this.id);" />' + '<img src="res/img/fr.png" class="flag" id="fr" onclick="ParamsWindow.prototype.languageChange(this.id);"/></div>' + '</li>' +
@@ -21,18 +21,26 @@ function ParamsWindow() {
     containment: "body",
     scroll: false
   });
+
+  $("#paramsWindow").hide();
+
+  $("#closeIcon").click(function(){
+    ParamsWindow.prototype.close();
+  });
 }
 
 ParamsWindow.prototype = {
   constructor: ParamsWindow,
   close: function() {
-    $("#paramsWindow").css('display', 'none');
+    $("#paramsWindow").fadeOut(fadeSpeed);
+    params = false;
   },
   open: function() {
-    $("#paramsWindow").css('display', 'block');
+    $("#paramsWindow").fadeIn(fadeSpeed);
+    params = true;
   },
   languageChange: function(lang) {
-    language = lang;
+    langManager.language = lang;
     langManager.setLanguage();
   },
   backgroundColorChange: function(value) {
@@ -50,33 +58,33 @@ ParamsWindow.prototype = {
 
   //-----EN ATTENDANT LA BDD-----//
 
-/*  getShadowSize: function(css) {
-    var i = 0;
-    var j = 0;
-    var size = "";
-    while (i < 6) {
-      if (i == 5)
-        size += css[j];
-      if (css[j] == ' ')
-        i++;
-      j++;
-    }
+  /*  getShadowSize: function(css) {
+      var i = 0;
+      var j = 0;
+      var size = "";
+      while (i < 6) {
+        if (i == 5)
+          size += css[j];
+        if (css[j] == ' ')
+          i++;
+        j++;
+      }
 
-    return size;
-  },
+      return size;
+    },
 
-  getShadowColor: function(css) {
-    var i = 0;
-    var j = 0;
-    var color = "";
-    while (i < 7) {
-      if (i === 0 || i == 1 || i == 2)
-        color += css[j];
-      if (css[j] == ' ')
-        i++;
-      j++;
-    }
+    getShadowColor: function(css) {
+      var i = 0;
+      var j = 0;
+      var color = "";
+      while (i < 7) {
+        if (i === 0 || i == 1 || i == 2)
+          color += css[j];
+        if (css[j] == ' ')
+          i++;
+        j++;
+      }
 
-    return color;
-  }*/
+      return color;
+    }*/
 };

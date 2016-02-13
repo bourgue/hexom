@@ -19,6 +19,7 @@ var phpSend = "res/php/newProperties.php";
 var keyMiniSize = 4;
 
 var params = false;
+var paramsMenuOpen = false;
 
 var around = [
   [-1, -1],
@@ -31,11 +32,9 @@ var around = [
 
 var previewing = false;
 var editing = false;
+var modifying = false;
 
 var tmp_hover;
-
-
-
 
 var langManager = new LangManager();
 var tools = new Tools();
@@ -43,6 +42,9 @@ var properties = new Properties();
 var search = new Search();
 var grid = new Grid();
 var paramsWindow = new ParamsWindow();
+var paramsMenu = new ParamsMenu();
+
+var fadeSpeed = 500;
 
 $("#grid,#searchBar").css({
   "opacity": "0",
@@ -57,5 +59,3 @@ langManager.setLanguage();
 $(window).resize(function() {
   grid.changePos();
 });
-
-//window.addEventListener('resize', grid.changePos, false);

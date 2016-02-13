@@ -25,7 +25,9 @@ function LangManager() {
     "DELETE": ["DELETE", "SUPPRIMER"],
     "SEARCH_BAR": ["Search on Google", "Chercher sur Google"],
     "IMG": ["Picture (url):", "Image (url):"],
-    "IMG_SIZE": ["Picture size :", "Taille de l'image :"]
+    "IMG_SIZE": ["Picture size :", "Taille de l'image :"],
+    "ADD_HEXA": ["Add hexagon", "Ajouter un hexagone"],
+    "MODIF_HEXA": ["Modify hexagon", "Modifier un hexagone"]
       //"GOOGLE_SAVE": 	["Save your bookmarks with", "Sauvegardez votre menu avec"]
   };
 }
@@ -54,6 +56,8 @@ LangManager.prototype = {
     $("#imgSize").html(this.words.IMG_SIZE[this.langId[this.language]]);
     $("#backcolorhexa").html(this.words.BACKCOLORHEXA[this.langId[this.language]]);
     $("#searchBar").attr("placeholder", this.words.SEARCH_BAR[this.langId[this.language]]);
-    //$("#savetext").html(words[GOOGLE_SAVE][langId[language]]);
+    $("#addHexa").html(this.words.ADD_HEXA[this.langId[this.language]]);
+    $("#generalParams").html(this.words.PARAMS_GENE[this.langId[this.language]]);
+    $("#modifHexa").html(this.words.MODIF_HEXA[this.langId[this.language]]);
   }
 };
