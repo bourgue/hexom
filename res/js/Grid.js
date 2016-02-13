@@ -54,12 +54,12 @@ Grid.prototype = {
       default:
         hexa.attr({
           'class': "hex",
-          'onclick': "grid.clickHexagon(this)"
+          'onclick': "grid.clickHexagon(this)",
         });
         color = this.hexagons.colors[this.hexagons.colors.length - 1];
     }
 
-    hexa.append('<div class="hex-in1" id="' + id + '"><div class="hex-in2" id="' + id + '" style="background-color:' + color + ';"></div></div>');
+    hexa.append('<div class="hex-in1" id="' + id + '"><div class="hex-in2" id="' + id + '" style="background-color:' + color + ';" onmouseover="grid.mouseOver(this)" onmouseout="grid.mouseOut(this)"></div></div>');
 
     hexa.css({
       left: truePos[0] + "px",
@@ -68,14 +68,24 @@ Grid.prototype = {
 
     $("#" + container).append(hexa);
   },
+  mouseOver: function(hexa) {
+    if(modifying && hexa.id != "0;0")
+      hexa.style.opacity = ".6";
+  },
+  mouseOut: function(hexa) {
+    if(modifying && hexa.id != "0;0")
+      hexa.style.opacity = "1";
+  },
   clickHexagon: function(hexa) {
-    if (!previewing) {
+    if(modifying)
+      var paramsWindowHexa = new ParamsWindowHexa(hexa.getAttribute('id'));
+    else if (!previewing) {
       var posInArray = tools.getPosInArrays(tools.idToArray(hexa.getAttribute('id')), this.hexagons.positions);
       //Ouvre le lien AVEC ou SANS http://
       if (this.hexagons.links[posInArray])
         window.location = /^(http|https):/.test(this.hexagons.links[posInArray]) ? this.hexagons.links[posInArray] : 'http://' + this.hexagons.links[posInArray];
     } else if (!editing)
-      var paramsWindoowHexa = new ParamsWindowHexa(hexa.getAttribute('id'));
+      var paramsWindowHexa = new ParamsWindowHexa(hexa.getAttribute('id'));
     else
       $("#paramsWindowHexa").effect("shake");
   },
@@ -85,20 +95,18 @@ Grid.prototype = {
     this.addHexagon([0, 0], "paramsHexa");
   },
   clickParamsHexa: function() {
-    if (!previewing) {
-      previewing = true;
-      this.addPreviewHexa();
-      paramsWindow.open();
-    } else {
-      $(".preview").remove();
-      previewing = false;
-      paramsWindow.close();
+
+    if(paramsMenuOpen || params || editing || modifying || previewing){
+      paramsMenu.closeAll();
+      paramsMenu.close();
     }
+    else
+      paramsMenu.open();
   },
   //Preview Hexagons
   addPreviewHexa: function() {
-    this.previewHexa = [];
-    $(".preview").remove();
+    this.removePreviewHexa();
+    previewing = true;
 
     for (var i = 0; i < this.hexagons.positions.length + 1; ++i) {
       for (var j = 0; j < around.length; ++j) {
@@ -120,6 +128,11 @@ Grid.prototype = {
       }
     }
   },
+  removePreviewHexa: function(){
+      $(".preview").remove();
+      this.previewHexa = [];
+      previewing = false;
+  },
   clickPreviewHexa: function(hexa) {
     if (!editing) {
       var id = hexa.getAttribute('id');
@@ -133,9 +146,10 @@ Grid.prototype = {
       $("#" + pos[0] + "\\;" + pos[1]).remove();
 
       this.addHexagon(pos, id);
-      this.addPreviewHexa();
 
       var paramsWindowHexa = new ParamsWindowHexa(id);
+
+      this.removePreviewHexa();
     } else
       $("#paramsWindowHexa").effect("shake");
   },

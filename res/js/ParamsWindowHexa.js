@@ -7,7 +7,7 @@ function ParamsWindowHexa(id) {
   hexaImg = grid.hexagons.backImg[posInArray];
 
   $("body").prepend('<div id="paramsWindowHexa" class="window unselectable">' +
-    '<span id="dragIcon" class="ui-icon ui-icon-arrow-4"></span>' +
+    '<span id="closeIcon" class="ui-icon ui-icon-close"></span>' +
     '<div class="titre" id="paramsHexaTitle"></div>' +
     '<ul>' +
     '<li>' + '<div id="link"></div>' + '<input id="url" type="text" value="' + hexaLink + '" placeholder="ex: google.fr" autofocus/>' + '</li>' +
@@ -27,12 +27,21 @@ function ParamsWindowHexa(id) {
   //Met la GUI a coté de paramsWindow (width de paramsWindow + width de paramsWindowHexa)
   $("#paramsWindowHexa").css('left', parseInt($("#paramsWindow").css('width')) + parseInt($("#paramsWindow").css('padding-left')) * 2);
   $("#url").focus();
+
+  $("#closeIcon").click(function(){
+    ParamsWindowHexa.prototype.close();
+  });
 }
 
 ParamsWindowHexa.prototype = {
   constructor: ParamsWindowHexa,
   close: function() {
-    $("#paramsWindowHexa").remove();
+    $("#paramsWindowHexa").fadeOut(fadeSpeed, function(){
+      $("#paramsWindowHexa").remove();
+      modifying = false;
+      editing = false;
+    });
+
   },
   imgChange: function(value) {
     var pos = tools.idToArray(hexa_id);
@@ -52,13 +61,16 @@ ParamsWindowHexa.prototype = {
     grid.hexagons.backImg.splice(posInArray, 1);
     grid.addPreviewHexa();
     editing = false;
+    modifying = false;
     this.close();
   },
   submit: function() {
     editing = false;
+    modifying = false;
     grid.hexagons.colors[posInArray] = hexaColor;
     grid.hexagons.links[posInArray] = $("#url").val();
     grid.hexagons.backImg[posInArray] = $("#urlImg").val();
     this.close();
+
   }
 };

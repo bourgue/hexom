@@ -39,10 +39,11 @@
   -o-transform: rotate(-60deg);
   transform: rotate(-60deg);
   z-index: 1;
+  cursor: pointer;
 }
 .hex-in2:hover {
   z-index: 2;
-  cursor: pointer;
+
 }
 .preview {
   z-index: 1;
@@ -63,7 +64,7 @@
   position: relative;
   z-index: 1;
 }
-#previewContainer {
+#previewContainer, .fade {
   -webkit-animation: anim 3.5s infinite;
   -moz-animation: anim 3.5s infinite;
   -o-animation: anim 3.5s infinite;

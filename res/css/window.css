@@ -3,10 +3,11 @@
   margin-bottom: 15px;
 }
 
-#dragIcon {
+#closeIcon {
   float: right;
   margin-top: -10px;
   margin-right: -10px;
+  cursor:pointer;
 }
 
 .window {
