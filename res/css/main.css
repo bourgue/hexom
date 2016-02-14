@@ -8,6 +8,11 @@
   src: url('../font/Roboto-Regular.ttf');
 }
 
+@font-face {
+  font-family: Autoradiographic;
+  src: url('../font/autoradiographic.ttf');
+}
+
 * {
   margin: 0;
   padding: 0;
