@@ -43,8 +43,9 @@ function RegisterWindow() {
             username: usernamev,
             password: passwordv,
             email: emailv
-          },function(data){
-            $("#welcomeUser").html(data);
+          },function(){
+            news.add(langManager.words.NEW_USER[langManager.langId[langManager.language]], "#ffffff");
+            RegisterWindow.prototype.close();
           });
         }else{
           RegisterWindow.prototype.openError($("#emailError"));

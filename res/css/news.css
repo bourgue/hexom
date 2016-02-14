@@ -1,0 +1,9 @@
+.news {
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  position: absolute;
+  font-family: Autoradiographic;
+  color: #fff;
+  text-shadow: 0px 0px 4px #000;
+}

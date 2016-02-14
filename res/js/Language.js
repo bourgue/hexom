@@ -1,9 +1,10 @@
 function LangManager() {
+  this.language = "";
 
-  this.language = "fr";
+  this.navigatorLang();
 
   this.langId = {
-    "us": 0,
+    "en": 0,
     "fr": 1
   };
 
@@ -35,14 +36,14 @@ function LangManager() {
     "EMAIL": ["Email address :", "Adresse e-mail :"],
     "MAXCHAR": ["Maximum " + inputMaxLength + " characters !", "Maximum " + inputMaxLength + " caractères !"],
     "MINCHAR": ["Minimum " + inputMinLength + " characters !", "Minimum " + inputMinLength + " caractères !"],
-    "EMAIL_ERROR": ["Invalid email !", "E-mail invalide !"]
+    "EMAIL_ERROR": ["Invalid email !", "E-mail invalide !"],
+    "NEW_USER": ["Your account is created, you can sign in with it", "Votre compte est crée, vous pouvez vous connecter"]
   };
 }
 
 
 
 LangManager.prototype = {
-
   constructor: LangManager,
   setLanguage: function() {
     $("#paramsTitle").html(this.words.PARAMS_GENE[this.langId[this.language]]);
@@ -80,5 +81,18 @@ LangManager.prototype = {
     $("#maxError").html(this.words.MAXCHAR[this.langId[this.language]]);
     $("#minError").html(this.words.MINCHAR[this.langId[this.language]]);
     $("#emailError").html(this.words.EMAIL_ERROR[this.langId[this.language]]);
+  },
+  navigatorLang: function() {
+    var navLang;
+
+    if (navigator.browserLanguage)
+      navLang = navigator.browserLanguage;
+    else
+      navLang = navigator.language;
+
+    if (navLang.indexOf('fr') > -1)
+      this.language = 'fr';
+    else
+      this.language = 'en';
   }
 };

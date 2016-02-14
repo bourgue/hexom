@@ -6,10 +6,16 @@
 @import "paramsMenu.css";
 @import "connectWindow.css";
 @import "user.css";
+@import "news.css";
 
 @font-face {
   font-family: Roboto;
   src: url('../font/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: Autoradiographic;
+  src: url('../font/autoradiographic.ttf');
 }
 
 * {

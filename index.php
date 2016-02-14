@@ -12,7 +12,6 @@
 </head>
 
 <body>
-	<div id="welcomeUser">Bienvenue, connard</div>
 	<input id="searchBar" type="text" autofocus/>
 
 	<div id="grid"><div id="previewContainer"></div></div>
@@ -27,6 +26,7 @@
 	<script src="res/js/ParamsMenu.js"></script>
 	<script src="res/js/ConnectWindow.js"></script>
 	<script src="res/js/RegisterWindow.js"></script>
+	<script src="res/js/News.js"></script>
 	<script src="res/js/main.js"></script>
 </body>
 

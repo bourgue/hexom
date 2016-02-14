@@ -43,6 +43,7 @@ var search = new Search();
 var grid = new Grid();
 var paramsWindow = new ParamsWindow();
 var paramsMenu = new ParamsMenu();
+var news = new News();
 
 var fadeSpeed = 500;
 

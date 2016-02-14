@@ -7,9 +7,6 @@
       $password=$_POST['password'];
       $email=$_POST['email'];
       $query = mysql_query("INSERT INTO users(username, password, email) VALUES ('$username','$password','$email')"); //Insert query
-      if($query){
-        echo "Data Submitted succesfully";
-      }
     mysql_close($connection); // Connection Closed.
   }
 ?>
