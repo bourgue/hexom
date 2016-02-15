@@ -1,18 +1,13 @@
 .button {
-  display: block;
-  width:100%;
-  height: auto;
-  text-align: center;
-  background: #242424;
-
-  border-bottom: 4px solid #000;
-  margin:0px 0px 10px -10px;
+=======
+  background: #000;
+  border: 1px solid #000;
+>>>>>>> GUI_style
   color: #fff;
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
   cursor: pointer;
-  box-shadow: none;
 }
 
 button {
@@ -21,4 +16,20 @@ button {
   font-size: 12px;
   border:0 none;
 
+=======
+  display: block;
+  margin: auto;
+  text-align: center;
+
+  -o-transition:color 0.3s ease-out, background 0.3s ease-in;
+  -ms-transition:color 0.3s ease-out, background 0.3s ease-in;
+  -moz-transition:color 0.3s ease-out, background 0.3s ease-in;
+  -webkit-transition:color 0.3s ease-out, background 0.3s ease-in;
+  transition:color 0.3s ease-out, background 0.3s ease-in;
+}
+
+.button:hover {
+  background: #fff;
+  color:#000;
+>>>>>>> GUI_style
 }
