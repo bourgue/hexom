@@ -5,7 +5,7 @@
     $username=$_POST['username'];
     $password=$_POST['password'];
 
-    $result = $conn->query("SELECT * FROM users WHERE username='$username'");
+      $result = $conn->query("SELECT * FROM users WHERE username='$username'");
 
     if(mysqli_num_rows($result) == 0)
       echo 'no_account';
@@ -19,7 +19,7 @@
         echo json_encode($row);
       }
     }
-
+    
     $conn->close();
   }
 ?>

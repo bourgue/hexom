@@ -56,6 +56,7 @@ Tools.prototype = {
       connected = false;
       user.username = "";
       user.email = "";
+      document.cookie = "username=;password=";
       paramsWindow.connectStateChange();
       userInfo.newState();
     }

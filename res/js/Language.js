@@ -29,10 +29,10 @@ function LangManager() {
     "IMG_SIZE": ["Picture size :", "Taille de l'image :"],
     "ADD_HEXA": ["Add hexagon", "Ajouter un hexagone"],
     "MODIF_HEXA": ["Modify hexagon", "Modifier un hexagone"],
-    "LOGIN": ["Sign in", "Se connecter"],
+    "LOGIN": ["SIGN IN", "CONNECTION"],
     "USERNAME": ["Username :", "Nom d'utilisateur :"],
     "PASSWORD": ["Password :", "Mot de passe :"],
-    "REGISTER": ["Sign up", "S'enregistrer"],
+    "REGISTER": ["SIGN UP", "S'ENREGISTRER"],
     "EMAIL": ["Email address :", "Adresse e-mail :"],
     "MAXCHAR": ["Maximum " + inputMaxLength + " characters !", "Maximum " + inputMaxLength + " caractères !"],
     "MINCHAR": ["Minimum " + inputMinLength + " characters !", "Minimum " + inputMinLength + " caractères !"],
@@ -42,8 +42,8 @@ function LangManager() {
     "NO_ACCOUNT": ["This account doesn't exist !", "Ce compte n'existe pas !"],
     "MDP_ERROR": ["Invalid password !", "Mot de passe incorrect !"],
     "SAVE_CONFIRM": ["Your menu has been saved", "Votre menu a été sauvegardé"],
-    "LOGOUT": ["Logout", "Se déconnecter"],
-    "CONNECT_INFO": ["Login to save your menu", "Connectez-vous pour sauvegarder votre menu"]
+    "LOGOUT": ["SIGN OUT", "DECONNECTION"],
+    "CONNECT_INFO": ["Sign in to save your menu", "Connectez-vous pour sauvegarder votre menu"]
   };
 }
 
@@ -91,7 +91,6 @@ LangManager.prototype = {
     $("#no_account").html(this.words.NO_ACCOUNT[this.langId[this.language]]);
     $("#err_mdp").html(this.words.MDP_ERROR[this.langId[this.language]]);
     $("#logout").html(this.words.LOGOUT[this.langId[this.language]]);
-
   },
   navigatorLang: function() {
     var navLang;

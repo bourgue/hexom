@@ -2,9 +2,9 @@
     if(!empty($_POST))
     {
       include 'database.php';
-      $username=$_POST['username'];
+      $username=htmlentities($_POST['username']);
       $password=$_POST['password'];
-      $email=$_POST['email'];
+      $email=htmlentities($_POST['email']);
 
       $result = $conn->query("SELECT * FROM hexaproperties WHERE username='$username'");
 

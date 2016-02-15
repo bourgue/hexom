@@ -8,22 +8,23 @@ function ParamsWindowHexa(id) {
   console.log(posInArray);
 
   $("body").prepend('<div id="paramsWindowHexa" class="window unselectable">' +
-    '<span id="closeIcon" class="ui-icon ui-icon-close"></span>' +
+    '<span id="closeIcon" class="close"></span>' +
     '<div class="titre" id="paramsHexaTitle"></div>' +
     '<ul>' +
     '<li>' + '<div id="link"></div>' + '<input id="url" type="text" value="' + hexaLink + '" placeholder="ex: google.fr" autofocus/>' + '</li>' +
-    '<li>' + '<div id="img"></div>' + '<input id="urlImg" type="text" value="' + hexaImg + '" placeholder="ex: url.com/image.png" onchange="ParamsWindowHexa.prototype.imgChange(this.value);" autofocus/>' + '</li>' +
-    '<li>' + '<div id="imgSize"></div>' + '<input id="imgSize" value="200" max="300" min="0" step="5" type="range" onchange="ParamsWindow.prototype.imgSizeChange(this.value)"/>' + '</li>' +
+  //  '<li>' + '<div id="img"></div>' + '<input id="urlImg" type="text" value="' + hexaImg + '" placeholder="ex: url.com/image.png" onchange="ParamsWindowHexa.prototype.imgChange(this.value);" autofocus/>' + '</li>' +
+  //  '<li>' + '<div id="imgSize"></div>' + '<input id="imgSize" value="200" max="300" min="0" step="5" type="range" onchange="ParamsWindow.prototype.imgSizeChange(this.value)"/>' + '</li>' +
     '<li>' + '<div id="backcolorhexa"></div>' + '<input id="colorHexa" type="color" value="' + hexaColor + '" onchange="ParamsWindowHexa.prototype.colorChange(this.value);"/>' + '</li>' +
     '<li>' + '<div id="deleteButton" class="button" onclick="ParamsWindowHexa.prototype.deleteHexa();"></div>'  + '</li>' +
-    '<li style="margin-bottom: 0;">' + '<div id="okButton" class="button" onclick="ParamsWindowHexa.prototype.submit()">OK</div>' + '</li>' +
+    '<li>' + '<div id="okButton" class="button" onclick="ParamsWindowHexa.prototype.submit()">OK</div>' + '</li>' +
     '</ul>' +
     '</div>');
   langManager.setLanguage();
 
   $("#paramsWindowHexa").draggable({
     containment: "body",
-    scroll: false
+    scroll: false,
+    handle: "#paramsHexaTitle"
   });
   //Met la GUI a coté de paramsWindow (width de paramsWindow + width de paramsWindowHexa)
   $("#paramsWindowHexa").css('left', parseInt($("#paramsWindow").css('width')) + parseInt($("#paramsWindow").css('padding-left')) * 2);

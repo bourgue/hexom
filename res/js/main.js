@@ -1,9 +1,7 @@
 // PARAMS WINDOW
-var backgroundColor = "#ff0000";
+var backgroundColor = "#a60000";
 var shadowColor = "#000000";
 var shadowSize = "200";
-var op = "0.4";
-var opHover = "1";
 
 //PARAMS WINDOW HEXA
 var hexa_id;

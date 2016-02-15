@@ -8,9 +8,10 @@ function Search(){
 
 $("#searchBar").autocomplete({
     source: function(request, response) {
+      console.log(langManager.language);
         $.getJSON("http://suggestqueries.google.com/complete/search?callback=?",
             {
-              "hl":"fr", // Language
+              "hl":langManager.langId[langManager.language], // Language
             //  "ds":"yt", // Restrict lookup to youtube
               "jsonp":"suggestCallBack", // jsonp callback function name
               "q":request.term, // query term

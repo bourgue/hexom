@@ -1,6 +1,6 @@
 function RegisterWindow() {
   $("body").prepend('<div id="registerWindow" class="window unselectable">' +
-    '<span id="closeIcon" class="ui-icon ui-icon-close"></span>' +
+    '<span id="closeIcon" class="close"></span>' +
     '<div class="titre" id="registerTitle"></div>' +
     '<ul>' +
     '<li><div id="registerId"></div><input type="text" id="registerUsername" maxLength="' + inputMaxLength + '" autofocus/></li>' +
@@ -16,7 +16,8 @@ function RegisterWindow() {
 
   $("#registerWindow").draggable({
     containment: "body",
-    scroll: false
+    scroll: false,
+    handle: "#registerTitle"
   });
 
   registring = true;

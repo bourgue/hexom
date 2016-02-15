@@ -1,9 +1,9 @@
 function ConnectWindow() {
   $("body").prepend('<div id="connectWindow" class="window unselectable">' +
-    '<span id="closeIcon" class="ui-icon ui-icon-close"></span>' +
+    '<span id="closeIcon" class="close"></span>' +
     '<div class="titre" id="connectTitle"></div>' +
     '<ul>' +
-    '<li>' + '<div id="id"></div><input type="text" id="username" maxLength="15" autofocus/>' + '</li>' +
+    '<li>' + '<div id="id"></div><input type="text" id="username" maxLength="15"/>' + '</li>' +
     '<li>' + '<div id="mdp"></div><input type="password" id="password" maxLength="15"/>' + '</li>' +
     '<p id="no_account" class="error"></p>' +
     '<p id="err_mdp" class="error"></p>' +
@@ -13,7 +13,8 @@ function ConnectWindow() {
 
   $("#connectWindow").draggable({
     containment: "body",
-    scroll: false
+    scroll: false,
+    handle: "#connectTitle"
   });
 
   langManager.setLanguage();
