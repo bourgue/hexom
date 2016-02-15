@@ -17,13 +17,15 @@ var keyMiniSize = 4;
 var params = false;
 var paramsMenuOpen = false;
 
+var connected = false;
+
 var around = [
-  [-1, -1],
-  [0, -1],
-  [1, 0],
-  [0, 1],
-  [-1, 1],
-  [-1, 0]
+  {x: -1, y: -1},
+  {x: 0, y: -1},
+  {x: 1, y: 0},
+  {x: 0, y: 1},
+  {x: -1, y: 1},
+  {x: -1, y: 0}
 ];
 
 var previewing = false;
@@ -36,7 +38,9 @@ var tmp_hover;
 var inputMaxLength = 20;
 var inputMinLength = 5;
 
+var user = new User();
 var langManager = new LangManager();
+var userInfo = new UserInfo();
 var tools = new Tools();
 var properties = new Properties();
 var search = new Search();
@@ -44,6 +48,10 @@ var grid = new Grid();
 var paramsWindow = new ParamsWindow();
 var paramsMenu = new ParamsMenu();
 var news = new News();
+
+if(tools.getCookie("username")){
+  tools.login(tools.getCookie("username"), tools.getCookie("password"));
+}
 
 var fadeSpeed = 500;
 

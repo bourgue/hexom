@@ -1,10 +1,16 @@
 function Grid() {
-  this.pos = [$(window).width() / 2, $(window).height() / 2];
+  this.pos = {
+    x: $(window).width() / 2,
+    y: $(window).height() / 2
+  };
   this.scale = 1;
   this.previewHexa = [];
   this.hexagons = {
     margin: 10,
-    sizeXY: [100 * this.scale, Math.round(Math.sqrt((100 * this.scale) * (100 * this.scale) + (58 * this.scale) * (58 * this.scale)) * 100) / 100],
+    size: {
+      x: 100 * this.scale,
+      y: Math.round(Math.sqrt((100 * this.scale) * (100 * this.scale) + (58 * this.scale) * (58 * this.scale)) * 100) / 100
+    },
 
     positions: [],
     colors: [],
@@ -12,7 +18,10 @@ function Grid() {
     backImg: []
   };
 
-  this.difference = [this.hexagons.sizeXY[0] - 100, this.hexagons.sizeXY[1] - 58];
+  this.difference = {
+    x: this.hexagons.size.x - 100,
+    y: this.hexagons.size.y - 58
+  };
 
   this.addParamsHexa();
 
@@ -23,64 +32,61 @@ Grid.prototype = {
   constructor: Grid,
   //Hexagon
   addHexagon: function(pos, type) {
-    var id = pos[0] + ";" + pos[1];
+    var id = pos.x + ";" + pos.y;
     var truePos = this.setPos(pos);
 
-    var container = "grid";
+    var container = $("#grid");
+    var _class;
+    var onclick;
 
-    var hexa = $("#grid").append('<div id="' + id + '"></div>');
-    hexa = $("#" + pos[0] + "\\;" + pos[1]);
+  /*  var nhexa = $("#grid").append('<div id="' + id + '"></div>');
+    var hexa = $("#" + pos.x + "\\;" + pos.y);*/
 
     var color;
 
     switch (type) {
       case "preview":
-        hexa.attr({
-          'class': "preview",
-          'onclick': "grid.clickPreviewHexa(this)"
-        });
+        _class = "preview";
+        onclick = "grid.clickPreviewHexa(this)";
         color = "#ffffff";
-        container = "previewContainer";
+        container = $("#previewContainer");
         break;
 
       case "paramsHexa":
-        hexa.attr({
-          'class': "hex",
-          'onclick': "grid.clickParamsHexa(this)"
-        });
+        _class = "hex";
+        onclick = "grid.clickParamsHexa(this)";
         color = "#000000";
         break;
 
       default:
-        hexa.attr({
-          'class': "hex",
-          'onclick': "grid.clickHexagon(this)",
-        });
+        _class = "hex";
+        onclick = "grid.clickHexagon(this)";
         color = this.hexagons.colors[this.hexagons.colors.length - 1];
     }
 
-    hexa.append('<div class="hex-in1" id="' + id + '"><div class="hex-in2" id="' + id + '" style="background-color:' + color + ';" onmouseover="grid.mouseOver(this)" onmouseout="grid.mouseOut(this)"></div></div>');
+    container.append('<div id="' + id +'" class="' + _class + '" onclick="' + onclick + '"><div class="hex-in1" id="' + id + '">' +
+      '<div class="hex-in2" id="' + id + '" style="background-color:' + color + ';" onmouseover="grid.mouseOver(this)" onmouseout="grid.mouseOut(this)">' +
+      '</div></div></div>');
 
-    hexa.css({
-      left: truePos[0] + "px",
-      top: truePos[1] + "px"
+    $("#" + pos.x + "\\;" + pos.y + "." + _class).css({
+      left: truePos.x + "px",
+      top: truePos.y + "px"
     });
 
-    $("#" + container).append(hexa);
   },
   mouseOver: function(hexa) {
-    if(modifying && hexa.id != "0;0")
+    if (modifying && hexa.id != "0;0")
       hexa.style.opacity = ".6";
   },
   mouseOut: function(hexa) {
-    if(modifying && hexa.id != "0;0")
+    if (modifying && hexa.id != "0;0")
       hexa.style.opacity = "1";
   },
   clickHexagon: function(hexa) {
-    if(modifying)
+    if (modifying && hexa.id != "0;0")
       var paramsWindowHexa = new ParamsWindowHexa(hexa.getAttribute('id'));
     else if (!previewing) {
-      var posInArray = tools.getPosInArrays(tools.idToArray(hexa.getAttribute('id')), this.hexagons.positions);
+      var posInArray = tools.getPosInArrays(tools.idToArray(hexa.getAttribute('id')));
       //Ouvre le lien AVEC ou SANS http://
       if (this.hexagons.links[posInArray])
         window.location = /^(http|https):/.test(this.hexagons.links[posInArray]) ? this.hexagons.links[posInArray] : 'http://' + this.hexagons.links[posInArray];
@@ -92,15 +98,16 @@ Grid.prototype = {
 
   //Parameters Hexagon
   addParamsHexa: function() {
-    this.addHexagon([0, 0], "paramsHexa");
+    this.addHexagon({
+      x: 0,
+      y: 0
+    }, "paramsHexa");
   },
   clickParamsHexa: function() {
-
-    if(paramsMenuOpen || params || editing || modifying || previewing){
+    if (paramsMenuOpen || params || editing || modifying || previewing) {
       paramsMenu.closeAll();
       paramsMenu.close();
-    }
-    else
+    } else
       paramsMenu.open();
   },
   //Preview Hexagons
@@ -110,15 +117,27 @@ Grid.prototype = {
 
     for (var i = 0; i < this.hexagons.positions.length + 1; ++i) {
       for (var j = 0; j < around.length; ++j) {
-        var tmp_pos = [0, 0];
+        var tmp_pos = {
+          x: 0,
+          y: 0
+        };
         if (i < this.hexagons.positions.length) {
-          if (this.hexagons.positions[i][1] % 2 !== 0) {
-            tmp_pos = [this.hexagons.positions[i][0] - around[j][0], this.hexagons.positions[i][1] - around[j][1]];
+          if (this.hexagons.positions[i].y % 2 !== 0) {
+            tmp_pos = {
+              x: this.hexagons.positions[i].x - around[j].x,
+              y: this.hexagons.positions[i].y - around[j].y
+            };
           } else {
-            tmp_pos = [this.hexagons.positions[i][0] + around[j][0], this.hexagons.positions[i][1] + around[j][1]];
+            tmp_pos = {
+              x: this.hexagons.positions[i].x + around[j].x,
+              y: this.hexagons.positions[i].y + around[j].y
+            };
           }
         } else {
-          tmp_pos = [around[j][0], around[j][1]];
+          tmp_pos = {
+            x: around[j].x,
+            y: around[j].y
+          };
         }
 
         if (!tools.exist(tmp_pos, this.hexagons.positions) && !tools.exist(tmp_pos, this.previewHexa)) {
@@ -128,24 +147,27 @@ Grid.prototype = {
       }
     }
   },
-  removePreviewHexa: function(){
-      $(".preview").remove();
-      this.previewHexa = [];
-      previewing = false;
+  removePreviewHexa: function() {
+    $(".preview").remove();
+    this.previewHexa = [];
+    previewing = false;
   },
   clickPreviewHexa: function(hexa) {
     if (!editing) {
       var id = hexa.getAttribute('id');
       var pos = tools.idToArray(id);
 
-      this.hexagons.positions.push(pos);
+      this.hexagons.positions.push({
+        x: pos.x,
+        y: pos.y
+      });
       this.hexagons.colors.push("#000000");
       this.hexagons.links.push("");
       this.hexagons.backImg.push("");
 
-      $("#" + pos[0] + "\\;" + pos[1]).remove();
+      $("#" + pos.x + "\\;" + pos.y).remove();
 
-      this.addHexagon(pos, id);
+      this.addHexagon(pos, "hexagon");
 
       var paramsWindowHexa = new ParamsWindowHexa(id);
 
@@ -155,45 +177,56 @@ Grid.prototype = {
   },
 
   setPos: function(hexPos) {
-    var f = [
-      this.pos[0] - this.hexagons.sizeXY[0] / 2 + this.difference[0] / 2 + 100 * this.scale * hexPos[0] + this.hexagons.margin * hexPos[0],
-      this.pos[1] - this.hexagons.sizeXY[1] / 2 + this.difference[1] / 2 + (58 * this.scale + (this.hexagons.sizeXY[1] - 58 * this.scale) / 2) * hexPos[1] + this.hexagons.margin * hexPos[1]
-    ];
+    var f = {
+      x: this.pos.x - this.hexagons.size.x / 2 + this.difference.x / 2 + 100 * this.scale * hexPos.x + this.hexagons.margin * hexPos.x,
+      y: this.pos.y - this.hexagons.size.y / 2 + this.difference.y / 2 + (58 * this.scale + (this.hexagons.size.y - 58 * this.scale) / 2) * hexPos.y + this.hexagons.margin * hexPos.y
+    };
 
-    if (hexPos[1] % 2 !== 0)
-      f[0] += (this.hexagons.sizeXY[0] + this.hexagons.margin) / 2;
+    if (hexPos.y % 2 !== 0)
+      f.x += (this.hexagons.size.x + this.hexagons.margin) / 2;
 
     return f;
   },
 
   changePos: function() {
     //CHANGE LA POSITION DE LA GRILLE
-    this.pos = [$(window).width() / 2, $(window).height() / 2];
+    this.pos = {
+      x: $(window).width() / 2,
+      y: $(window).height() / 2
+    };
 
     //CHANGE LA POSITION DU PARAMSHEXA
     $("#0\\;0").css({
-      "left": this.pos[0] - this.hexagons.sizeXY[0] / 2 + this.difference[0] / 2,
-      "top": this.pos[1] - this.hexagons.sizeXY[1] / 2 + this.difference[1] / 2
+      "left": this.pos.x - this.hexagons.size.x / 2 + this.difference.x / 2,
+      "top": this.pos.y - this.hexagons.size.y / 2 + this.difference.y / 2
     });
 
     //CHANGE LA POSITION DES HEXAGONES
     for (var i = 0; i < this.hexagons.positions.length; ++i) {
       var hexPos = this.setPos(this.hexagons.positions[i]);
-      $("#" + this.hexagons.positions[i][0] + "\\;" + this.hexagons.positions[i][1])
+      $("#" + this.hexagons.positions[i].x + "\\;" + this.hexagons.positions[i].y)
         .css({
-          "left": hexPos[0],
-          "top": hexPos[1]
+          "left": hexPos.x,
+          "top": hexPos.y
         });
     }
 
     //CHANGE LA POSITION DES PREVIEWS
     for (var j = 0; j < this.previewHexa.length; ++j) {
       var previewPos = this.setPos(this.previewHexa[j]);
-      $("#" + this.previewHexa[j][0] + "\\;" + this.previewHexa[j][1])
+      $("#" + this.previewHexa[j].x + "\\;" + this.previewHexa[j].y)
         .css({
-          "left": previewPos[0],
-          "top": previewPos[1]
+          "left": previewPos.x,
+          "top": previewPos.y
         });
     }
+  },
+  refresh: function(pos, color, link) {
+    this.hexagons.positions.push(pos);
+    this.hexagons.colors.push(color);
+    this.hexagons.links.push(link);
+    this.hexagons.backImg.push("");
+
+    this.addHexagon(pos, "hexagon");
   }
 };

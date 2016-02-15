@@ -37,7 +37,13 @@ function LangManager() {
     "MAXCHAR": ["Maximum " + inputMaxLength + " characters !", "Maximum " + inputMaxLength + " caractères !"],
     "MINCHAR": ["Minimum " + inputMinLength + " characters !", "Minimum " + inputMinLength + " caractères !"],
     "EMAIL_ERROR": ["Invalid email !", "E-mail invalide !"],
-    "NEW_USER": ["Your account is created, you can sign in with it", "Votre compte est crée, vous pouvez vous connecter"]
+    "USERNAME_ERROR": ["Username already taken !", "Nom d'utilisateur déjà prit !"],
+    "NEW_USER": ["Your account is created, you can sign in with it", "Votre compte est crée, vous pouvez vous connecter"],
+    "NO_ACCOUNT": ["This account doesn't exist !", "Ce compte n'existe pas !"],
+    "MDP_ERROR": ["Invalid password !", "Mot de passe incorrect !"],
+    "SAVE_CONFIRM": ["Your menu has been saved", "Votre menu a été sauvegardé"],
+    "LOGOUT": ["Logout", "Se déconnecter"],
+    "CONNECT_INFO": ["Login to save your menu", "Connectez-vous pour sauvegarder votre menu"]
   };
 }
 
@@ -81,6 +87,11 @@ LangManager.prototype = {
     $("#maxError").html(this.words.MAXCHAR[this.langId[this.language]]);
     $("#minError").html(this.words.MINCHAR[this.langId[this.language]]);
     $("#emailError").html(this.words.EMAIL_ERROR[this.langId[this.language]]);
+    $("#usernameError").html(this.words.USERNAME_ERROR[this.langId[this.language]]);
+    $("#no_account").html(this.words.NO_ACCOUNT[this.langId[this.language]]);
+    $("#err_mdp").html(this.words.MDP_ERROR[this.langId[this.language]]);
+    $("#logout").html(this.words.LOGOUT[this.langId[this.language]]);
+
   },
   navigatorLang: function() {
     var navLang;

@@ -12,6 +12,8 @@
 </head>
 
 <body>
+	<div id="user_info"></div>
+
 	<input id="searchBar" type="text" autofocus/>
 
 	<div id="grid"><div id="previewContainer"></div></div>
@@ -27,6 +29,8 @@
 	<script src="res/js/ConnectWindow.js"></script>
 	<script src="res/js/RegisterWindow.js"></script>
 	<script src="res/js/News.js"></script>
+	<script src="res/js/UserInfo.js"></script>
+	<script src="res/js/User.js"></script>
 	<script src="res/js/main.js"></script>
 </body>
 

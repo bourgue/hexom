@@ -9,6 +9,7 @@ function RegisterWindow() {
     '<p id="maxError" class="error"></p>' +
     '<p id="minError" class="error"></p>' +
     '<p id="emailError" class="error"></p>' +
+    '<p id="usernameError" class="error"></p>' +
     '<li><div id="registerSubmit" class="button"></div></li>' +
     '</ul>' +
     '</div>');
@@ -17,6 +18,8 @@ function RegisterWindow() {
     containment: "body",
     scroll: false
   });
+
+  registring = true;
 
   langManager.setLanguage();
 
@@ -43,9 +46,17 @@ function RegisterWindow() {
             username: usernamev,
             password: passwordv,
             email: emailv
-          },function(){
-            news.add(langManager.words.NEW_USER[langManager.langId[langManager.language]], "#ffffff");
-            RegisterWindow.prototype.close();
+          },function(data){
+
+            if(data != "err_username"){
+              user.username = usernamev;
+              user.email = emailv;
+              news.add(langManager.words.NEW_USER[langManager.langId[langManager.language]]);
+              tools.save();
+              RegisterWindow.prototype.close();
+            }else{
+              RegisterWindow.prototype.openError($("#usernameError"));
+            }
           });
         }else{
           RegisterWindow.prototype.openError($("#emailError"));

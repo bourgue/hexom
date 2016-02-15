@@ -1,10 +1,11 @@
 function ParamsWindowHexa(id) {
   editing = true;
   hexa_id = id;
-  posInArray = tools.getPosInArrays(tools.idToArray(hexa_id), grid.hexagons.positions);
+  posInArray = tools.getPosInArrays(tools.idToArray(hexa_id));
   hexaColor = grid.hexagons.colors[posInArray];
   hexaLink = grid.hexagons.links[posInArray];
   hexaImg = grid.hexagons.backImg[posInArray];
+  console.log(posInArray);
 
   $("body").prepend('<div id="paramsWindowHexa" class="window unselectable">' +
     '<span id="closeIcon" class="ui-icon ui-icon-close"></span>' +
@@ -45,12 +46,12 @@ ParamsWindowHexa.prototype = {
   },
   imgChange: function(value) {
     var pos = tools.idToArray(hexa_id);
-    $("#" + pos[0] + "\\;" + pos[1] + ".hex-in2").css("background-image", 'url("' + value + '")');
+    $("#" + pos.x + "\\;" + pos.y + ".hex-in2").css("background-image", 'url("' + value + '")');
     hexaImg = value;
   },
   colorChange: function(value) {
     var pos = tools.idToArray(hexa_id);
-    $("#" + pos[0] + "\\;" + pos[1] + ".hex-in2").css("background-color", value);
+    $("#" + pos.x + "\\;" + pos.y + ".hex-in2").css("background-color", value);
     hexaColor = value;
   },
   deleteHexa: function() {

@@ -1,12 +1,19 @@
 <?php
     if(!empty($_POST))
     {
-      $connection = mysql_connect("localhost", "root", "test");
-      $db = mysql_select_db("hexamenu", $connection);
+      include 'database.php';
       $username=$_POST['username'];
       $password=$_POST['password'];
       $email=$_POST['email'];
-      $query = mysql_query("INSERT INTO users(username, password, email) VALUES ('$username','$password','$email')"); //Insert query
-    mysql_close($connection); // Connection Closed.
+
+      $result = $conn->query("SELECT * FROM hexaproperties WHERE username='$username'");
+
+      if(mysqli_num_rows($result) > 0)
+        echo 'err_username';
+      else{
+        $result = $conn->query("INSERT INTO users(username, password, email) VALUES ('$username','$password','$email')");
+      }
+
+      $conn->close();
   }
 ?>

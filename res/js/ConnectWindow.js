@@ -2,13 +2,13 @@ function ConnectWindow() {
   $("body").prepend('<div id="connectWindow" class="window unselectable">' +
     '<span id="closeIcon" class="ui-icon ui-icon-close"></span>' +
     '<div class="titre" id="connectTitle"></div>' +
-    '<form id="formLogin" method="post" action="">' +
     '<ul>' +
     '<li>' + '<div id="id"></div><input type="text" id="username" maxLength="15" autofocus/>' + '</li>' +
     '<li>' + '<div id="mdp"></div><input type="password" id="password" maxLength="15"/>' + '</li>' +
-    '<li>' + '<input id="connectSubmit" type="submit" class="button"></div>' + '</li>' +
+    '<p id="no_account" class="error"></p>' +
+    '<p id="err_mdp" class="error"></p>' +
+    '<li>' + '<div id="connectSubmit" class="button"></div>' + '</li>' +
     '</ul>' +
-    '</form>' +
     '</div>');
 
   $("#connectWindow").draggable({
@@ -21,33 +21,17 @@ function ConnectWindow() {
   $("#connectWindow").hide();
   $("#connectWindow").fadeIn(fadeSpeed);
 
+  $(".error").hide();
+
   $("#connectWindow #closeIcon").click(function() {
     ConnectWindow.prototype.close();
   });
 
   $("#connectSubmit").click(function() {
-    $.post("res/php/login.php", {
-        username: $("#username").val(),
-        password: $("#password").val()
-      },
-      function(data) {
-
-      },
-      'text'
-    );
-  });
-
-  $("#formLogin").on("submit", function() {
-    var username = $("#username").val();
-    var password = $("#password").val();
-
-      $.ajax({
-        type: "POST",
-        url: "res/php/login.php",
-        data: 'username=' + username + "&password=" + password
-      }).done(function(data){
-        $("body").prepend(data);
-      });
+    if (!connected) {
+      ConnectWindow.prototype.closeErrors();
+      tools.login($("#username").val(), $("#password").val());
+    }
   });
 }
 
@@ -57,6 +41,11 @@ ConnectWindow.prototype = {
     $("#connectWindow").fadeOut(fadeSpeed, function() {
       $("#connectWindow").remove();
     });
-
+  },
+  openError: function(error) {
+    error.slideDown("fast");
+  },
+  closeErrors: function() {
+    $(".error").slideUp("fast");
   }
 };
