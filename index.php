@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="res/js/jquery-ui/jquery-ui.min.css" />
 	<script src="res/js/jquery.min.js"></script>
 	<script src="res/js/jquery-ui/jquery-ui.min.js"></script>
-
+	<script src="res/js/js-cookie/src/js.cookie.js"></script>
 	<title>HexaMenu</title>
 </head>
 

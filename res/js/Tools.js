@@ -43,8 +43,8 @@ Tools.prototype = {
           paramsWindow.connectStateChange();
           userInfo.newState();
 
-          document.cookie = "username=" + username;
-          document.cookie = "password=" + password;
+          Cookies.set('username', username, { expires: 365, path: '' });
+          Cookies.set('password', password, { expires: 365, path: '' });
 
           ConnectWindow.prototype.close();
         }
@@ -114,7 +114,7 @@ Tools.prototype = {
     for (var i = 0; i < ca.length; i++) {
       var c = ca[i];
       while (c.charAt(0) == ' ') c = c.substring(1);
-      if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+      if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
     }
     return "";
   }

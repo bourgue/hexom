@@ -47,8 +47,8 @@ var paramsWindow = new ParamsWindow();
 var paramsMenu = new ParamsMenu();
 var news = new News();
 
-if(tools.getCookie("username")){
-  tools.login(tools.getCookie("username"), tools.getCookie("password"));
+if(Cookies.get('username')){
+  tools.login(Cookies.get('username'), Cookies.get('password'));
 }
 
 var fadeSpeed = 500;
