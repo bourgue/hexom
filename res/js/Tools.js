@@ -12,7 +12,9 @@ Tools.prototype = {
       links: JSON.stringify(grid.hexagons.links),
       backgroundColor: backgroundColor,
       shadowColor: shadowColor,
-      shadowSize: shadowSize
+      shadowSize: shadowSize,
+      images: JSON.stringify(grid.hexagons.images),
+      imgSize: JSON.stringify(grid.hexagons.imgSize)
     }, function(data) {
       news.add(langManager.words.SAVE_CONFIRM[langManager.langId[langManager.language]]);
     });
@@ -31,10 +33,15 @@ Tools.prototype = {
           ConnectWindow.prototype.openError($("#err_mdp"));
         } else {
           connected = true;
+          console.log(obj_data);
           user.username = obj_data.username;
           user.password = password;
           for (var i = 0; i < JSON.parse(obj_data.pos).length; ++i)
-            grid.refresh(JSON.parse(obj_data.pos)[i], JSON.parse(obj_data.colors)[i], JSON.parse(obj_data.links)[i]);
+            grid.refresh( JSON.parse(obj_data.pos)[i],
+                          JSON.parse(obj_data.colors)[i],
+                          JSON.parse(obj_data.links)[i],
+                          JSON.parse(obj_data.images)[i],
+                          JSON.parse(obj_data.imgSize)[i]);
 
           paramsWindow.backgroundColorChange(obj_data.backgroundColor);
           paramsWindow.shadowColorChange(obj_data.shadowColor);

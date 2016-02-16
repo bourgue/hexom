@@ -15,7 +15,8 @@ function Grid() {
     positions: [],
     colors: [],
     links: [],
-    backImg: []
+    images: [],
+    imgSize: []
   };
 
   this.difference = {
@@ -67,6 +68,11 @@ Grid.prototype = {
     container.append('<div id="' + id +'" class="' + _class + '" onclick="' + onclick + '"><div class="hex-in1" id="' + id + '">' +
       '<div class="hex-in2" id="' + id + '" style="background-color:' + color + ';" onmouseover="grid.mouseOver(this)" onmouseout="grid.mouseOut(this)">' +
       '</div></div></div>');
+
+    if(_class == "hex" && type != "paramsHexa"){
+      $("#" + pos.x + "\\;" + pos.y + ".hex-in2").css({'background-image': 'url(' + this.hexagons.images[this.hexagons.images.length - 1] + ')',
+        'background-size': this.hexagons.imgSize[this.hexagons.imgSize.length - 1] + 'px'});
+    }
 
     $("#" + pos.x + "\\;" + pos.y + "." + _class).css({
       left: truePos.x + "px",
@@ -161,9 +167,11 @@ Grid.prototype = {
         x: pos.x,
         y: pos.y
       });
+
       this.hexagons.colors.push("#000000");
       this.hexagons.links.push("");
-      this.hexagons.backImg.push("");
+      this.hexagons.images.push("");
+      this.hexagons.imgSize.push(100);
 
       $("#" + pos.x + "\\;" + pos.y).remove();
 
@@ -221,12 +229,12 @@ Grid.prototype = {
         });
     }
   },
-  refresh: function(pos, color, link) {
+  refresh: function(pos, color, link, img, imgSize) {
     this.hexagons.positions.push(pos);
     this.hexagons.colors.push(color);
     this.hexagons.links.push(link);
-    this.hexagons.backImg.push("");
-
+    this.hexagons.images.push(img);
+    this.hexagons.imgSize.push(imgSize);
     this.addHexagon(pos, "hexagon");
   }
 };

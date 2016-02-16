@@ -4,16 +4,16 @@ function ParamsWindowHexa(id) {
   posInArray = tools.getPosInArrays(tools.idToArray(hexa_id));
   hexaColor = grid.hexagons.colors[posInArray];
   hexaLink = grid.hexagons.links[posInArray];
-  hexaImg = grid.hexagons.backImg[posInArray];
-  console.log(posInArray);
+  hexaImg = grid.hexagons.images[posInArray];
+  hexaImgSize = grid.hexagons.imgSize[posInArray];
 
   $("body").prepend('<div id="paramsWindowHexa" class="window unselectable">' +
     '<span id="closeIcon" class="close"></span>' +
     '<div class="titre" id="paramsHexaTitle"></div>' +
     '<ul>' +
     '<li>' + '<div id="link"></div>' + '<input id="url" type="text" value="' + hexaLink + '" placeholder="ex: google.fr" autofocus/>' + '</li>' +
-  //  '<li>' + '<div id="img"></div>' + '<input id="urlImg" type="text" value="' + hexaImg + '" placeholder="ex: url.com/image.png" onchange="ParamsWindowHexa.prototype.imgChange(this.value);" autofocus/>' + '</li>' +
-  //  '<li>' + '<div id="imgSize"></div>' + '<input id="imgSize" value="200" max="300" min="0" step="5" type="range" onchange="ParamsWindow.prototype.imgSizeChange(this.value)"/>' + '</li>' +
+    '<li>' + '<div id="img"></div>' + '<input id="urlImg" type="text" value="' + hexaImg + '" placeholder="ex: url.com/image.png" onchange="ParamsWindowHexa.prototype.imgChange(this.value);" autofocus/>' + '</li>' +
+    '<li>' + '<div id="imgSize"></div>' + '<input id="imgSize" value="' + hexaImgSize + '" max="180" min="20" step="20" type="range" onchange="ParamsWindowHexa.prototype.imgSizeChange(this.value)"/>' + '</li>' +
     '<li>' + '<div id="backcolorhexa"></div>' + '<input id="colorHexa" type="color" value="' + hexaColor + '" onchange="ParamsWindowHexa.prototype.colorChange(this.value);"/>' + '</li>' +
     '<li>' + '<div id="deleteButton" class="button" onclick="ParamsWindowHexa.prototype.deleteHexa();"></div>'  + '</li>' +
     '<li>' + '<div id="okButton" class="button" onclick="ParamsWindowHexa.prototype.submit()">OK</div>' + '</li>' +
@@ -48,7 +48,13 @@ ParamsWindowHexa.prototype = {
   imgChange: function(value) {
     var pos = tools.idToArray(hexa_id);
     $("#" + pos.x + "\\;" + pos.y + ".hex-in2").css("background-image", 'url("' + value + '")');
+    $("#" + pos.x + "\\;" + pos.y + ".hex-in2").css("background-size", hexaImgSize + 'px');
     hexaImg = value;
+  },
+  imgSizeChange: function(value){
+    var pos = tools.idToArray(hexa_id);
+    $("#" + pos.x + "\\;" + pos.y + ".hex-in2").css("background-size",value + 'px');
+    hexaImgSize = value;
   },
   colorChange: function(value) {
     var pos = tools.idToArray(hexa_id);
@@ -60,7 +66,8 @@ ParamsWindowHexa.prototype = {
     grid.hexagons.positions.splice(posInArray, 1);
     grid.hexagons.colors.splice(posInArray, 1);
     grid.hexagons.links.splice(posInArray, 1);
-    grid.hexagons.backImg.splice(posInArray, 1);
+    grid.hexagons.images.splice(posInArray, 1);
+    grid.hexagons.imgSize.splice(posInArray, 1);
     grid.addPreviewHexa();
     editing = false;
     modifying = false;
@@ -71,8 +78,8 @@ ParamsWindowHexa.prototype = {
     modifying = false;
     grid.hexagons.colors[posInArray] = hexaColor;
     grid.hexagons.links[posInArray] = $("#url").val();
-    grid.hexagons.backImg[posInArray] = $("#urlImg").val();
+    grid.hexagons.images[posInArray] = $("#urlImg").val();
+    grid.hexagons.imgSize[posInArray] = hexaImgSize;
     this.close();
-
   }
 };

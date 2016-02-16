@@ -9,10 +9,11 @@
     $backgroundColor=$_POST['backgroundColor'];
     $shadowColor=$_POST['shadowColor'];
     $shadowSize=$_POST['shadowSize'];
+    $images=$_POST['images'];
+    $imgSize=$_POST['imgSize'];
 
-    $result = $conn->query("INSERT INTO hexaproperties(username, pos, colors, links, backgroundColor, shadowColor, shadowSize) VALUES ('$username','$pos', '$colors', '$links', '$backgroundColor', '$shadowColor', '$shadowSize')
-     ON DUPLICATE KEY UPDATE username='$username', pos='$pos', colors='$colors', links='$links', backgroundColor='$backgroundColor', shadowColor='$shadowColor', shadowSize='$shadowSize'");
-
+    $result = $conn->query("INSERT INTO hexaproperties(username, pos, colors, links, backgroundColor, shadowColor, shadowSize, images, imgSize) VALUES ('$username','$pos', '$colors', '$links', '$backgroundColor', '$shadowColor', '$shadowSize', '$images', '$imgSize')
+     ON DUPLICATE KEY UPDATE username='$username', pos='$pos', colors='$colors', links='$links', backgroundColor='$backgroundColor', shadowColor='$shadowColor', shadowSize='$shadowSize', images='$images', imgSize='$imgSize'");
 
     $conn->close();
   }
