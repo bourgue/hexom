@@ -15,8 +15,6 @@ Tools.prototype = {
       shadowSize: shadowSize,
       images: JSON.stringify(grid.hexagons.images),
       imgSize: JSON.stringify(grid.hexagons.imgSize)
-    }, function(data) {
-      news.add(langManager.words.SAVE_CONFIRM[langManager.langId[langManager.language]]);
     });
   },
   login: function(username, password) {
@@ -47,7 +45,7 @@ Tools.prototype = {
           paramsWindow.shadowColorChange(obj_data.shadowColor);
           paramsWindow.shadowSizeChange(obj_data.shadowSize);
 
-          paramsWindow.connectStateChange();
+          paramsMenu.connectStateChange();
           userInfo.newState();
 
           Cookies.set('username', username, { expires: 365, path: '' });
@@ -64,8 +62,18 @@ Tools.prototype = {
       user.username = "";
       user.email = "";
       document.cookie = "username=;password=";
-      paramsWindow.connectStateChange();
       userInfo.newState();
+    }
+  },
+  register: function() {
+    if (!registring){
+      var registerWindow = new RegisterWindow();
+    }
+  },
+  connect: function() {
+    if(!connected){
+      var connectWindow = new ConnectWindow();
+      paramsMenu.closeAll();
     }
   },
   getHexPos: function(x, y) {

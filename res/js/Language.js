@@ -18,8 +18,7 @@ function LangManager() {
     "HEXA_OP": ["Hexagons opacity :", "Opacité des hexagones :"],
     "SAVE_KEY": ["Save key :", "Clé de sauvegarde :"],
     "CREATE": ["CREATE", "CREER"],
-    "IMPORT": ["IMPORT", "IMPORTER"],
-    "SAVE": ["SAVE", "SAUVEGARDER"],
+    "SAVE": ["Save", "Sauvegarder"],
     "PARAMS_HEXA": ["Hexagon settings", "Paramètres de l\'hexagone"],
     "LINK": ["Link :", "Lien :"],
     "BACKCOLORHEXA": ["Background color :", "Couleur de fond :"],
@@ -29,10 +28,10 @@ function LangManager() {
     "IMG_SIZE": ["Picture size :", "Taille de l'image :"],
     "ADD_HEXA": ["Add hexagon", "Ajouter un hexagone"],
     "MODIF_HEXA": ["Modify hexagon", "Modifier un hexagone"],
-    "LOGIN": ["SIGN IN", "CONNECTION"],
+    "LOGIN": ["Sign in", "Se connecter"],
     "USERNAME": ["Username :", "Nom d'utilisateur :"],
     "PASSWORD": ["Password :", "Mot de passe :"],
-    "REGISTER": ["SIGN UP", "S'ENREGISTRER"],
+    "REGISTER": ["Sign up", "S'enregistrer"],
     "EMAIL": ["Email address :", "Adresse e-mail :"],
     "MAXCHAR": ["Maximum " + inputMaxLength + " characters !", "Maximum " + inputMaxLength + " caractères !"],
     "MINCHAR": ["Minimum " + inputMinLength + " characters !", "Minimum " + inputMinLength + " caractères !"],
@@ -42,7 +41,7 @@ function LangManager() {
     "NO_ACCOUNT": ["This account doesn't exist !", "Ce compte n'existe pas !"],
     "MDP_ERROR": ["Invalid password !", "Mot de passe incorrect !"],
     "SAVE_CONFIRM": ["Your menu has been saved", "Votre menu a été sauvegardé"],
-    "LOGOUT": ["SIGN OUT", "DECONNECTION"],
+    "LOGOUT": ["Sign out", "Déconnection"],
     "CONNECT_INFO": ["Sign in to save your menu", "Connectez-vous pour sauvegarder votre menu"]
   };
 }
@@ -61,8 +60,7 @@ LangManager.prototype = {
     $("#hexaop").html(this.words.HEXA_OP[this.langId[this.language]]);
     $("#keyString").html(this.words.SAVE_KEY[this.langId[this.language]]);
     $("#newKey").html(this.words.CREATE[this.langId[this.language]]);
-    $("#importButton").html(this.words.IMPORT[this.langId[this.language]]);
-    $("#saveButton").html(this.words.SAVE[this.langId[this.language]]);
+    $("#save").html(this.words.SAVE[this.langId[this.language]]);
     $("#paramsHexaTitle").html(this.words.PARAMS_HEXA[this.langId[this.language]]);
     $("#deleteButton").html(this.words.DELETE[this.langId[this.language]]);
     $("#link").html(this.words.LINK[this.langId[this.language]]);
@@ -73,7 +71,7 @@ LangManager.prototype = {
     $("#addHexa").html(this.words.ADD_HEXA[this.langId[this.language]]);
     $("#generalParams").html(this.words.PARAMS_GENE[this.langId[this.language]]);
     $("#modifHexa").html(this.words.MODIF_HEXA[this.langId[this.language]]);
-    $("#connectButton").html(this.words.LOGIN[this.langId[this.language]]);
+    $("#connect").html(this.words.LOGIN[this.langId[this.language]]);
     $("#connectTitle").html(this.words.LOGIN[this.langId[this.language]]);
     $("#id").html(this.words.USERNAME[this.langId[this.language]]);
     $("#mdp").html(this.words.PASSWORD[this.langId[this.language]]);

@@ -16,8 +16,6 @@ function ParamsWindow() {
     handle: "#paramsTitle"
   });
 
-  ParamsWindow.prototype.connectStateChange();
-
   $("#paramsWindow").hide();
 
   $("#closeIcon").click(function() {
@@ -50,35 +48,5 @@ ParamsWindow.prototype = {
   shadowSizeChange: function(value) {
     $("body").css('box-shadow', '0 0 ' + value + 'px ' + shadowColor + ' inset');
     shadowSize = value;
-  },
-  connect: function() {
-    if(!connected)
-      var connectWindow = new ConnectWindow();
-  },
-  register: function() {
-    if (!registring)
-      var registerWindow = new RegisterWindow();
-  },
-  save: function(){
-    tools.save();
-  },
-  connectStateChange: function(){
-    $("li #connectButton").remove();
-    $("li #register").remove();
-    $("li #saveButton").remove();
-    $("li #logout").remove();
-
-    if(!connected){
-      $("#paramsWindow ul").append('<li>' + '<div class="button" id="connectButton" onclick="ParamsWindow.prototype.connect()"></div>' + '</li>' +
-      '<li>' + '<div class="button" id="register" onclick="ParamsWindow.prototype.register()"></div>' + '</li>');
-    }else{
-      $("#paramsWindow ul").append('<li>' + '<div class="button" id="saveButton" onclick="ParamsWindow.prototype.save()"></div>' + '</li>' +
-      '<li>' + '<div class="button" id="logout" onclick="ParamsWindow.prototype.logout()"></div>' + '</li>');
-    }
-
-    langManager.setLanguage();
-  },
-  logout: function(){
-    tools.logout();
   }
 };

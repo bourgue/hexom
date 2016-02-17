@@ -1,21 +1,43 @@
 #paramsMenu {
-  border-bottom: 1px solid #ccc;
   width: 200px;
   left:50%;
   margin-left: -100px;
-  bottom:0;
+  margin-top: 1px;
   position:absolute;
   text-align: center;
   box-shadow: 0px 0px 30px -10px #000;
+  z-index: 2;
 }
 #paramsMenu li{
   cursor: pointer;
   background-color: #fff;
   padding: 5px 10px 5px 10px;
   margin:0;
-  border: 1px solid #ccc;
-  border-bottom: 0;
+  border-bottom: 1px solid #ccc;
+  -o-transition: color 0.3s ease-out, background 0.3s ease-in, border-color 0.3s ease-out;
+  -ms-transition: color 0.3s ease-out, background 0.3s ease-in, border-color 0.3s ease-out;
+  -moz-transition: color 0.3s ease-out, background 0.3s ease-in, border-color 0.3s ease-out;
+  -webkit-transition: color 0.3s ease-out, background 0.3s ease-in, border-color 0.3s ease-out;
+  transition: color 0.3s ease-out, background 0.3s ease-in, border-color 0.3s ease-out;
 }
 #paramsMenu li:hover {
-  box-shadow: 0px 0px 5px #aaa inset;
+  background: #262626;
+  color: #fff;
+  border-color:#000;
+}
+
+li#connect, li#register, li#logout {
+  background-color: #111111;
+  color:#fff;
+  border-color: #000;
+}
+
+#paramsMenu li:last-child{
+  border-width: 0px;
+}
+
+li#connect:hover, li#register:hover, li#logout:hover {
+  background-color: #ddd;
+  color:#000;
+  border-color: #ccc;
 }

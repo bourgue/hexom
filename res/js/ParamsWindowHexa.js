@@ -68,7 +68,6 @@ ParamsWindowHexa.prototype = {
     grid.hexagons.links.splice(posInArray, 1);
     grid.hexagons.images.splice(posInArray, 1);
     grid.hexagons.imgSize.splice(posInArray, 1);
-    grid.addPreviewHexa();
     editing = false;
     modifying = false;
     this.close();
@@ -80,6 +79,7 @@ ParamsWindowHexa.prototype = {
     grid.hexagons.links[posInArray] = $("#url").val();
     grid.hexagons.images[posInArray] = $("#urlImg").val();
     grid.hexagons.imgSize[posInArray] = hexaImgSize;
+    tools.save();
     this.close();
   }
 };

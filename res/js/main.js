@@ -65,6 +65,18 @@ $("#grid,#searchBar").css({
 
 langManager.setLanguage();
 
+//Get mouse position
+var mouse = {x:0,y:0};
+$(document).mousedown(function (e) {
+  mouse = {x: e.pageX, y: e.pageY};
+});
+
+//Ferme ParamsMenu quand on clique
+$("body").click(function(handler){
+  if(handler.target.id != "0;0")
+    paramsMenu.close();
+});
+
 $(window).resize(function() {
   grid.changePos();
 });

@@ -230,11 +230,13 @@ Grid.prototype = {
     }
   },
   refresh: function(pos, color, link, img, imgSize) {
-    this.hexagons.positions.push(pos);
-    this.hexagons.colors.push(color);
-    this.hexagons.links.push(link);
-    this.hexagons.images.push(img);
-    this.hexagons.imgSize.push(imgSize);
-    this.addHexagon(pos, "hexagon");
+    if(!tools.exist(pos, this.hexagons.positions)){
+      this.hexagons.positions.push(pos);
+      this.hexagons.colors.push(color);
+      this.hexagons.links.push(link);
+      this.hexagons.images.push(img);
+      this.hexagons.imgSize.push(imgSize);
+      this.addHexagon(pos, "hexagon");
+    }
   }
 };
