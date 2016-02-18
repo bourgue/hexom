@@ -3,8 +3,10 @@
 
 <head>
 	<meta charset="utf-8" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="res/css/main.css" />
 	<link rel="stylesheet" href="res/js/jquery-ui/jquery-ui.min.css" />
+
 	<script src="res/js/jquery.min.js"></script>
 	<script src="res/js/jquery-ui/jquery-ui.min.js"></script>
 	<script src="res/js/js-cookie/src/js.cookie.js"></script>
@@ -31,6 +33,7 @@
 	<script src="res/js/News.js"></script>
 	<script src="res/js/UserInfo.js"></script>
 	<script src="res/js/User.js"></script>
+	<script src="res/js/Welcome.js"></script>
 	<script src="res/js/main.js"></script>
 </body>
 

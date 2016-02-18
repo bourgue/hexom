@@ -17,10 +17,13 @@
   margin-top: -10px;
   margin-right: -10px;
   cursor:pointer;
-  background-image: url("../img/close.png");
-  background-size:8px 8px;
+  font-size:8px;
+  color: #fff;
   width: 8px;
   height: 8px;
+}
+.color:hover{
+  color: #fff;
 }
 
 .window {

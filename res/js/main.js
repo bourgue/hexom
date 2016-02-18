@@ -17,14 +17,25 @@ var paramsMenuOpen = false;
 
 var connected = false;
 
-var around = [
-  {x: -1, y: -1},
-  {x: 0, y: -1},
-  {x: 1, y: 0},
-  {x: 0, y: 1},
-  {x: -1, y: 1},
-  {x: -1, y: 0}
-];
+var around = [{
+  x: -1,
+  y: -1
+}, {
+  x: 0,
+  y: -1
+}, {
+  x: 1,
+  y: 0
+}, {
+  x: 0,
+  y: 1
+}, {
+  x: -1,
+  y: 1
+}, {
+  x: -1,
+  y: 0
+}];
 
 var previewing = false;
 var editing = false;
@@ -47,11 +58,16 @@ var paramsWindow = new ParamsWindow();
 var paramsMenu = new ParamsMenu();
 var news = new News();
 
-if(Cookies.get('username')){
+var fadeSpeed = 500;
+
+if (Cookies.get('username')) {
   tools.login(Cookies.get('username'), Cookies.get('password'));
+} else {
+  if(!Cookies.get('welcome'))
+    var welcome = new Welcome();
 }
 
-var fadeSpeed = 500;
+
 
 var user;
 
@@ -66,14 +82,20 @@ $("#grid,#searchBar").css({
 langManager.setLanguage();
 
 //Get mouse position
-var mouse = {x:0,y:0};
-$(document).mousedown(function (e) {
-  mouse = {x: e.pageX, y: e.pageY};
+var mouse = {
+  x: 0,
+  y: 0
+};
+$(document).mousedown(function(e) {
+  mouse = {
+    x: e.pageX,
+    y: e.pageY
+  };
 });
 
 //Ferme ParamsMenu quand on clique
-$("body").click(function(handler){
-  if(handler.target.id != "0;0")
+$("body").click(function(handler) {
+  if (handler.target.id != "0;0")
     paramsMenu.close();
 });
 

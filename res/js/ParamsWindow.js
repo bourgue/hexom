@@ -1,6 +1,6 @@
 function ParamsWindow() {
   $("body").prepend('<div id="paramsWindow" class="window unselectable">' +
-    '<span id="closeIcon" class="close"></span>' +
+    '<span id="closeIcon" class="close glyphicon glyphicon-remove"></span>' +
     '<div class="titre" id="paramsTitle"></div>' +
     '<ul id="paramsList">' +
     '<li>' + '<div id="lang"></div>' + '<div id="flagContainer"><img src="res/img/us.png" id="en" class="flag" onclick="ParamsWindow.prototype.languageChange(this.id);" />' + '<img src="res/img/fr.png" class="flag" id="fr" onclick="ParamsWindow.prototype.languageChange(this.id);"/></div>' + '</li>' +

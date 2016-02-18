@@ -42,7 +42,9 @@ function LangManager() {
     "MDP_ERROR": ["Invalid password !", "Mot de passe incorrect !"],
     "SAVE_CONFIRM": ["Your menu has been saved", "Votre menu a été sauvegardé"],
     "LOGOUT": ["Sign out", "Déconnection"],
-    "CONNECT_INFO": ["Sign in to save your menu", "Connectez-vous pour sauvegarder votre menu"]
+    "CONNECT_INFO": ["Sign in to save your menu", "Connectez-vous pour sauvegarder votre menu"],
+    "WELCOME": ["Welcome on HexaMenu", "Bienvenue sur HexaMenu"],
+    "WELCOME_TXT": ["HexaMenu is a customizable home page where your favorite websites are hexagons. You can sign up now and without mail confirmation.", "HexaMenu est une page d'accueil personnalisable où vos sites webs favoris sont des hexagones. Vous pouvez vous inscrire maintenant, gratuitement et sans vérification par mail."]
   };
 }
 
@@ -89,6 +91,8 @@ LangManager.prototype = {
     $("#no_account").html(this.words.NO_ACCOUNT[this.langId[this.language]]);
     $("#err_mdp").html(this.words.MDP_ERROR[this.langId[this.language]]);
     $("#logout").html(this.words.LOGOUT[this.langId[this.language]]);
+    $("#welcomeTitle").html(this.words.WELCOME[this.langId[this.language]]);
+    $("#welcomeText").html(this.words.WELCOME_TXT[this.langId[this.language]]);
   },
   navigatorLang: function() {
     var navLang;

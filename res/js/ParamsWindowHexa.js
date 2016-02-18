@@ -8,7 +8,7 @@ function ParamsWindowHexa(id) {
   hexaImgSize = grid.hexagons.imgSize[posInArray];
 
   $("body").prepend('<div id="paramsWindowHexa" class="window unselectable">' +
-    '<span id="closeIcon" class="close"></span>' +
+    '<span id="closeIcon" class="close glyphicon glyphicon-remove"></span>' +
     '<div class="titre" id="paramsHexaTitle"></div>' +
     '<ul>' +
     '<li>' + '<div id="link"></div>' + '<input id="url" type="text" value="' + hexaLink + '" placeholder="ex: google.fr" autofocus/>' + '</li>' +

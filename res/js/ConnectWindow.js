@@ -1,6 +1,6 @@
 function ConnectWindow() {
   $("body").prepend('<div id="connectWindow" class="window unselectable">' +
-    '<span id="closeIcon" class="close"></span>' +
+    '<span id="closeIcon" class="close glyphicon glyphicon-remove"></span>' +
     '<div class="titre" id="connectTitle"></div>' +
     '<ul>' +
     '<li>' + '<div id="id"></div><input type="text" id="username" maxLength="15"/>' + '</li>' +

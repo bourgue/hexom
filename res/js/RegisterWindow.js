@@ -1,6 +1,6 @@
 function RegisterWindow() {
   $("body").prepend('<div id="registerWindow" class="window unselectable">' +
-    '<span id="closeIcon" class="close"></span>' +
+    '<span id="closeIcon" class="close glyphicon glyphicon-remove"></span>' +
     '<div class="titre" id="registerTitle"></div>' +
     '<ul>' +
     '<li><div id="registerId"></div><input type="text" id="registerUsername" maxLength="' + inputMaxLength + '" autofocus/></li>' +
