@@ -44,7 +44,8 @@ function LangManager() {
     "LOGOUT": ["Sign out", "Déconnection"],
     "CONNECT_INFO": ["Sign in to save your menu", "Connectez-vous pour sauvegarder votre menu"],
     "WELCOME": ["Welcome on HexaMenu", "Bienvenue sur HexaMenu"],
-    "WELCOME_TXT": ["HexaMenu is a customizable home page where your favorite websites are hexagons. You can sign up now and without mail confirmation.", "HexaMenu est une page d'accueil personnalisable où vos sites webs favoris sont des hexagones. Vous pouvez vous inscrire maintenant, gratuitement et sans vérification par mail."]
+    "WELCOME_TXT": ["HexaMenu is a customizable home page where your favorite websites are hexagons. You can sign up now and without mail confirmation.", "HexaMenu est une page d'accueil personnalisable où vos sites webs favoris sont des hexagones. Vous pouvez vous inscrire maintenant, gratuitement et sans vérification par mail."],
+    "OK": ["OK", "OK"]
   };
 }
 
@@ -55,13 +56,10 @@ LangManager.prototype = {
   setLanguage: function() {
     $("#paramsTitle").html(this.words.PARAMS_GENE[this.langId[this.language]]);
     $("#lang").html(this.words.CHANGE_LANG[this.langId[this.language]]);
-    $("#backcolor").html(this.words.BACK_COLOR[this.langId[this.language]]);
-    $("#shadowcolor").html(this.words.SHADOW_COLOR[this.langId[this.language]]);
-    $("#shadowsize").html(this.words.SHADOW_SIZE[this.langId[this.language]]);
-    $("#hexasize").html(this.words.HEXA_SIZE[this.langId[this.language]]);
-    $("#hexaop").html(this.words.HEXA_OP[this.langId[this.language]]);
-    $("#keyString").html(this.words.SAVE_KEY[this.langId[this.language]]);
-    $("#newKey").html(this.words.CREATE[this.langId[this.language]]);
+    $("#backColor").html(this.words.BACK_COLOR[this.langId[this.language]]);
+    $("#shadowColor").html(this.words.SHADOW_COLOR[this.langId[this.language]]);
+    $("#shadowSize").html(this.words.SHADOW_SIZE[this.langId[this.language]]);
+    $("#hexaSize").html(this.words.HEXA_SIZE[this.langId[this.language]]);
     $("#save").html(this.words.SAVE[this.langId[this.language]]);
     $("#paramsHexaTitle").html(this.words.PARAMS_HEXA[this.langId[this.language]]);
     $("#deleteButton").html(this.words.DELETE[this.langId[this.language]]);
@@ -93,6 +91,8 @@ LangManager.prototype = {
     $("#logout").html(this.words.LOGOUT[this.langId[this.language]]);
     $("#welcomeTitle").html(this.words.WELCOME[this.langId[this.language]]);
     $("#welcomeText").html(this.words.WELCOME_TXT[this.langId[this.language]]);
+    $("#paramsSubmitButton").html(this.words.OK[this.langId[this.language]]);
+    $("#okButton").html(this.words.OK[this.langId[this.language]]);
   },
   navigatorLang: function() {
     var navLang;

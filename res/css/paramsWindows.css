@@ -39,7 +39,6 @@ li input {
   border-color: #000;
 }
 
-
 [type="text"],[type="password"] {
   border: 1px solid #ccc;
   cursor: text;

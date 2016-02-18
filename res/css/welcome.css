@@ -11,6 +11,7 @@
   border-radius: 5px;
   color: #fff;
   box-sizing: padding-box;
+  z-index: 2;
 }
 
 #welcomeTitle{

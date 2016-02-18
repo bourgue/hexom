@@ -21,6 +21,7 @@
   color: #fff;
   width: 8px;
   height: 8px;
+  opacity: 1;
 }
 .color:hover{
   color: #fff;

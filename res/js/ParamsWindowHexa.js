@@ -16,7 +16,7 @@ function ParamsWindowHexa(id) {
     '<li>' + '<div id="imgSize"></div>' + '<input id="imgSize" value="' + hexaImgSize + '" max="180" min="20" step="20" type="range" onchange="ParamsWindowHexa.prototype.imgSizeChange(this.value)"/>' + '</li>' +
     '<li>' + '<div id="backcolorhexa"></div>' + '<input id="colorHexa" type="color" value="' + hexaColor + '" onchange="ParamsWindowHexa.prototype.colorChange(this.value);"/>' + '</li>' +
     '<li>' + '<div id="deleteButton" class="button" onclick="ParamsWindowHexa.prototype.deleteHexa();"></div>'  + '</li>' +
-    '<li>' + '<div id="okButton" class="button" onclick="ParamsWindowHexa.prototype.submit()">OK</div>' + '</li>' +
+    '<li>' + '<div id="okButton" class="button" onclick="ParamsWindowHexa.prototype.submit()"></div>' + '</li>' +
     '</ul>' +
     '</div>');
   langManager.setLanguage();
@@ -79,7 +79,8 @@ ParamsWindowHexa.prototype = {
     grid.hexagons.links[posInArray] = $("#url").val();
     grid.hexagons.images[posInArray] = $("#urlImg").val();
     grid.hexagons.imgSize[posInArray] = hexaImgSize;
-    tools.save();
+    if(connected)
+      tools.save();
     this.close();
   }
 };

@@ -12,7 +12,7 @@ function Welcome(){
     $("#welcome").fadeOut(fadeSpeed, function(){
       $("#welcome").remove();
     });
-
-    Cookies.set('welcome', "n", { expires: 365, path: '' });
   });
+
+  Cookies.set('welcome', "", { expires: 365, path: '' });
 }

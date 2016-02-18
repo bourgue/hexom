@@ -67,8 +67,6 @@ if (Cookies.get('username')) {
     var welcome = new Welcome();
 }
 
-
-
 var user;
 
 $("#grid,#searchBar").css({

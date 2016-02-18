@@ -9,7 +9,7 @@ function Grid() {
     margin: 10,
     size: {
       x: 100 * this.scale,
-      y: Math.round(Math.sqrt((100 * this.scale) * (100 * this.scale) + (58 * this.scale) * (58 * this.scale)) * 100) / 100
+      y: Math.round(Math.sqrt((100 * this.scale) * (100 * this.scale) + (58 * this.scale) * (58 * this.scale)) * 100 * this.scale) / 100 * this.scale
     },
 
     positions: [],
@@ -20,8 +20,8 @@ function Grid() {
   };
 
   this.difference = {
-    x: this.hexagons.size.x - 100,
-    y: this.hexagons.size.y - 58
+    x: this.hexagons.size.x - 100 * this.scale,
+    y: this.hexagons.size.y - 58 * this.scale
   };
 
   this.addParamsHexa();
@@ -39,9 +39,6 @@ Grid.prototype = {
     var container = $("#grid");
     var _class;
     var onclick;
-
-  /*  var nhexa = $("#grid").append('<div id="' + id + '"></div>');
-    var hexa = $("#" + pos.x + "\\;" + pos.y);*/
 
     var color;
 
@@ -65,7 +62,7 @@ Grid.prototype = {
         color = this.hexagons.colors[this.hexagons.colors.length - 1];
     }
 
-    container.append('<div id="' + id +'" class="' + _class + '" onclick="' + onclick + '"><div class="hex-in1" id="' + id + '">' +
+    container.append('<div id="' + id +'" class="' + _class + '" onclick="' + onclick + '" style="transform:scale(' + this.scale + ') rotate(120deg);"><div class="hex-in1" id="' + id + '">' +
       '<div class="hex-in2" id="' + id + '" style="background-color:' + color + ';" onmouseover="grid.mouseOver(this)" onmouseout="grid.mouseOut(this)">' +
       '</div></div></div>');
 
@@ -187,11 +184,11 @@ Grid.prototype = {
   setPos: function(hexPos) {
     var f = {
       x: this.pos.x - this.hexagons.size.x / 2 + this.difference.x / 2 + 100 * this.scale * hexPos.x + this.hexagons.margin * hexPos.x,
-      y: this.pos.y - this.hexagons.size.y / 2 + this.difference.y / 2 + (58 * this.scale + (this.hexagons.size.y - 58 * this.scale) / 2) * hexPos.y + this.hexagons.margin * hexPos.y
+      y: this.pos.y - this.hexagons.size.y / 2 + this.difference.y / 2 + (58 + this.difference.y / 2) * this.scale * hexPos.y + this.hexagons.margin * hexPos.y
     };
 
     if (hexPos.y % 2 !== 0)
-      f.x += (this.hexagons.size.x + this.hexagons.margin) / 2;
+      f.x += this.hexagons.size.x / 2 * this.scale + this.hexagons.margin / 2;
 
     return f;
   },
@@ -206,7 +203,8 @@ Grid.prototype = {
     //CHANGE LA POSITION DU PARAMSHEXA
     $("#0\\;0").css({
       "left": this.pos.x - this.hexagons.size.x / 2 + this.difference.x / 2,
-      "top": this.pos.y - this.hexagons.size.y / 2 + this.difference.y / 2
+      "top": this.pos.y - this.hexagons.size.y / 2 + this.difference.y / 2,
+      "transform": "rotate(120deg) scale(" + this.scale + ")"
     });
 
     //CHANGE LA POSITION DES HEXAGONES
@@ -229,14 +227,16 @@ Grid.prototype = {
         });
     }
   },
-  refresh: function(pos, color, link, img, imgSize) {
+  refresh: function(pos, color, link, img, imgSize, hexaSize) {
     if(!tools.exist(pos, this.hexagons.positions)){
       this.hexagons.positions.push(pos);
       this.hexagons.colors.push(color);
       this.hexagons.links.push(link);
       this.hexagons.images.push(img);
       this.hexagons.imgSize.push(imgSize);
+      this.scale = parseFloat(hexaSize);
       this.addHexagon(pos, "hexagon");
+      this.changePos();
     }
   }
 };

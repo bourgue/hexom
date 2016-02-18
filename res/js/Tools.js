@@ -14,7 +14,8 @@ Tools.prototype = {
       shadowColor: shadowColor,
       shadowSize: shadowSize,
       images: JSON.stringify(grid.hexagons.images),
-      imgSize: JSON.stringify(grid.hexagons.imgSize)
+      imgSize: JSON.stringify(grid.hexagons.imgSize),
+      hexaSize: grid.scale
     });
   },
   login: function(username, password) {
@@ -35,11 +36,12 @@ Tools.prototype = {
           user.username = obj_data.username;
           user.password = password;
           for (var i = 0; i < JSON.parse(obj_data.pos).length; ++i)
-            grid.refresh( JSON.parse(obj_data.pos)[i],
-                          JSON.parse(obj_data.colors)[i],
-                          JSON.parse(obj_data.links)[i],
-                          JSON.parse(obj_data.images)[i],
-                          JSON.parse(obj_data.imgSize)[i]);
+            grid.refresh(JSON.parse(obj_data.pos)[i],
+              JSON.parse(obj_data.colors)[i],
+              JSON.parse(obj_data.links)[i],
+              JSON.parse(obj_data.images)[i],
+              JSON.parse(obj_data.imgSize)[i],
+              obj_data.hexaSize);
 
           paramsWindow.backgroundColorChange(obj_data.backgroundColor);
           paramsWindow.shadowColorChange(obj_data.shadowColor);
@@ -48,8 +50,14 @@ Tools.prototype = {
           paramsMenu.connectStateChange();
           userInfo.newState();
 
-          Cookies.set('username', username, { expires: 365, path: '' });
-          Cookies.set('password', password, { expires: 365, path: '' });
+          Cookies.set('username', username, {
+            expires: 365,
+            path: ''
+          });
+          Cookies.set('password', password, {
+            expires: 365,
+            path: ''
+          });
 
           ConnectWindow.prototype.close();
         }
@@ -66,12 +74,12 @@ Tools.prototype = {
     }
   },
   register: function() {
-    if (!registring){
+    if (!registring) {
       var registerWindow = new RegisterWindow();
     }
   },
   connect: function() {
-    if(!connected){
+    if (!connected) {
       var connectWindow = new ConnectWindow();
       paramsMenu.closeAll();
     }
