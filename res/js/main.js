@@ -63,7 +63,7 @@ var fadeSpeed = 500;
 if (Cookies.get('username')) {
   tools.login(Cookies.get('username'), Cookies.get('password'));
 } else {
-  if(!Cookies.get('welcome'))
+  if (!Cookies.get('welcome'))
     var welcome = new Welcome();
 }
 
@@ -93,8 +93,10 @@ $(document).mousedown(function(e) {
 
 //Ferme ParamsMenu quand on clique
 $("body").click(function(handler) {
+  console.log(handler);
   if (handler.target.id != "0;0")
-    paramsMenu.close();
+    if(handler.target.classList[0] != "glyphicon")
+      paramsMenu.close();
 });
 
 $(window).resize(function() {

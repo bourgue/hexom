@@ -39,6 +39,7 @@ Grid.prototype = {
     var container = $("#grid");
     var _class;
     var onclick;
+    var icon = "";
 
     var color;
 
@@ -48,11 +49,13 @@ Grid.prototype = {
         onclick = "grid.clickPreviewHexa(this)";
         color = "#ffffff";
         container = $("#previewContainer");
+        icon = '<span class="glyphicon glyphicon-plus"></span>';
         break;
 
       case "paramsHexa":
         _class = "hex";
         onclick = "grid.clickParamsHexa(this)";
+        icon = '<span class="glyphicon glyphicon-cog"></span>';
         color = "#000000";
         break;
 
@@ -64,6 +67,7 @@ Grid.prototype = {
 
     container.append('<div id="' + id +'" class="' + _class + '" onclick="' + onclick + '" style="transform:scale(' + this.scale + ') rotate(120deg);"><div class="hex-in1" id="' + id + '">' +
       '<div class="hex-in2" id="' + id + '" style="background-color:' + color + ';" onmouseover="grid.mouseOver(this)" onmouseout="grid.mouseOut(this)">' +
+      icon +
       '</div></div></div>');
 
     if(_class == "hex" && type != "paramsHexa"){

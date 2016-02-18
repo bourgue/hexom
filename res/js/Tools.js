@@ -123,10 +123,7 @@ Tools.prototype = {
   exist: function(pos, parent) {
     var exist = false;
     for (var i = 0; i < parent.length && exist === false; ++i)
-      if (JSON.stringify(pos) === JSON.stringify(parent[i]) || pos == {
-          x: 0,
-          y: 0
-        })
+      if (JSON.stringify(pos) === JSON.stringify(parent[i]) || (pos.x === 0 && pos.y === 0))
         exist = true;
 
     return exist;

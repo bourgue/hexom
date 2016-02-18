@@ -10,6 +10,7 @@
   -o-transform: rotate(120deg);
   transform: rotate(120deg);
   z-index: 1;
+  font-smooth: never;
 }
 .hex-in1 {
   display: inherit;
@@ -42,21 +43,29 @@
 }
 .hex-in2:hover {
   z-index: 2;
-
 }
 .preview {
   z-index: 1;
 }
-.preview .hex-in2 {
-  background-image: url('../img/plus.png');
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
+.hex-in2 span{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.preview .hex-in2 span {
+ color: #000;
+ font-size: 18px;
 }
 .preview:hover {
   z-index: 2;
 }
+[id='0;0'] .hex-in1 .hex-in2 span {
+  margin-top: 5px;
+  color: #fff;
+  font-size: 68px;
+}
 [id='0;0'] .hex-in1 .hex-in2 {
-  background-image: url('../img/params.png');
   background-color: #000;
 }
 #grid {
