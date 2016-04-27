@@ -12,7 +12,7 @@ module.exports = function(app, passport) {
   });
 
   // LOGIN
-  app.get('/login', function(req, res) {
+  app.get('/login', isNotLoggedIn, function(req, res) {
     res.render('login.ejs', {
       message: req.flash('loginMessage')
     });
@@ -26,7 +26,7 @@ module.exports = function(app, passport) {
   }));
 
   // SIGNUP
-  app.get('/signup', function(req, res) {
+  app.get('/signup', isNotLoggedIn, function(req, res) {
     res.render('signup.ejs', {
       message: req.flash('signupMessage')
     });
@@ -66,6 +66,14 @@ function isLoggedIn(req, res, next) {
   }
 
   res.redirect('/');
+}
+
+function isNotLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    res.redirect('/');
+  }
+
+  return next();
 }
 
 // SAVE FUNCTION
