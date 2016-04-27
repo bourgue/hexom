@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/js/jquery-ui/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="/sass/main.css"/>
+    <link rel="stylesheet" href="/sass/buttons.css"/>
+    <link rel="stylesheet" href="/sass/hexa.css"/>
+    <link rel="stylesheet" href="/sass/paramsMenu.css"/>
+    <link rel="stylesheet" href="/sass/paramsWindows.css"/>
+    <link rel="stylesheet" href="/sass/searchBar.css"/>
+    <link rel="stylesheet" href="/sass/user.css"/>
+    <link rel="stylesheet" href="/sass/userInfo.css"/>
+    <link rel="stylesheet" href="/sass/welcome.css"/>
+    <link rel="stylesheet" href="/sass/window.css"/>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-ui/jquery-ui.min.js"></script>
+
+    <title>HexaMenu</title>
+  </head>
+
+  <body>
+      <div id="user_info"><label id="hello" style="font-weight:normal;"></label>
+        <%- username %></div>
+
+    <input id="searchBar" type="text" autofocus/>
+
+    <div id="grid">
+      <div id="previewContainer"></div>
+    </div>
+
+    <a href="/logout" class="button" id="logout_button"></a>
+
+    <script src="/js/Language.js"></script>
+    <script src="/js/Tools.js"></script>
+    <script src="/js/ParamsWindow.js"></script>
+    <script src="/js/ParamsWindowHexa.js"></script>
+    <script src="/js/Grid.js"></script>
+    <script src="/js/Search.js"></script>
+    <script src="/js/ParamsMenu.js"></script>
+    <script src="/js/Welcome.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+      init(<%- username %>, <%- infos %>);
+    </script>
+  </body>
+</html>

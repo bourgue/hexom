@@ -1,0 +1,42 @@
+#searchBar {
+  position: absolute;
+  width: 50%;
+  margin-left: 25%;
+  left: -25px;
+  top: 10%;
+  height: 40px;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  padding-left: 50px;
+  color: #000000;
+  font-size: 18px;
+  background: url('../img/google.png') 12px center no-repeat #ffffff;
+  background-size: 30px 30px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, .5);
+  z-index:2;
+  box-sizing: content-box;
+}
+#searchBar::selection {
+  background: transparent;
+  color: #666666;
+}
+#searchBar::-moz-selection {
+  background: transparent;
+  color: #666666;
+}
+
+/* Autocompletion */
+.ui-menu-item{
+  background-color:#fff;
+}
+
+.ui-state-focus {
+  background-color: #f5f5f5;
+  border:1px solid #f5f5f5;
+  border-radius: 0px 0px 3px 3px;
+}
+
+#ui-id-1 {
+  border-radius: 0px 0px 3px 3px;
+}

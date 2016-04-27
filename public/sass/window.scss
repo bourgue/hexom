@@ -1,0 +1,46 @@
+$window_padding: 10px;
+
+.window {
+  padding: $window_padding;
+  background: #fff;
+  font-size: 12px;
+  float: right;
+  position: fixed;
+  z-index: 1;
+  box-shadow: 0px 0px 30px -10px #000;
+  border: 3px solid #000;
+  .titre {
+    font-size: 15px;
+    margin-bottom: 10px;
+    background-color: #000;
+    color: #fff;
+    width: calc(100% + #{$window_padding} * 2);
+    font-family: Autoradiographic;
+    padding: 10px 10px 10px 10px;
+    margin-top: -10px;
+    margin-left: -10px;
+    text-align: center;
+    cursor:move;
+  }
+
+  .close {
+    float: right;
+    margin-top: -10px;
+    margin-right: -10px;
+    cursor:pointer;
+    font-size:8px;
+    color: #fff;
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+    text-shadow: none;
+  }
+  .close:hover{
+    color: #fff;
+    opacity: 1;
+  }
+
+  ul:last-child{
+    margin-bottom: -10px;
+  }
+}

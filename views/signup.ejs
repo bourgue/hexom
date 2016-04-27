@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/sass/main.css"/>
+    <link rel="stylesheet" href="/sass/signinup.css"/>
+    <link rel="stylesheet" href="/js/jquery-ui/jquery-ui.min.css"/>
+
+    <script src="/js/jquery.min.js"></script>
+
+    <title>HexaMenu</title>
+  </head>
+  <body>
+    <div id="flagContainer" style="position:absolute; right:5px; top:0;"><img src="/img/us.png" id="en" class="flag" onclick="changeLang(this.id);"/><img src="/img/fr.png" class="flag" id="fr" onclick="changeLang(this.id);" style="margin-left:5px;"/></div>
+    <div class="container">
+      <div class="row">
+        <h1 class="unselectable">HexaMenu</h1>
+        <div class="col-xs-8 col-xs-offset-2">
+
+          <h2 id="register">Inscription</h2>
+
+          <form action="/signup" method="post">
+            <div class="form-group">
+              <label id="username_lbl">Username:</label>
+              <input type="text" class="form-control textbox" name="username" maxlength="18">
+            </div>
+            <div class="form-group">
+              <label>Email:</label>
+              <input type="text" class="form-control textbox" name="email" maxlength="28">
+            </div>
+            <div class="form-group">
+              <label id="password_lbl">Mot de passe:</label>
+              <input type="password" class="form-control textbox" name="password" maxlength="18">
+            </div>
+
+            <button type="submit" class="button">S'enregistrer</button>
+            <% if (message.length > 0) { %>
+              <p><%= message %></p>
+            <% } %>
+
+            <p style="margin-top: 10px;">
+              <label id="already_acc"></label>
+              <a href="/login" id="signin_button"></a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/Language.js"></script>
+    <script>
+      var langMan = new LangManager();
+      langMan.navigatorLang();
+      langMan.setLanguage();
+      function changeLang(lang) {
+        langMan.language = lang;
+        langMan.setLanguage();
+      }
+    </script>
+  </body>
+</html>

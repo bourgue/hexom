@@ -1,0 +1,32 @@
+.button {
+  background: #000;
+  border: 1px solid #000;
+  color: #fff;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  text-align: center;
+  -o-transition: color 0.3s ease-out, background 0.3s ease-in;
+  -ms-transition: color 0.3s ease-out, background 0.3s ease-in;
+  -moz-transition: color 0.3s ease-out, background 0.3s ease-in;
+  -webkit-transition: color 0.3s ease-out, background 0.3s ease-in;
+  transition: color 0.3s ease-out, background 0.3s ease-in;
+}
+.button:hover {
+  background: #fff;
+  color: #000;
+}
+#logout_button{
+  width:150px;
+  position:absolute;
+  right: 5px;
+  bottom: 5px;
+  text-decoration: none;
+  -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.6);
+  -o-box-shadow: 0 0 10px 0 rgba(0,0,0,0.6);
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.6);
+}
