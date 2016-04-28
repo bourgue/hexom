@@ -17,6 +17,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
+var MongoStore = require('connect-mongo/es5')(session);
+
 var configDB = require('./config/database.js');
 
 mongoose.connect(configDB.url);
@@ -33,7 +35,8 @@ app.use(cookieParser());
 app.set('view engine', 'ejs');
 
 app.use(session({
-  secret: "123jaimelescanards456"
+  secret: "123jaimelescanards456",
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 app.use(passport.initialize());
 app.use(passport.session());
