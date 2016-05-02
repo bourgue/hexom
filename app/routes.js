@@ -81,13 +81,8 @@ function save(data, req){  // data is from /save
   User.findOne({
     'user.username': req.user.user.username
   }, function(err, userDoc) {
-
     if (userDoc) {
-      userDoc.infos.hexa_pos = JSON.stringify(data.hexa_pos);
-      userDoc.infos.hexa_colors = JSON.stringify(data.hexa_colors);
-      userDoc.infos.hexa_links = JSON.stringify(data.hexa_links);
-      userDoc.infos.hexa_images = JSON.stringify(data.hexa_images);
-      userDoc.infos.hexa_img_sizes = JSON.stringify(data.hexa_img_sizes);
+      userDoc.infos.hexagons = JSON.stringify(data.hexagons);
       userDoc.infos.hexa_size = data.hexa_size;
       userDoc.infos.shadow_color = data.shadow_color;
       userDoc.infos.shadow_size = data.shadow_size;

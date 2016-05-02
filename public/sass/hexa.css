@@ -1,4 +1,4 @@
-.hex, .preview {
+.hex, .previewHexa {
   position: absolute;
   width: 100px;
   height: 120px;
@@ -44,7 +44,7 @@
 .hex-in2:hover {
   z-index: 2; }
 
-.preview {
+.previewHexa {
   z-index: 1; }
 
 .hex-in2 span {
@@ -52,20 +52,17 @@
   left: 50%;
   transform: translate(-50%, -50%); }
 
-.preview .hex-in2 span {
+.previewHexa .hex-in2 span {
   color: #000;
   font-size: 18px; }
 
-.preview:hover {
+.previewHexa:hover {
   z-index: 2; }
 
-[id='0;0'] .hex-in1 .hex-in2 span {
+[id='0'].hex .hex-in1 .hex-in2 span {
   margin-top: 5px;
   color: #fff;
   font-size: 68px; }
-
-[id='0;0'] .hex-in1 .hex-in2 {
-  background-color: #000; }
 
 #grid {
   position: relative;
@@ -81,28 +78,28 @@
   0% {
     opacity: 0.2; }
   50% {
-    opacity: 0.6; }
+    opacity: 0.7; }
   100% {
     opacity: 0.2; } }
 @-o-keyframes anim {
   0% {
     opacity: 0.2; }
   50% {
-    opacity: 0.6; }
+    opacity: 0.7; }
   100% {
     opacity: 0.2; } }
 @-moz-keyframes anim {
   0% {
     opacity: 0.2; }
   50% {
-    opacity: 0.6; }
+    opacity: 0.7; }
   100% {
     opacity: 0.2; } }
 @-webkit-keyframes anim {
   0% {
     opacity: 0.2; }
   50% {
-    opacity: 0.6; }
+    opacity: 0.7; }
   100% {
     opacity: 0.2; } }
 

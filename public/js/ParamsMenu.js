@@ -16,7 +16,7 @@ ParamsMenu.prototype = {
     $("#paramsMenu").fadeIn(fadeSpeed);
 
     paramsMenuOpen = true;
-    if(grid.hexagons.positions.length > 0 && $("#modifHexa").length === 0){
+    if(grid.hexagons.length > 1 && $("#modifHexa").length === 0){
       $("#paramsMenu ul").append('<li id="modifHexa" onclick="ParamsMenu.prototype.modif()"></li>');
       langManager.setLanguage();
     }
@@ -44,8 +44,9 @@ ParamsMenu.prototype = {
   },
   addHexa: function() {
     this.closeAll();
-    if (!previewing)
-      grid.addPreviewHexa();
+    if (!previewing){
+      grid.findPreviewHexa();
+    }
     else
       grid.removePreviewHexa();
   }

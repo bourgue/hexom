@@ -9,12 +9,8 @@ var userSchema = mongoose.Schema({
     password: String
   },
   infos: {
-    hexa_pos: String,
-    hexa_colors: String,
-    hexa_links: String,
-    hexa_images: String,
-    hexa_img_sizes: String,
     hexa_size: Number,
+    hexagons: String,
     shadow_color: String,
     shadow_size: Number,
     bg_color: String,

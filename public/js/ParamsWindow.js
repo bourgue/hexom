@@ -4,10 +4,10 @@ function ParamsWindow() {
     '<div class="titre" id="paramsTitle"></div>' +
     '<ul id="paramsList">' +
     '<li>' + '<div id="lang"></div>' + '<div id="flagContainer"><img src="/img/us.png" id="en" class="flag" onclick="ParamsWindow.prototype.languageChange(this.id);" />' + '<img src="/img/fr.png" class="flag" id="fr" onclick="ParamsWindow.prototype.languageChange(this.id);"/></div>' + '</li>' +
-    '<li>' + '<div id="backColor"></div>' + '<input id="backgroundColor_ipt" type="color" onchange="ParamsWindow.prototype.backgroundColorChange(this.value);"/>' + '</li>' +
-    '<li>' + '<div id="shadowColor"></div>' + '<input id="shadowColor_ipt" type="color" onchange="ParamsWindow.prototype.shadowColorChange(this.value);"/>' + '</li>' +
-    '<li>' + '<div id="shadowSize"></div>' + '<input id="shadowSize_ipt" value="200" max="300" min="0" step="25" type="range" onchange="ParamsWindow.prototype.shadowSizeChange(this.value)"/>' + '</li>' +
-    '<li>' + '<div id="hexaSize"></div>' + '<input id="hexaSize_ipt" value="1" max="2" min="0.4" step="0.2" type="range" onchange="ParamsWindow.prototype.hexaSizeChange(this.value)"/>' + '</li>' +
+    '<li>' + '<div id="backColor"></div>' + '<input id="backgroundColor_ipt" type="color" oninput="ParamsWindow.prototype.backgroundColorChange(this.value);"/>' + '</li>' +
+    '<li>' + '<div id="shadowColor"></div>' + '<input id="shadowColor_ipt" type="color" oninput="ParamsWindow.prototype.shadowColorChange(this.value);"/>' + '</li>' +
+    '<li>' + '<div id="shadowSize"></div>' + '<input id="shadowSize_ipt" value="200" max="300" min="0" step="25" type="range" oninput="ParamsWindow.prototype.shadowSizeChange(this.value)"/>' + '</li>' +
+    '<li>' + '<div id="hexaSize"></div>' + '<input id="hexaSize_ipt" value="1" max="2" min="0.4" step="0.2" type="range" oninput="ParamsWindow.prototype.hexaSizeChange(this.value)"/>' + '</li>' +
     '<li>' + '<div id="paramsSubmitButton" class="button" onclick="ParamsWindow.prototype.submit()"></div>' + '</li>' +
     '</ul>' +
     '</div>');
@@ -54,7 +54,7 @@ ParamsWindow.prototype = {
   hexaSizeChange: function(value) {
     $(".hex, .preview").css('transform', 'rotate(120deg) scale(' + value + ')');
     grid.scale = value;
-    grid.changePos();
+    grid.updateHexaPosition();
   },
   submit: function() {
     tools.save();

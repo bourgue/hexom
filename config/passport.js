@@ -48,11 +48,7 @@ module.exports = function(passport) {
                 newUser.user.email = req.body.email;
                 newUser.user.password = newUser.generateHash(password);
 
-                newUser.infos.hexa_pos = "[]";
-                newUser.infos.hexa_colors = "[]";
-                newUser.infos.hexa_links = "[]";
-                newUser.infos.hexa_images = "[]";
-                newUser.infos.hexa_img_sizes = "[]";
+                newUser.infos.hexagons = '[{ "id": 0, "color": "#000000", "position": { "x": 0, "y": 0 }}]';
                 newUser.infos.hexa_size = 1;
                 newUser.infos.shadow_color = "#670000";
                 newUser.infos.shadow_size = 300;
@@ -86,7 +82,7 @@ module.exports = function(passport) {
           return done(err);
 
         if (!user)
-          return done(null, false, req.flash('loginMessage', 'Le pseudo n\'existe pas.'));
+          return done(null, false, req.flash('loginMessage', 'Ce nom d\'utilisateur n\'existe pas.'));
 
         if (!user.validPassword(password))
           return done(null, false, req.flash('loginMessage', 'Mauvais mot de passe.'));

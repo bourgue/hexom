@@ -4,17 +4,12 @@ function Tools() {
 
 Tools.prototype = {
   constructor: Tools,
-  save: function() {  // Send data to /save which will put it in the mongodb
+  save: function() { // Send data to /save which will put it in the mongodb
     var data = {};
-    data.username = username;
-    data.hexa_pos = grid.hexagons.positions;
-    data.hexa_colors = grid.hexagons.colors;
-    data.hexa_links = grid.hexagons.links;
-    data.hexa_images = grid.hexagons.images;
-    data.hexa_img_sizes = grid.hexagons.imgSize;
+    data.hexagons = this.getHexaInfos();
     data.hexa_size = grid.scale;
-    data.shadow_color = shadowColor;
     data.shadow_size = shadowSize;
+    data.shadow_color = shadowColor;
     data.bg_color = backgroundColor;
     data.lang = langManager.language;
 
@@ -22,87 +17,59 @@ Tools.prototype = {
       contentType: 'application/json',
       data: JSON.stringify(data),
       type: 'POST',
-      url: "./save",
-      success: function(){
-        // SUCCESS
-      }
+      url: "./save"
     });
   },
-  getHexPos: function(x, y) {
-    var pos = [0, 0];
-
-    pos[0] = x - Math.round(hexGrid.length / 2);
-    pos[1] = y - Math.round(hexGrid[0].length / 2) + 2;
-
-    return pos;
-  },
-  getPosInArrays: function(pos) {
-    for (var i = 0; i < grid.hexagons.positions.length; ++i)
-      if (JSON.stringify(pos) === JSON.stringify(grid.hexagons.positions[i]))
-        return i;
-  },
-
-  idToArray: function(id) {
-    var x = "";
-    var y = "";
-    var change = false;
-    for (var i = 0; i < id.length; ++i) {
-      if (id[i] == ";") {
-        change = true;
-        i++;
-      }
-
-      if (!change)
-        x += id[i];
-      else
-        y += id[i];
-    }
-
-    return {
-      x: parseInt(x),
-      y: parseInt(y)
+  convertToRealPosition: function(hexPos) {
+    grid.position = {
+      x: $(window).width() / 2,
+      y: $(window).height() / 2
     };
+
+    var f = {
+      x: grid.position.x - grid.hexagonsSize.x / 2 + grid.hexagonsDifference.x / 2 + 100 * grid.scale * hexPos.x + grid.hexagonsMargin * hexPos.x,
+      y: grid.position.y - grid.hexagonsSize.y / 2 + grid.hexagonsDifference.y / 2 + (58 + grid.hexagonsDifference.y / 2) * grid.scale * hexPos.y + grid.hexagonsMargin * hexPos.y
+    };
+
+    if (hexPos.y % 2 !== 0)
+      f.x += grid.hexagonsSize.x / 2 * grid.scale + grid.hexagonsMargin / 2;
+
+    return f;
   },
+  getHexagon: function(id, array) {
+    var result = $.grep(array, function(e) {
+      return e.id == id;
+    });
 
-  exist: function(pos, parent) {
-    var exist = false;
-    for (var i = 0; i < parent.length && exist === false; ++i)
-      if (JSON.stringify(pos) === JSON.stringify(parent[i]) || (pos.x === 0 && pos.y === 0))
-        exist = true;
-
-    return exist;
-  },
-  getCookie: function(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') c = c.substring(1);
-      if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
-    }
-    return "";
-  }
-};
-
-//POUR TEST EQUALITE ENTRE ARRAY
-Array.prototype.equals = function(array) {
-  if (!array)
-    return false;
-
-  if (this.length != array.length)
-    return false;
-
-  for (var i = 0, l = this.length; i < l; i++) {
-    if (this[i] instanceof Array && array[i] instanceof Array) {
-      if (!this[i].equals(array[i]))
-        return false;
-    } else if (this[i] != array[i]) {
+    if (result.length > 0)
+      return result[0];
+    else
       return false;
+  },
+  getHexaInfos: function() {
+    var infos = [];
+    for (var i = 0; i < grid.hexagons.length; ++i) {
+      var hexagon = grid.hexagons[i];
+      var data_tmp = {};
+      data_tmp.id = hexagon.id;
+      data_tmp.color = hexagon.color;
+      data_tmp.image = hexagon.image;
+      data_tmp.imgSize = hexagon.imgSize;
+      data_tmp.link = hexagon.link;
+      data_tmp.position = hexagon.position;
+      infos.push(data_tmp);
     }
-  }
-  return true;
-};
 
-Object.defineProperty(Array.prototype, "equals", {
-  enumerable: false
-});
+    return infos;
+  },
+  exist: function(pos, array) {
+    var result = $.grep(array, function(e) {
+      return e.position.x == pos.x && e.position.y == pos.y;
+    });
+
+    if (result.length > 0)
+      return true;
+    else
+      return false;
+  }
+};
