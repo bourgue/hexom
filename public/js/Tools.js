@@ -24,7 +24,7 @@ Tools.prototype = {
     $("#loadImg").css({
       display: "block"
     });
-    
+
     var reader = new FileReader();
 
     reader.addEventListener("load", function() {

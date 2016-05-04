@@ -34,9 +34,10 @@ mongoose.connect(configDB.url);
 require('./config/passport')(passport);
 
 app.use(morgan('dev'));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '5mb'}));
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: false,
+  limit: '5mb'
 }));
 app.use(cookieParser());
 

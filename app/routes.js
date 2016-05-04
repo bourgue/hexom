@@ -98,8 +98,6 @@ function save(data, req) {
       userDoc.infos.lang = data.lang;
 
       userDoc.save();
-
-
     }
   });
 }
