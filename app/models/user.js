@@ -10,6 +10,7 @@ var userSchema = mongoose.Schema({
   },
   infos: {
     hexa_size: Number,
+    hexa_margin: Number,
     hexagons: String,
     shadow_color: String,
     shadow_size: Number,

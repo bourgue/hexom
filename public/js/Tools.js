@@ -8,6 +8,7 @@ Tools.prototype = {
     var data = {};
     data.hexagons = this.getHexaInfos();
     data.hexa_size = grid.scale;
+    data.hexa_margin = grid.hexagonsMargin;
     data.shadow_size = shadowSize;
     data.shadow_color = shadowColor;
     data.bg_color = backgroundColor;

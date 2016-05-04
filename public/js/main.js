@@ -67,6 +67,7 @@ function init(username, data) {
   shadowColor = data.shadow_color;
   shadowSize = data.shadow_size;
   grid.scale = data.hexa_size;
+  grid.hexagonsMargin = data.hexa_margin;
 
   $("body").css({
     boxShadow: '0 0 ' + shadowSize + 'px ' + shadowColor + ' inset',
@@ -77,7 +78,7 @@ function init(username, data) {
   $("#shadowColor_ipt").val(shadowColor);
   $("#shadowSize_ipt").val(shadowSize);
   $("#hexaSize_ipt").val(grid.scale);
-
+  $("#marginSize_ipt").val(grid.hexagonsMargin);
 
   grid.update(data);
 

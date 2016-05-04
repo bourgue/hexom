@@ -92,6 +92,7 @@ function save(data, req) {
     if (userDoc) {
       userDoc.infos.hexagons = JSON.stringify(data.hexagons);
       userDoc.infos.hexa_size = data.hexa_size;
+      userDoc.infos.hexa_margin = data.hexa_margin;
       userDoc.infos.shadow_color = data.shadow_color;
       userDoc.infos.shadow_size = data.shadow_size;
       userDoc.infos.bg_color = data.bg_color;

@@ -61,7 +61,7 @@
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   [id='0'].hex .hex-in1 .hex-in2 span {
-    margin-top: 0px !important; } }
+    margin-top: 2px !important; } }
 [id='0'].hex .hex-in1 .hex-in2 span {
   margin-top: 5px;
   color: #fff;

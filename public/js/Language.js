@@ -44,13 +44,13 @@ function LangManager() {
     "LOGOUT": ["Sign out", "Se déconnecter"],
     "CONNECT_INFO": ["Sign in to save your menu", "Connectez-vous pour sauvegarder votre menu"],
     "WELCOME": ["Welcome to HexaMenu", "Bienvenue sur HexaMenu"],
-    // "WELCOME_TXT": ["HexaMenu is a customizable home page where your favorite websites are hexagons. You can sign up now and without mail confirmation.", "HexaMenu est une page d'accueil personnalisable où vos sites webs favoris sont des hexagones. Vous pouvez vous inscrire maintenant, gratuitement et sans vérification par mail."],
     "OK": ["OK", "OK"],
     "CONN": ["Sign in", "Connexion"],
     "NOACC": ["No account yet ?", "Pas encore de compte ?"],
     "ALREADYACC": ["Already have an account ?", "Vous avez déjà un compte ?"],
     "HELLO": ["Hello, ", "Bonjour, "],
-    "UPLOAD_IMG": ["Upload picture", "Envoyer une image"]
+    "UPLOAD_IMG": ["Upload picture", "Envoyer une image"],
+    "HEXA_MARGIN": ["Space between hexagons :", "Espacement des hexagones :"]
   };
 }
 
@@ -80,6 +80,7 @@ LangManager.prototype = {
     $("#okButton").html(this.words.OK[this.langId[this.language]]);
     $("#hello").html(this.words.HELLO[this.langId[this.language]]);
     $("#uploadButton").html(this.words.UPLOAD_IMG[this.langId[this.language]]);
+    $("#marginSize").html(this.words.HEXA_MARGIN[this.langId[this.language]]);
 
     // LOGIN & REGISTER
     $("#username_lbl").html(this.words.USERNAME[this.langId[this.language]]);
