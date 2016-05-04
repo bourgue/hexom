@@ -49,7 +49,8 @@ function LangManager() {
     "CONN": ["Sign in", "Connexion"],
     "NOACC": ["No account yet ?", "Pas encore de compte ?"],
     "ALREADYACC": ["Already have an account ?", "Vous avez déjà un compte ?"],
-    "HELLO": ["Hello, ", "Bonjour, "]
+    "HELLO": ["Hello, ", "Bonjour, "],
+    "UPLOAD_IMG": ["Upload picture", "Envoyer une image"]
   };
 }
 
@@ -78,6 +79,7 @@ LangManager.prototype = {
     $("#paramsSubmitButton").html(this.words.OK[this.langId[this.language]]);
     $("#okButton").html(this.words.OK[this.langId[this.language]]);
     $("#hello").html(this.words.HELLO[this.langId[this.language]]);
+    $("#uploadButton").html(this.words.UPLOAD_IMG[this.langId[this.language]]);
 
     // LOGIN & REGISTER
     $("#username_lbl").html(this.words.USERNAME[this.langId[this.language]]);

@@ -20,6 +20,36 @@ Tools.prototype = {
       url: "./save"
     });
   },
+  uploadImg: function(file) {
+    $("#loadImg").css({
+      display: "block"
+    });
+    
+    var reader = new FileReader();
+
+    reader.addEventListener("load", function() {
+      var data = {};
+      data.uri = reader.result;
+      data.id = Math.random().toString(36).substring(7);
+
+      $.ajax({
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        type: 'POST',
+        url: "./upload"
+      }).success(function(response){
+        $("#urlImg").val(response.imgUrl);
+        ParamsWindowHexa.prototype.imgChange(response.imgUrl);
+        $("#loadImg").css({
+          display: "none"
+        });
+      });
+    }, false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  },
   convertToRealPosition: function(hexPos) {
     grid.position = {
       x: $(window).width() / 2,

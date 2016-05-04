@@ -8,6 +8,14 @@ var express = require('express'),
   io = require('socket.io').listen(server),
   ent = require('ent');
 
+var cloudinary = require('cloudinary');
+
+cloudinary.config({
+  cloud_name: 'djjdkerkf',
+  api_key: '891293876686523',
+  api_secret: 'T3p-fvCE-kVjlnbI8nMwH3PO5KY'
+});
+
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -36,7 +44,9 @@ app.set('view engine', 'ejs');
 
 app.use(session({
   secret: "123jaimelescanards456",
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection
+  })
 }));
 app.use(passport.initialize());
 app.use(passport.session());

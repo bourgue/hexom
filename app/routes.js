@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var cloudinary = require('cloudinary');
 var User = require("./models/user.js");
 
 module.exports = function(app, passport) {
@@ -48,8 +49,16 @@ module.exports = function(app, passport) {
   // SAVE
   app.post('/save', isLoggedIn, function(req, res) {
     var data = req.body;
-    save(data, req);
+    save(data, req, res);
+    req.flash('imgUrl', 'coucoucocucouccoucuo');
     res.redirect('/');
+  });
+
+  // UPLOAD
+  app.post('/upload', isLoggedIn, function(req, res) {
+    var data = req.body;
+
+    upload(data, req, res);
   });
 };
 
@@ -76,8 +85,7 @@ function isNotLoggedIn(req, res, next) {
   return next();
 }
 
-// SAVE FUNCTION
-function save(data, req){  // data is from /save
+function save(data, req) {
   User.findOne({
     'user.username': req.user.user.username
   }, function(err, userDoc) {
@@ -90,6 +98,19 @@ function save(data, req){  // data is from /save
       userDoc.infos.lang = data.lang;
 
       userDoc.save();
+
+
     }
   });
+}
+
+function upload(data, req, res) {
+  cloudinary.v2.uploader.upload(data.uri, {
+      public_id: req.user.user.username + "/" + data.id
+    },
+    function(error, result) {
+        return res.send({
+          imgUrl: result.secure_url
+        });
+    });
 }

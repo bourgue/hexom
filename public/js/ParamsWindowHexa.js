@@ -12,13 +12,15 @@ function ParamsWindowHexa(id) {
     '<div class="titre" id="paramsHexaTitle"></div>' +
     '<ul>' +
     '<li>' + '<div id="link"></div>' + '<input id="url" type="text" value="' + hexaLink + '" placeholder="ex: google.fr" autofocus/>' + '</li>' +
-    '<li>' + '<div id="img"></div>' + '<input id="urlImg" type="text" value="' + hexaImg + '" placeholder="ex: url.com/image.png" oninput="ParamsWindowHexa.prototype.imgChange(this.value);" autofocus/>' + '</li>' +
+    '<li>' + '<div id="img"></div><img src="/img/loader.gif" id="loadImg" style="position:absolute;right:15px;transform:translateY(-20px);display:none;">' + '<input id="urlImg" name="imgInput" type="text" value="' + hexaImg + '" placeholder="ex: url.com/image.png" oninput="ParamsWindowHexa.prototype.imgChange(this.value);"/>' + '</li>' +
+    '<li>' + '<input type="file" accept="image/*" id="inputFile" onchange="ParamsWindowHexa.prototype.uploadImg()"><label for="inputFile" id="uploadButton" class="button"></label>' + '</li>' +
     '<li>' + '<div id="imgSize"></div>' + '<input id="imgSize" value="' + hexaImgSize + '" max="180" min="20" step="20" type="range" oninput="ParamsWindowHexa.prototype.imgSizeChange(this.value)"/>' + '</li>' +
     '<li>' + '<div id="backcolorhexa"></div>' + '<input id="colorHexa" type="color" value="' + hexaColor + '" oninput="ParamsWindowHexa.prototype.colorChange(this.value);"/>' + '</li>' +
     '<li>' + '<div id="deleteButton" class="button" onclick="ParamsWindowHexa.prototype.deleteHexa();"></div>' + '</li>' +
     '<li>' + '<div id="okButton" class="button" onclick="ParamsWindowHexa.prototype.submit()"></div>' + '</li>' +
     '</ul>' +
     '</div>');
+
   langManager.setLanguage();
 
   $("#paramsWindowHexa").draggable({
@@ -63,6 +65,9 @@ ParamsWindowHexa.prototype = {
     modifying = false;
     this.close();
     tools.save();
+  },
+  uploadImg: function(){
+    tools.uploadImg(document.getElementById("inputFile").files[0]);
   },
   submit: function() {
     editing = false;
