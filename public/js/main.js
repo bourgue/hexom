@@ -67,7 +67,9 @@ function init(username, data) {
   backgroundColor2 = data.bg_color2 || "#670000";
   gradientSize = data.gradient_size || 300;
   grid.scale = data.hexa_size || 1;
-  grid.hexagonsMargin = data.hexa_margin || 10;
+  
+  if(data.hexa_margin !== 0) grid.hexagonsMargin = data.hexa_margin || 10;
+  else grid.hexagonsMargin = data.hexa_margin;
 
   $("body").css({
     boxShadow: '0 0 ' + gradientSize + 'px ' + backgroundColor2 + ' inset',
