@@ -9,9 +9,9 @@ Tools.prototype = {
     data.hexagons = this.getHexaInfos();
     data.hexa_size = grid.scale;
     data.hexa_margin = grid.hexagonsMargin;
-    data.shadow_size = shadowSize;
-    data.shadow_color = shadowColor;
+    data.gradient_size = gradientSize;
     data.bg_color = backgroundColor;
+    data.bg_color2 = backgroundColor2;
     data.lang = langManager.language;
 
     $.ajax({

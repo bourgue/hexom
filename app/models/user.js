@@ -12,9 +12,9 @@ var userSchema = mongoose.Schema({
     hexa_size: Number,
     hexa_margin: Number,
     hexagons: String,
-    shadow_color: String,
-    shadow_size: Number,
+    gradient_size: Number,
     bg_color: String,
+    bg_color2: String,
     lang: String
   }
 });

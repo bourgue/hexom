@@ -51,9 +51,9 @@ module.exports = function(passport) {
                 newUser.infos.hexagons = '[{ "id": 0, "color": "#000000", "position": { "x": 0, "y": 0 }}]';
                 newUser.infos.hexa_size = 1;
                 newUser.infos.hexa_margin = 10;
-                newUser.infos.shadow_color = "#670000";
-                newUser.infos.shadow_size = 300;
+                newUser.infos.gradient_size = 300;
                 newUser.infos.bg_color = "#e10000";
+                newUser.infos.bg_color2 = "#670000";
                 newUser.infos.lang = "fr";
 
                 newUser.save(function(err) {
@@ -79,6 +79,7 @@ module.exports = function(passport) {
       User.findOne({
         'user.username': username
       }, function(err, user) {
+        console.log("coucocucoucocucocu");
         if (err)
           return done(err);
 

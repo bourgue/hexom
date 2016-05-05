@@ -54,3 +54,15 @@ li input {
 .error {
   color: #ff0000;
 }
+#colorIpt_container{
+  position:relative;
+  display:block;
+}
+#backgroundColor_ipt, #backgroundColor2_ipt{
+  width: 48%;
+}
+#backgroundColor2_ipt{
+  position:absolute;
+  top:0;
+  right:0;
+}

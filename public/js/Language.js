@@ -12,8 +12,7 @@ function LangManager() {
     "PARAMS_GENE": ["General settings", "Paramètres généraux"],
     "CHANGE_LANG": ["Change language :", "Changer la langue :"],
     "BACK_COLOR": ["Background color :", "Couleur de fond :"],
-    "SHADOW_COLOR": ["Shadow color :", "Couleur de l\'ombre :"],
-    "SHADOW_SIZE": ["Shadow size :", "Taille de l\'ombre :"],
+    "GRADIENT_SIZE": ["Gradient size :", "Taille du dégradé :"],
     "HEXA_SIZE": ["Hexagons size :", "Taille des hexagones :"],
     "HEXA_OP": ["Hexagons opacity :", "Opacité des hexagones :"],
     "SAVE_KEY": ["Save key :", "Clé de sauvegarde :"],
@@ -21,7 +20,6 @@ function LangManager() {
     "SAVE": ["Save", "Sauvegarder"],
     "PARAMS_HEXA": ["Hexagon settings", "Paramètres de l\'hexagone"],
     "LINK": ["Link :", "Lien :"],
-    "BACKCOLORHEXA": ["Background color :", "Couleur de fond :"],
     "DELETE": ["DELETE", "SUPPRIMER"],
     "SEARCH_BAR": ["Search on Google", "Chercher sur Google"],
     "IMG": ["Picture (url):", "Image (url):"],
@@ -33,8 +31,6 @@ function LangManager() {
     "PASSWORD": ["Password :", "Mot de passe :"],
     "REGISTER": ["Sign up", "S'enregistrer"],
     "EMAIL": ["Email address :", "Adresse e-mail :"],
-    // "MAXCHAR": ["Maximum " + inputMaxLength + " characters !", "Maximum " + inputMaxLength + " caractères !"],
-    // "MINCHAR": ["Minimum " + inputMinLength + " characters !", "Minimum " + inputMinLength + " caractères !"],
     "EMAIL_ERROR": ["Invalid email !", "E-mail invalide !"],
     "USERNAME_ERROR": ["Username already taken !", "Nom d'utilisateur déjà prit !"],
     "NEW_USER": ["Your account is created, you can sign in with it", "Votre compte est crée, vous pouvez vous connecter"],
@@ -62,8 +58,7 @@ LangManager.prototype = {
     $("#paramsTitle").html(this.words.PARAMS_GENE[this.langId[this.language]]);
     $("#lang").html(this.words.CHANGE_LANG[this.langId[this.language]]);
     $("#backColor").html(this.words.BACK_COLOR[this.langId[this.language]]);
-    $("#shadowColor").html(this.words.SHADOW_COLOR[this.langId[this.language]]);
-    $("#shadowSize").html(this.words.SHADOW_SIZE[this.langId[this.language]]);
+    $("#gradientSize").html(this.words.GRADIENT_SIZE[this.langId[this.language]]);
     $("#hexaSize").html(this.words.HEXA_SIZE[this.langId[this.language]]);
     $("#save").html(this.words.SAVE[this.langId[this.language]]);
     $("#paramsHexaTitle").html(this.words.PARAMS_HEXA[this.langId[this.language]]);
@@ -71,7 +66,7 @@ LangManager.prototype = {
     $("#link").html(this.words.LINK[this.langId[this.language]]);
     $("#img").html(this.words.IMG[this.langId[this.language]]);
     $("#imgSize").html(this.words.IMG_SIZE[this.langId[this.language]]);
-    $("#backcolorhexa").html(this.words.BACKCOLORHEXA[this.langId[this.language]]);
+    $("#backcolorhexa").html(this.words.BACK_COLOR[this.langId[this.language]]);
     $("#searchBar").attr("placeholder", this.words.SEARCH_BAR[this.langId[this.language]]);
     $("#addHexa").html(this.words.ADD_HEXA[this.langId[this.language]]);
     $("#generalParams").html(this.words.PARAMS_GENE[this.langId[this.language]]);
@@ -93,7 +88,6 @@ LangManager.prototype = {
     $("#signin_button").html(this.words.LOGIN[this.langId[this.language]]);
     $("#register").html(this.words.REGISTER[this.langId[this.language]]);
     $("#logout_button").html(this.words.LOGOUT[this.langId[this.language]]);
-
   },
   navigatorLang: function() {
     var navLang;

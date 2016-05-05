@@ -1,7 +1,7 @@
 // PARAMS WINDOW
 var backgroundColor;
-var shadowColor;
-var shadowSize;
+var backgroundColor2;
+var gradientSize;
 
 //PARAMS WINDOW HEXA
 var hexa_id;
@@ -63,20 +63,20 @@ $("#grid,#searchBar").css({
 
 function init(username, data) {
   username = username;
-  backgroundColor = data.bg_color;
-  shadowColor = data.shadow_color;
-  shadowSize = data.shadow_size;
-  grid.scale = data.hexa_size;
-  grid.hexagonsMargin = data.hexa_margin;
+  backgroundColor = data.bg_color || "#e10000";
+  backgroundColor2 = data.bg_color2 || "#670000";
+  gradientSize = data.gradient_size || 300;
+  grid.scale = data.hexa_size || 1;
+  grid.hexagonsMargin = data.hexa_margin || 10;
 
   $("body").css({
-    boxShadow: '0 0 ' + shadowSize + 'px ' + shadowColor + ' inset',
+    boxShadow: '0 0 ' + gradientSize + 'px ' + backgroundColor2 + ' inset',
     backgroundColor: backgroundColor
   });
 
   $("#backgroundColor_ipt").val(backgroundColor);
-  $("#shadowColor_ipt").val(shadowColor);
-  $("#shadowSize_ipt").val(shadowSize);
+  $("#backgroundColor2_ipt").val(backgroundColor2);
+  $("#gradientSize_ipt").val(gradientSize);
   $("#hexaSize_ipt").val(grid.scale);
   $("#marginSize_ipt").val(grid.hexagonsMargin);
 

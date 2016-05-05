@@ -50,7 +50,6 @@ module.exports = function(app, passport) {
   app.post('/save', isLoggedIn, function(req, res) {
     var data = req.body;
     save(data, req, res);
-    req.flash('imgUrl', 'coucoucocucouccoucuo');
     res.redirect('/');
   });
 
@@ -93,9 +92,9 @@ function save(data, req) {
       userDoc.infos.hexagons = JSON.stringify(data.hexagons);
       userDoc.infos.hexa_size = data.hexa_size;
       userDoc.infos.hexa_margin = data.hexa_margin;
-      userDoc.infos.shadow_color = data.shadow_color;
-      userDoc.infos.shadow_size = data.shadow_size;
+      userDoc.infos.gradient_size = data.gradient_size;
       userDoc.infos.bg_color = data.bg_color;
+      userDoc.infos.bg_color2 = data.bg_color2;
       userDoc.infos.lang = data.lang;
 
       userDoc.save();
