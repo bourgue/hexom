@@ -46,7 +46,8 @@ function LangManager() {
     "ALREADYACC": ["Already have an account ?", "Vous avez déjà un compte ?"],
     "HELLO": ["Hello, ", "Bonjour, "],
     "UPLOAD_IMG": ["Upload picture", "Envoyer une image"],
-    "HEXA_MARGIN": ["Space between hexagons :", "Espacement des hexagones :"]
+    "HEXA_MARGIN": ["Space between hexagons :", "Espacement des hexagones :"],
+    "SHOW_SEARCHBAR": ["Show search bar", "Afficher la barre de recherche"]
   };
 }
 
@@ -76,6 +77,7 @@ LangManager.prototype = {
     $("#hello").html(this.words.HELLO[this.langId[this.language]]);
     $("#uploadButton").html(this.words.UPLOAD_IMG[this.langId[this.language]]);
     $("#marginSize").html(this.words.HEXA_MARGIN[this.langId[this.language]]);
+    $("#showSearchBar").html(this.words.SHOW_SEARCHBAR[this.langId[this.language]]);
 
     // LOGIN & REGISTER
     $("#username_lbl").html(this.words.USERNAME[this.langId[this.language]]);

@@ -8,6 +8,7 @@ function ParamsWindow() {
     '<li>' + '<div id="gradientSize"></div>' + '<input id="gradientSize_ipt" value="200" max="300" min="0" step="25" type="range" oninput="ParamsWindow.prototype.gradientSizeChange(this.value)"/>' + '</li>' +
     '<li>' + '<div id="hexaSize"></div>' + '<input id="hexaSize_ipt" value="1" max="2" min="0.4" step="0.2" type="range" oninput="ParamsWindow.prototype.hexaSizeChange(this.value)"/>' + '</li>' +
     '<li>' + '<div id="marginSize"></div>' + '<input id="marginSize_ipt" value="10" max="200" min="0" step="5" type="range" oninput="ParamsWindow.prototype.marginSizeChange(this.value)"/>' + '</li>' +
+    '<li>' + '<input type="checkbox" id="showSearchBar_cb" name="showSearchBar_cb" onchange="ParamsWindow.prototype.showSearchBarChange()" style="width:20px; display:inline;"><label for="showSearchBar_cb" id="showSearchBar" style="display:inline;font-weight:normal;"></label>' + '</li>' +
     '<li>' + '<div id="paramsSubmitButton" class="button" onclick="ParamsWindow.prototype.submit()"></div>' + '</li>' +
     '</ul>' +
     '</div>');
@@ -59,6 +60,12 @@ ParamsWindow.prototype = {
   marginSizeChange: function(value) {
     grid.hexagonsMargin = value;
     grid.updateHexaPosition();
+  },
+  showSearchBarChange: function() {
+    if ($('#showSearchBar_cb').is(":checked")) showSearchBar = true;
+    else showSearchBar = false;
+
+    search.update();
   },
   submit: function() {
     tools.save();

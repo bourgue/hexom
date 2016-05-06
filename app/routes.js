@@ -96,6 +96,7 @@ function save(data, req) {
       userDoc.infos.bg_color = data.bg_color;
       userDoc.infos.bg_color2 = data.bg_color2;
       userDoc.infos.lang = data.lang;
+      userDoc.infos.show_searchbar = data.show_searchbar;
 
       userDoc.save();
     }

@@ -55,6 +55,7 @@ module.exports = function(passport) {
                 newUser.infos.bg_color = "#e10000";
                 newUser.infos.bg_color2 = "#670000";
                 newUser.infos.lang = "fr";
+                newUser.infos.show_searchbar = true;
 
                 newUser.save(function(err) {
                   if (err)

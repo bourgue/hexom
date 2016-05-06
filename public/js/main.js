@@ -2,6 +2,7 @@
 var backgroundColor;
 var backgroundColor2;
 var gradientSize;
+var showSearchBar;
 
 //PARAMS WINDOW HEXA
 var hexa_id;
@@ -67,7 +68,10 @@ function init(username, data) {
   backgroundColor2 = data.bg_color2 || "#670000";
   gradientSize = data.gradient_size || 300;
   grid.scale = data.hexa_size || 1;
-  
+
+  if(data.show_searchbar !== false) showSearchBar = true;
+  else showSearchBar = false;
+
   if(data.hexa_margin !== 0) grid.hexagonsMargin = data.hexa_margin || 10;
   else grid.hexagonsMargin = data.hexa_margin;
 
@@ -81,8 +85,10 @@ function init(username, data) {
   $("#gradientSize_ipt").val(gradientSize);
   $("#hexaSize_ipt").val(grid.scale);
   $("#marginSize_ipt").val(grid.hexagonsMargin);
+  $("#showSearchBar_cb").attr('checked', showSearchBar);
 
   grid.update(data);
+  search.update();
 
   langManager.language = data.lang;
   langManager.setLanguage();

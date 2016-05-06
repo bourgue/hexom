@@ -13,6 +13,7 @@ Tools.prototype = {
     data.bg_color = backgroundColor;
     data.bg_color2 = backgroundColor2;
     data.lang = langManager.language;
+    data.show_searchbar = showSearchBar;
 
     $.ajax({
       contentType: 'application/json',
