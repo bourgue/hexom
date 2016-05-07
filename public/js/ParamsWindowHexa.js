@@ -32,7 +32,7 @@ function ParamsWindowHexa(id) {
   $("#url").focus();
 
   $("#closeIcon").click(function() {
-    ParamsWindowHexa.prototype.close();
+    ParamsWindowHexa.prototype.undoModifications();
   });
 }
 
@@ -68,6 +68,16 @@ ParamsWindowHexa.prototype = {
   },
   uploadImg: function(){
     tools.uploadImg(document.getElementById("inputFile").files[0]);
+  },
+  undoModifications: function() {
+    $.ajax({
+      type: 'POST',
+      url: "./getinfos"
+    }).done(function(e){
+      init(e.username, e.infos);
+    });
+
+    this.close();
   },
   submit: function() {
     editing = false;

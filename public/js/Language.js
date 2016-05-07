@@ -47,7 +47,7 @@ function LangManager() {
     "HELLO": ["Hello, ", "Bonjour, "],
     "UPLOAD_IMG": ["Upload picture", "Envoyer une image"],
     "HEXA_MARGIN": ["Space between hexagons :", "Espacement des hexagones :"],
-    "SHOW_SEARCHBAR": ["Show search bar", "Afficher la barre de recherche"]
+    "SHOW_SEARCHBAR": ["Show search bar", "Barre de recherche"]
   };
 }
 

@@ -59,6 +59,11 @@ module.exports = function(app, passport) {
 
     upload(data, req, res);
   });
+
+  // GET INFOS
+  app.post('/getinfos', isLoggedIn, function(req, res) {
+    getInfos(req, res);
+  });
 };
 
 function isLoggedInHOMEPAGE(req, res, next) {
@@ -108,8 +113,18 @@ function upload(data, req, res) {
       public_id: req.user.user.username + "/" + data.id
     },
     function(error, result) {
-        return res.send({
-          imgUrl: result.secure_url
-        });
+      return res.send({
+        imgUrl: result.secure_url
+      });
     });
+}
+
+function getInfos(req, res) {
+  User.findOne({
+    'user.username': req.user.user.username
+  }, function(err, userDoc) {
+    if (userDoc) {
+      return res.send({username: req.user.user.username, infos: userDoc.infos});
+    }
+  });
 }

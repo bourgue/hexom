@@ -22,7 +22,7 @@ function ParamsWindow() {
   $("#paramsWindow").hide();
 
   $("#closeIcon").click(function() {
-    ParamsWindow.prototype.close();
+    ParamsWindow.prototype.undoModifications();
   });
 }
 
@@ -66,6 +66,16 @@ ParamsWindow.prototype = {
     else showSearchBar = false;
 
     search.update();
+  },
+  undoModifications: function() {
+    $.ajax({
+      type: 'POST',
+      url: "./getinfos"
+    }).done(function(e){
+      init(e.username, e.infos);
+    });
+
+    this.close();
   },
   submit: function() {
     tools.save();
