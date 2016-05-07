@@ -14,6 +14,8 @@ var hexaImg;
 var params = false;
 var paramsMenuOpen = false;
 
+var dataFromDB = {};
+
 var around = [{
   x: -1,
   y: -1
@@ -86,6 +88,8 @@ function init(username, data) {
   $("#hexaSize_ipt").val(grid.scale);
   $("#marginSize_ipt").val(grid.hexagonsMargin);
   $("#showSearchBar_cb").attr('checked', showSearchBar);
+
+  dataFromDB.infos = data;
 
   grid.update(data);
   search.update();

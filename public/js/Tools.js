@@ -15,6 +15,8 @@ Tools.prototype = {
     data.lang = langManager.language;
     data.show_searchbar = showSearchBar;
 
+    dataFromDB.infos = data;
+
     $.ajax({
       contentType: 'application/json',
       data: JSON.stringify(data),

@@ -66,16 +66,11 @@ ParamsWindowHexa.prototype = {
     this.close();
     tools.save();
   },
-  uploadImg: function(){
+  uploadImg: function() {
     tools.uploadImg(document.getElementById("inputFile").files[0]);
   },
   undoModifications: function() {
-    $.ajax({
-      type: 'POST',
-      url: "./getinfos"
-    }).done(function(e){
-      init(e.username, e.infos);
-    });
+    init(username, dataFromDB.infos);
 
     this.close();
   },
