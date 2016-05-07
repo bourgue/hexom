@@ -6,7 +6,7 @@ Tools.prototype = {
   constructor: Tools,
   save: function() { // Send data to /save which will put it in the mongodb
     var data = {};
-    data.hexagons = this.getHexaInfos();
+    data.hexagons = JSON.stringify(this.getHexaInfos());
     data.hexa_size = grid.scale;
     data.hexa_margin = grid.hexagonsMargin;
     data.gradient_size = gradientSize;

@@ -89,7 +89,7 @@ function save(data, req) {
     'user.username': req.user.user.username
   }, function(err, userDoc) {
     if (userDoc) {
-      userDoc.infos.hexagons = JSON.stringify(data.hexagons);
+      userDoc.infos.hexagons = data.hexagons;
       userDoc.infos.hexa_size = data.hexa_size;
       userDoc.infos.hexa_margin = data.hexa_margin;
       userDoc.infos.gradient_size = data.gradient_size;

@@ -92,6 +92,7 @@ Grid.prototype = {
   },
   update: function(data) {
     $(".hex").remove();
+    this.hexagons = [];
 
     for(var i = 0; i < JSON.parse(data.hexagons).length; ++i){
       var hexa = JSON.parse(data.hexagons)[i];
