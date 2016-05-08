@@ -70,7 +70,6 @@ ParamsWindowHexa.prototype = {
     tools.uploadImg(document.getElementById("inputFile").files[0]);
   },
   undoModifications: function() {
-    console.log(dataFromDB.infos.hexagons);
     init(username, dataFromDB.infos);
 
     this.close();

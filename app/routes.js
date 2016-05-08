@@ -6,6 +6,8 @@ module.exports = function(app, passport) {
 
   // HOME PAGE
   app.get('/', isLoggedInHOMEPAGE, function(req, res) {
+    req.session.lastAccess = new Date().getTime();
+
     res.render('index.ejs', {
       username: req.user.user.username,
       infos: req.user.infos
@@ -108,8 +110,10 @@ function upload(data, req, res) {
       public_id: req.user.user.username + "/" + data.id
     },
     function(error, result) {
-      return res.send({
-        imgUrl: result.secure_url
-      });
+      if (!error) {
+        return res.send({
+          imgUrl: result.secure_url
+        });
+      }
     });
 }

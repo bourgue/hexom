@@ -45,10 +45,12 @@ app.set('view engine', 'ejs');
 
 app.use(session({
   secret: "123jaimelescanards456",
+  cookie: {maxAge: 3600000*24*14},
   store: new MongoStore({
     mongooseConnection: mongoose.connection
   })
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
