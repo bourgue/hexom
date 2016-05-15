@@ -29,8 +29,8 @@ Grid.prototype = {
   constructor: Grid,
 
   // ADD
-  addHexagon: function(id, pos, color, link, image, imgSize) {
-    var hexagon = new Hexagon(id, pos, color, link, image, imgSize);
+  addHexagon: function(id, pos, color, link, text, textColor, image, imgSize) {
+    var hexagon = new Hexagon(id, pos, color, link, text, textColor, image, imgSize);
     this.hexagons.push(hexagon);
   },
   addPreviewHexa: function(id, pos) {
@@ -99,7 +99,7 @@ Grid.prototype = {
         hexa.imgSize = 80;
       }
 
-      this.addHexagon(i, hexa.position, hexa.color, hexa.link, hexa.image, hexa.imgSize);
+      this.addHexagon(i, hexa.position, hexa.color, hexa.link, hexa.text, hexa.textColor, hexa.image, hexa.imgSize);
     }
 
     this.updateHexaPosition();

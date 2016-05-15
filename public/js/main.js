@@ -104,10 +104,18 @@ $(document).mousedown(function(e) {
 
 $("body").click(function(handler) {
   if (handler.target.id != "0")
-    if (handler.target.classList[0] != "glyphicon")
+    if (handler.target.classList[0] != "textHexa")
       paramsMenu.close();
 });
 
 $(window).resize(function() {
   grid.updateHexaPosition();
 });
+
+function htmlEncode(value){
+  return $('<div/>').text(value).html();
+}
+
+function htmlDecode(value){
+  return $('<div/>').html(value).text();
+}

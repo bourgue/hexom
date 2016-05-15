@@ -26,7 +26,7 @@ PreviewHexa.prototype = {
       var id = hexa.id;
       $('#' + id).remove();
 
-      grid.addHexagon(grid.hexagons.length, tools.getHexagon(id, grid.previewHexas).position, "#000000", '', '', 100);
+      grid.addHexagon(grid.hexagons.length, tools.getHexagon(id, grid.previewHexas).position, "#ffffff", '', '', "#000000", '', 100);
 
       grid.removePreviewHexa();
       var paramsWindowHexa = new ParamsWindowHexa(grid.hexagons.length - 1);

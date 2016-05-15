@@ -90,6 +90,8 @@ Tools.prototype = {
             data_tmp.image = hexagon.image;
             data_tmp.imgSize = hexagon.imgSize;
             data_tmp.link = hexagon.link;
+            data_tmp.text = hexagon.text;
+            data_tmp.textColor = hexagon.textColor;
             data_tmp.position = hexagon.position;
             infos.push(data_tmp);
           }

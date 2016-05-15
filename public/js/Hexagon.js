@@ -1,8 +1,10 @@
-function Hexagon(id, position, color, link, image, imgSize) {
+function Hexagon(id, position, color, link, text, textColor, image, imgSize) {
   this.id = id;
   this.position = position;
   this.color = color;
   this.link = link;
+  this.text = text  || "";
+  this.textColor = textColor  || "#000000";
   this.image = image;
   this.imgSize = imgSize;
 
@@ -24,7 +26,7 @@ function Hexagon(id, position, color, link, image, imgSize) {
     style: 'background-color: ' + color + ';' + backgroundImageCSS + backgroundImageSizeCSS,
     onmouseover: 'Hexagon.prototype.mouseOver(this)',
     onmouseout: 'Hexagon.prototype.mouseOut(this)'
-  });
+  }).append('<p class="textHexa" style="color:' + this.textColor + ';">' + this.text + '</p>');
 }
 
 Hexagon.prototype = {
