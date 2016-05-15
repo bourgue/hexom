@@ -16,6 +16,7 @@
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, .5);
   z-index:2;
   box-sizing: content-box;
+  outline:none;
 }
 #searchBar::selection {
   background: transparent;
@@ -24,6 +25,9 @@
 #searchBar::-moz-selection {
   background: transparent;
   color: #666666;
+}
+#searchBar:focus {
+  outline:none;
 }
 
 /* Autocompletion */

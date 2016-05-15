@@ -10,13 +10,6 @@ function Hexagon(id, position, color, link, image, imgSize) {
 
   var backgroundImageCSS = 'background-image: url(' + image + ');';
   var backgroundImageSizeCSS = 'background-size: ' + imgSize + 'px;';
-  var icon = "";
-
-  if (id == 0) {
-    icon = '<span class="glyphicon glyphicon-cog"></span>';
-    backgroundImageCSS = "";
-    backgroundImageSizeCSS = "";
-  }
 
   $("#grid").append('<div id="' + id + '" class="hex"></div>');
 
@@ -31,7 +24,7 @@ function Hexagon(id, position, color, link, image, imgSize) {
     style: 'background-color: ' + color + ';' + backgroundImageCSS + backgroundImageSizeCSS,
     onmouseover: 'Hexagon.prototype.mouseOver(this)',
     onmouseout: 'Hexagon.prototype.mouseOut(this)'
-  }).append(icon);
+  });
 }
 
 Hexagon.prototype = {

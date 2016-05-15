@@ -54,15 +54,8 @@ var paramsWindow = new ParamsWindow();
 var paramsMenu = new ParamsMenu();
 var grid = new Grid();
 
-var fadeSpeed = 500;
+var fadeSpeed = 150;
 
-$("#grid,#searchBar").css({
-  "opacity": "0",
-  "top": "+=40px"
-}).animate({
-  top: '-=40px',
-  opacity: '1'
-}, 1000);
 
 function init(username, data) {
   username = username;

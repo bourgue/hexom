@@ -32,10 +32,10 @@ $("#searchBar").autocomplete({
 Search.prototype = {
   constructor: Search,
   show: function() {
-    $("#searchBar").show();
+    $("#searchBar").fadeIn(fadeSpeed);
   },
   hide: function() {
-    $("#searchBar").hide();
+    $("#searchBar").fadeOut(fadeSpeed);
   },
   update: function() {
     if (showSearchBar)

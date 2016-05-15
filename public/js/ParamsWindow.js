@@ -1,13 +1,13 @@
 function ParamsWindow() {
   $("body").prepend('<div id="paramsWindow" class="window unselectable">' +
-    '<span id="closeIcon" class="close glyphicon glyphicon-remove"></span>' +
+    '<img src="/img/close.png" id="closeIcon" class="close"/>' +
     '<div class="titre" id="paramsTitle"></div>' +
     '<ul id="paramsList">' +
     '<li>' + '<div id="lang"></div>' + '<div id="flagContainer"><img src="/img/us.png" id="en" class="flag" onclick="ParamsWindow.prototype.languageChange(this.id);" />' + '<img src="/img/fr.png" class="flag" id="fr" onclick="ParamsWindow.prototype.languageChange(this.id);"/></div>' + '</li>' +
     '<li>' + '<div id="backColor"></div>' + '<div id="colorIpt_container"><input id="backgroundColor_ipt" type="color" oninput="ParamsWindow.prototype.backgroundColorChange(this.value);"/>' + '<input id="backgroundColor2_ipt" type="color" oninput="ParamsWindow.prototype.backgroundColor2Change(this.value);"/></div>' + '</li>' +
-    '<li>' + '<div id="gradientSize"></div>' + '<input id="gradientSize_ipt" value="200" max="300" min="0" step="25" type="range" oninput="ParamsWindow.prototype.gradientSizeChange(this.value)"/>' + '</li>' +
-    '<li>' + '<div id="hexaSize"></div>' + '<input id="hexaSize_ipt" value="1" max="2" min="0.4" step="0.2" type="range" oninput="ParamsWindow.prototype.hexaSizeChange(this.value)"/>' + '</li>' +
-    '<li>' + '<div id="marginSize"></div>' + '<input id="marginSize_ipt" value="10" max="200" min="0" step="5" type="range" oninput="ParamsWindow.prototype.marginSizeChange(this.value)"/>' + '</li>' +
+    '<li>' + '<div id="gradientSize"></div>' + '<input id="gradientSize_ipt" value="200" max="300" min="0" step="2" type="range" oninput="ParamsWindow.prototype.gradientSizeChange(this.value)"/>' + '</li>' +
+    '<li>' + '<div id="hexaSize"></div>' + '<input id="hexaSize_ipt" value="1" max="3" min="0.4" step="0.02" type="range" oninput="ParamsWindow.prototype.hexaSizeChange(this.value)"/>' + '</li>' +
+    '<li>' + '<div id="marginSize"></div>' + '<input id="marginSize_ipt" value="10" max="200" min="0" step="2" type="range" oninput="ParamsWindow.prototype.marginSizeChange(this.value)"/>' + '</li>' +
     '<li>' + '<input type="checkbox" id="showSearchBar_cb" name="showSearchBar_cb" onchange="ParamsWindow.prototype.showSearchBarChange()" style="width:20px; display:inline;"><label for="showSearchBar_cb" id="showSearchBar" style="display:inline;font-weight:normal;"></label>' + '</li>' +
     '<li>' + '<div id="paramsSubmitButton" class="button" onclick="ParamsWindow.prototype.submit()"></div>' + '</li>' +
     '</ul>' +

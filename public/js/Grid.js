@@ -76,15 +76,12 @@ Grid.prototype = {
     previewing = false;
   },
 
-  // Updates
   updateHexaPosition: function() {
-    // Update hexagons position
     for (var i = 0; i < this.hexagons.length; ++i) {
       var hexagon = this.hexagons[i];
       hexagon.updateRealPosition();
     }
 
-    // Update previewHexas position
     for (var j = 0; j < this.previewHexas.length; ++j) {
       var previewHexa = this.previewHexas[j];
       previewHexa.updateRealPosition();
@@ -94,8 +91,14 @@ Grid.prototype = {
     $(".hex").remove();
     this.hexagons = [];
 
-    for(var i = 0; i < JSON.parse(data.hexagons).length; ++i){
+    for (var i = 0; i < JSON.parse(data.hexagons).length; ++i) {
       var hexa = JSON.parse(data.hexagons)[i];
+
+      if (hexa.id === 0) {
+        hexa.image = "/img/gear.png";
+        hexa.imgSize = 80;
+      }
+
       this.addHexagon(i, hexa.position, hexa.color, hexa.link, hexa.image, hexa.imgSize);
     }
 

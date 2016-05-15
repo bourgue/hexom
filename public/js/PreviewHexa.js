@@ -17,8 +17,7 @@ function PreviewHexa(id, position) {
   $('.previewHexa #' + id + '.hex-in1').append('<div class="hex-in2" id="' + id + '"></div>');
   $('.previewHexa .hex-in1 #' + id + '.hex-in2').attr({
       style: 'background-color:#ffffff;'
-    })
-    .append('<span class="glyphicon glyphicon-plus"></span>');
+    });
 }
 
 PreviewHexa.prototype = {

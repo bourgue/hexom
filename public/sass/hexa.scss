@@ -46,30 +46,12 @@
 }
 .previewHexa {
   z-index: 1;
-}
-.hex-in2 span{
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.previewHexa .hex-in2 span {
- color: #000;
- font-size: 18px;
+  .hex-in2{
+    background:url('/img/plus.png') center center no-repeat;
+  }
 }
 .previewHexa:hover {
   z-index: 2;
-}
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  [id='0'].hex .hex-in1 .hex-in2 span {
-    margin-top: 2px !important;
-  }
-}
-
-[id='0'].hex .hex-in1 .hex-in2 span {
-  margin-top: 5px;
-  color: #fff;
-  font-size: 68px;
 }
 
 #grid {
@@ -82,6 +64,7 @@
   -o-animation: anim 3.5s infinite;
   animation: anim 3.5s infinite;
 }
+
 @keyframes anim {
   0% {
     opacity: 0.2;

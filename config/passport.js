@@ -48,7 +48,7 @@ module.exports = function(passport) {
                 newUser.user.email = req.body.email;
                 newUser.user.password = newUser.generateHash(password);
 
-                newUser.infos.hexagons = '[{ "id": 0, "color": "#000000", "position": { "x": 0, "y": 0 }}]';
+                newUser.infos.hexagons = '[{ "id": 0, "color": "#000000", "image": "/img/gear.png", "imgSize": 80, "position": { "x": 0, "y": 0 }}]';
                 newUser.infos.hexa_size = 1;
                 newUser.infos.hexa_margin = 10;
                 newUser.infos.gradient_size = 300;

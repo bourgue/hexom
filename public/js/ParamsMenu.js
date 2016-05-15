@@ -26,7 +26,7 @@ ParamsMenu.prototype = {
     paramsMenuOpen = false;
   },
   closeAll: function() {
-    paramsWindow.close();
+    paramsWindow.undoModifications();
     ParamsWindowHexa.prototype.close();
     grid.removePreviewHexa();
     modifying = false;
