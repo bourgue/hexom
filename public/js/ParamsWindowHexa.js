@@ -15,7 +15,7 @@ function ParamsWindowHexa(id) {
     '<li>' + '<div id="img"></div><img src="/img/loader.gif" id="loadImg" style="position:absolute;right:15px;transform:translateY(-20px);display:none;">' + '<input id="urlImg" name="imgInput" type="text" value="' + hexaImg + '" placeholder="ex: url.com/image.png" oninput="ParamsWindowHexa.prototype.imgChange(this.value);"/>' + '</li>' +
     '<li>' + '<input type="file" accept="image/*" id="inputFile" onchange="ParamsWindowHexa.prototype.uploadImg()"><label for="inputFile" id="uploadButton" class="button"></label>' + '</li>' +
     '<li>' + '<div id="imgSize"></div>' + '<input id="imgSize" value="' + hexaImgSize + '" max="400" min="8" step="2" type="range" oninput="ParamsWindowHexa.prototype.imgSizeChange(this.value)"/>' + '</li>' +
-    '<li>' + '<div id="backcolorhexa"></div>' + '<input id="colorHexa" type="color" value="' + hexaColor + '" oninput="ParamsWindowHexa.prototype.colorChange(this.value);"/>' + '</li>' +
+    '<li>' + '<div id="backcolorhexa"></div>' + '<input id="colorHexa" value="' + hexaColor + '" class="jscolor {onFineChange:\'ParamsWindowHexa.prototype.colorChange(this);\', uppercase:false, hash:true}"/>' + '</li>' +
     '<li>' + '<div id="deleteButton" class="button" onclick="ParamsWindowHexa.prototype.deleteHexa();"></div>' + '</li>' +
     '<li>' + '<div id="okButton" class="button" onclick="ParamsWindowHexa.prototype.submit()"></div>' + '</li>' +
     '</ul>' +
@@ -36,6 +36,8 @@ function ParamsWindowHexa(id) {
   });
 
   $("#paramsWindowHexa").fadeIn(fadeSpeed);
+
+  jscolor.installByClassName("jscolor");
 }
 
 ParamsWindowHexa.prototype = {
@@ -57,8 +59,9 @@ ParamsWindowHexa.prototype = {
     hexaImgSize = value;
   },
   colorChange: function(value) {
-    $("#" + hexa_id + ".hex-in2").css("background-color", value);
-    hexaColor = value;
+    var val = value.toHEXString();
+    $("#" + hexa_id + ".hex-in2").css("background-color", val);
+    hexaColor = val;
   },
   deleteHexa: function() {
     $('#' + hexa_id).remove();

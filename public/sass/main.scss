@@ -7,8 +7,8 @@
   src: url('../font/autoradiographic.ttf');
 }
 @font-face {
-  font-family: Nougat;
-  src: url('../font/Nougat-ExtraBlack.ttf');
+  font-family: RussoOne;
+  src: url('../font/RussoOne-Regular.ttf');
 }
 * {
   margin: 0;
@@ -59,4 +59,7 @@ body {
 }
 a:focus {
   outline: none;
+}
+.jscolor{
+  border: 1px solid #000;
 }
