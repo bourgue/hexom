@@ -3,6 +3,7 @@ var backgroundColor;
 var backgroundColor2;
 var gradientSize;
 var showSearchBar;
+var searchPos;
 
 //PARAMS WINDOW HEXA
 var hexa_id;
@@ -70,6 +71,11 @@ function init(username, data) {
   if(data.hexa_margin !== 0) grid.hexagonsMargin = data.hexa_margin || 10;
   else grid.hexagonsMargin = data.hexa_margin;
 
+  if(data.search_pos !== 0) searchPos = data.search_pos || 10;
+  else searchPos = data.search_pos;
+
+  console.log(data.search_pos);
+
   $("body").css({
     boxShadow: '0 0 ' + gradientSize + 'px ' + backgroundColor2 + ' inset',
     backgroundColor: backgroundColor
@@ -81,6 +87,7 @@ function init(username, data) {
   $("#hexaSize_ipt").val(grid.scale);
   $("#marginSize_ipt").val(grid.hexagonsMargin);
   $("#showSearchBar_cb").attr('checked', showSearchBar);
+  $("#searchPos_ipt").val(searchPos);
 
   dataFromDB.infos = data;
 

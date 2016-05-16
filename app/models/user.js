@@ -16,7 +16,8 @@ var userSchema = mongoose.Schema({
     bg_color: String,
     bg_color2: String,
     lang: String,
-    show_searchbar: Boolean
+    show_searchbar: Boolean,
+    search_pos: Number
   }
 });
 

@@ -9,6 +9,7 @@ function ParamsWindow() {
     '<li>' + '<div id="hexaSize"></div>' + '<input id="hexaSize_ipt" value="1" max="3" min="0.4" step="0.02" type="range" oninput="ParamsWindow.prototype.hexaSizeChange(this.value)"/>' + '</li>' +
     '<li>' + '<div id="marginSize"></div>' + '<input id="marginSize_ipt" value="10" max="200" min="0" step="2" type="range" oninput="ParamsWindow.prototype.marginSizeChange(this.value)"/>' + '</li>' +
     '<li>' + '<input type="checkbox" id="showSearchBar_cb" name="showSearchBar_cb" onchange="ParamsWindow.prototype.showSearchBarChange()" style="width:20px; display:inline;"><label for="showSearchBar_cb" id="showSearchBar" style="display:inline;font-weight:normal;"></label>' + '</li>' +
+    '<li>' + '<div id="searchPos"></div>' + '<input id="searchPos_ipt" value="10" max="100" min="0" step="0.5" type="range" oninput="ParamsWindow.prototype.searchPosChange(this.value)"/>' + '</li>' +
     '<li>' + '<div id="paramsSubmitButton" class="button" onclick="ParamsWindow.prototype.submit()"></div>' + '</li>' +
     '</ul>' +
     '</div>');
@@ -68,6 +69,10 @@ ParamsWindow.prototype = {
     else showSearchBar = false;
 
     search.update();
+  },
+  searchPosChange: function(value) {
+    $("#searchBar").css('top', 'calc(' + value + '% - 25px)');
+    searchPos = value;
   },
   undoModifications: function() {
     init(username, dataFromDB.infos);

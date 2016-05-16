@@ -38,6 +38,7 @@ Search.prototype = {
     $("#searchBar").fadeOut(fadeSpeed);
   },
   update: function() {
+    $("#searchBar").css('top', 'calc(' + searchPos + '% - 25px)');
     if (showSearchBar)
       this.show();
     else

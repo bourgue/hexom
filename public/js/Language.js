@@ -49,7 +49,8 @@ function LangManager() {
     "HEXA_MARGIN": ["Space between hexagons :", "Espacement des hexagones :"],
     "SHOW_SEARCHBAR": ["Show search bar", "Barre de recherche"],
     "TEXT": ["Text :", "Texte :"],
-    "TEXT_COLOR": ["Text color :", "Couleur du texte :"]
+    "TEXT_COLOR": ["Text color :", "Couleur du texte :"],
+    "SEARCHBAR_POS": ["Search bar position :", "Position de la barre :"]
   };
 }
 
@@ -82,6 +83,7 @@ LangManager.prototype = {
     $("#showSearchBar").html(this.word("SHOW_SEARCHBAR"));
     $("#text").html(this.word("TEXT"));
     $("#textColor").html(this.word("TEXT_COLOR"));
+    $("#searchPos").html(this.word("SEARCHBAR_POS"));
 
     // LOGIN & REGISTER
     $("#username_lbl").html(this.word("USERNAME"));
