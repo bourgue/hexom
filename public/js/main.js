@@ -74,8 +74,6 @@ function init(username, data) {
   if(data.search_pos !== 0) searchPos = data.search_pos || 10;
   else searchPos = data.search_pos;
 
-  console.log(data.search_pos);
-
   $("body").css({
     boxShadow: '0 0 ' + gradientSize + 'px ' + backgroundColor2 + ' inset',
     backgroundColor: backgroundColor
