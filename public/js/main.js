@@ -66,7 +66,6 @@ function init(username, data) {
   username = username;
   backgroundColor = data.bg_color || "#e10000";
   backgroundColor2 = data.bg_color2 || "#670000";
-  gradientSize = data.gradient_size || 300;
   grid.scale = data.hexa_size || 1;
   backImg = data.back_img || "";
 
@@ -81,6 +80,9 @@ function init(username, data) {
 
   if(data.show_searchbar !== false) showSearchBar = true;
   else showSearchBar = false;
+
+  if(data.gradient_size !== 0) gradientSize = data.gradient_size || 300;
+  else gradientSize = 0;
 
   if(data.hexa_margin !== 0) grid.hexagonsMargin = data.hexa_margin || 10;
   else grid.hexagonsMargin = data.hexa_margin;
