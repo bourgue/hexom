@@ -4,6 +4,10 @@ var backgroundColor2;
 var gradientSize;
 var showSearchBar;
 var searchPos;
+var backImg;
+var centerBack;
+var repeatBack;
+var ajustBack;
 
 //PARAMS WINDOW HEXA
 var hexa_id;
@@ -64,6 +68,16 @@ function init(username, data) {
   backgroundColor2 = data.bg_color2 || "#670000";
   gradientSize = data.gradient_size || 300;
   grid.scale = data.hexa_size || 1;
+  backImg = data.back_img || "";
+
+  if(data.center_bg !== false) centerBack = true;
+  else centerBack = false;
+
+  if(data.repeat_bg !== false) repeatBack = true;
+  else repeatBack = false;
+
+  if(data.ajust_bg !== false) ajustBack = true;
+  else ajustBack = false;
 
   if(data.show_searchbar !== false) showSearchBar = true;
   else showSearchBar = false;
@@ -84,8 +98,14 @@ function init(username, data) {
   $("#gradientSize_ipt").val(gradientSize);
   $("#hexaSize_ipt").val(grid.scale);
   $("#marginSize_ipt").val(grid.hexagonsMargin);
+  $("#centerBack_cb").attr('checked', centerBack);
+  $("#repeatBack_cb").attr('checked', repeatBack);
+  $("#ajustBack_cb").attr('checked', ajustBack);
   $("#showSearchBar_cb").attr('checked', showSearchBar);
   $("#searchPos_ipt").val(searchPos);
+  $("#backImg_ipt").val(backImg);
+
+  paramsWindow.backImgChange(backImg);
 
   dataFromDB.infos = data;
 

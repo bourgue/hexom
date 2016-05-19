@@ -4,10 +4,18 @@ function ParamsWindow() {
     '<div class="titre" id="paramsTitle"></div>' +
     '<ul id="paramsList">' +
     '<li>' + '<div id="lang"></div>' + '<div id="flagContainer"><img src="/img/us.png" id="en" class="flag" onclick="ParamsWindow.prototype.languageChange(this.id);" />' + '<img src="/img/fr.png" class="flag" id="fr" onclick="ParamsWindow.prototype.languageChange(this.id);"/></div>' + '</li>' +
+    '<li>' + '<p id="bg_title" class="subtitle"></p>' + '</li>'+
     '<li>' + '<div id="backColor"></div>' + '<div id="colorIpt_container"><input id="backgroundColor_ipt" class="jscolor {onFineChange:\'ParamsWindow.prototype.backgroundColorChange(this);\', uppercase:false, hash:true}"/>' + '<input id="backgroundColor2_ipt" class="jscolor {onFineChange:\'ParamsWindow.prototype.backgroundColor2Change(this);\', uppercase:false, hash:true}"/></div>' + '</li>' +
     '<li>' + '<div id="gradientSize"></div>' + '<input id="gradientSize_ipt" value="200" max="300" min="0" step="2" type="range" oninput="ParamsWindow.prototype.gradientSizeChange(this.value)"/>' + '</li>' +
+    '<li>' + '<div id="backImg"></div><img src="/img/loader.gif" id="loadImg" maxLength=250 style="position:absolute;right:15px;transform:translateY(-20px);display:none;">' + '<input id="backImg_ipt" name="backImg_ipt" type="text" value="' + backImg + '" placeholder="ex: url.com/image.png" oninput="ParamsWindow.prototype.backImgChange(htmlEncode(this.value));"/>' + '</li>' +
+    '<li>' + '<input type="file" accept="image/*" id="inputFile" onchange="ParamsWindow.prototype.uploadImg()"><label for="inputFile" id="uploadButton" class="button"></label>' + '</li>' +
+    '<li>' + '<input type="checkbox" id="centerBack_cb" name="centerBack_cb" onchange="ParamsWindow.prototype.centerBackChange()" style="width:20px; display:inline;"><label for="centerBack_cb" id="centerBack" style="display:inline;font-weight:normal;"></label>' + '</li>' +
+    '<li>' + '<input type="checkbox" id="repeatBack_cb" name="repeatBack_cb" onchange="ParamsWindow.prototype.repeatBackChange()" style="width:20px; display:inline;"><label for="repeatBack_cb" id="repeatBack" style="display:inline;font-weight:normal;"></label>' + '</li>' +
+    '<li>' + '<input type="checkbox" id="ajustBack_cb" name="ajustBack_cb" onchange="ParamsWindow.prototype.ajustBackChange()" style="width:20px; display:inline;"><label for="ajustBack_cb" id="ajustBack" style="display:inline;font-weight:normal;"></label>' + '</li>' +
+    '<li>' + '<p id="hexa_title" class="subtitle"></p>' + '</li>'+
     '<li>' + '<div id="hexaSize"></div>' + '<input id="hexaSize_ipt" value="1" max="3" min="0.4" step="0.02" type="range" oninput="ParamsWindow.prototype.hexaSizeChange(this.value)"/>' + '</li>' +
     '<li>' + '<div id="marginSize"></div>' + '<input id="marginSize_ipt" value="10" max="200" min="0" step="2" type="range" oninput="ParamsWindow.prototype.marginSizeChange(this.value)"/>' + '</li>' +
+    '<li>' + '<p id="search_title" class="subtitle"></p>' + '</li>'+
     '<li>' + '<input type="checkbox" id="showSearchBar_cb" name="showSearchBar_cb" onchange="ParamsWindow.prototype.showSearchBarChange()" style="width:20px; display:inline;"><label for="showSearchBar_cb" id="showSearchBar" style="display:inline;font-weight:normal;"></label>' + '</li>' +
     '<li>' + '<div id="searchPos"></div>' + '<input id="searchPos_ipt" value="10" max="100" min="0" step="0.5" type="range" oninput="ParamsWindow.prototype.searchPosChange(this.value)"/>' + '</li>' +
     '<li>' + '<div id="paramsSubmitButton" class="button" onclick="ParamsWindow.prototype.submit()"></div>' + '</li>' +
@@ -43,13 +51,50 @@ ParamsWindow.prototype = {
   },
   backgroundColorChange: function(value) {
     var val = value.toHEXString();
-    $("body").css('background', val);
+    $("body").css('background-color', val);
     backgroundColor = val.toLowerCase();
   },
   backgroundColor2Change: function(value) {
     var val = value.toHEXString();
-    $("body").css('box-shadow', '0 0 ' + gradientSize + 'px ' +  val + ' inset');
+    $("body").css('box-shadow', '0 0 ' + gradientSize + 'px ' + val + ' inset');
     backgroundColor2 = val.toLowerCase();
+  },
+  backImgChange: function(value) {
+    $("body").css('background-image', 'url(' + value + ')');
+    backImg = value;
+    this.centerBackChange();
+    this.repeatBackChange();
+    this.ajustBackChange();
+  },
+  uploadImg: function() {
+    tools.uploadImg(document.getElementById("inputFile").files[0], true);
+  },
+  centerBackChange: function() {
+    if ($('#centerBack_cb').is(":checked")) {
+      $("body").css('background-position', 'center');
+      centerBack = true;
+    } else {
+      $("body").css('background-position', 'left top');
+      centerBack = false;
+    }
+  },
+  repeatBackChange: function() {
+    if ($('#repeatBack_cb').is(":checked")) {
+      $("body").css('background-repeat', 'repeat');
+      repeatBack = true;
+    } else {
+      $("body").css('background-repeat', 'no-repeat');
+      repeatBack = false;
+    }
+  },
+  ajustBackChange: function() {
+    if ($('#ajustBack_cb').is(":checked")) {
+      $("body").css('background-size', 'cover');
+      ajustBack = true;
+    } else {
+      $("body").css('background-size', 'auto');
+      ajustBack = false;
+    }
   },
   gradientSizeChange: function(value) {
     $("body").css('box-shadow', '0 0 ' + value + 'px ' + backgroundColor2 + ' inset');

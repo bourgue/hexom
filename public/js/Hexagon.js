@@ -52,7 +52,7 @@ Hexagon.prototype = {
   },
   mouseOver: function(hexa) {
     if (modifying && !editing && hexa.id != "0")
-      hexa.style.opacity = ".6";
+      hexa.style.opacity = ".7";
   },
   mouseOut: function(hexa) {
     hexa.style.opacity = "1";

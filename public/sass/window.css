@@ -5,7 +5,7 @@
   float: right;
   position: fixed;
   z-index: 1;
-  box-shadow: 0px 0px 30px -10px #000;
+  box-shadow: 0 0 30px -10px #000;
   border: 3px solid #000; }
   .window .titre {
     font-size: 15px;
@@ -14,11 +14,21 @@
     color: #fff;
     width: calc(100% + 10px * 2);
     font-family: RobotoCondensed;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     margin-top: -10px;
     margin-left: -10px;
     text-align: center;
     cursor: move; }
+  .window .subtitle {
+    background: #eee;
+    border: 1px solid #aaa;
+    border-left: 0;
+    border-right: 0;
+    width: calc(100% + 20px);
+    padding: 5px;
+    padding-left: 10px;
+    margin-left: -10px;
+    font-weight: bold; }
   .window .close {
     float: right;
     margin-top: -10px;

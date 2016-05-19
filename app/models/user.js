@@ -17,7 +17,11 @@ var userSchema = mongoose.Schema({
     bg_color2: String,
     lang: String,
     show_searchbar: Boolean,
-    search_pos: Number
+    search_pos: Number,
+    center_bg: Boolean,
+    repeat_bg: Boolean,
+    ajust_bg: Boolean,
+    back_img: String
   }
 });
 

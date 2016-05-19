@@ -11,19 +11,16 @@ function LangManager() {
   this.words = {
     "PARAMS_GENE": ["General settings", "Paramètres généraux"],
     "CHANGE_LANG": ["Change language :", "Changer la langue :"],
-    "BACK_COLOR": ["Background color :", "Couleur de fond :"],
+    "BACK_COLOR": ["Color :", "Couleur :"],
     "GRADIENT_SIZE": ["Gradient size :", "Taille du dégradé :"],
-    "HEXA_SIZE": ["Hexagons size :", "Taille des hexagones :"],
-    "HEXA_OP": ["Hexagons opacity :", "Opacité des hexagones :"],
-    "SAVE_KEY": ["Save key :", "Clé de sauvegarde :"],
+    "SIZE": ["Size :", "Taille :"],
     "CREATE": ["CREATE", "CREER"],
-    "SAVE": ["Save", "Sauvegarder"],
     "PARAMS_HEXA": ["Hexagon settings", "Paramètres de l\'hexagone"],
     "LINK": ["Link :", "Lien :"],
     "DELETE": ["Delete", "Supprimer"],
     "SEARCH_BAR": ["Search on Google", "Chercher sur Google"],
     "IMG": ["Picture (url):", "Image (url):"],
-    "IMG_SIZE": ["Picture size :", "Taille de l'image :"],
+    // "IMG_SIZE": ["Picture size :", "Taille de l'image :"],
     "ADD_HEXA": ["Add hexagon", "Ajouter un hexagone"],
     "MODIF_HEXA": ["Modify hexagon", "Modifier un hexagone"],
     "LOGIN": ["Sign in", "Se connecter"],
@@ -46,11 +43,19 @@ function LangManager() {
     "ALREADYACC": ["Already have an account ?", "Vous avez déjà un compte ?"],
     "HELLO": ["Hello, ", "Bonjour, "],
     "UPLOAD_IMG": ["Upload picture", "Envoyer une image"],
-    "HEXA_MARGIN": ["Space between hexagons :", "Espacement des hexagones :"],
-    "SHOW_SEARCHBAR": ["Show search bar", "Barre de recherche"],
+    "HEXA_MARGIN": ["Spacing :", "Espacement :"],
+    "SHOW_SEARCHBAR": ["Showed", "Affichée"],
     "TEXT": ["Text :", "Texte :"],
-    "TEXT_COLOR": ["Text color :", "Couleur du texte :"],
-    "SEARCHBAR_POS": ["Search bar position :", "Position de la barre :"]
+    // "TEXT_COLOR": ["Text color :", "Couleur du texte :"],
+    "SEARCHBAR_POS": ["Position :", "Position :"],
+    "BACKIMG": ["Image :", "Image :"],
+    "CENTERBACK": ["Center", "Centrer"],
+    "REPEATBACK": ["Repeat", "Répéter"],
+    "AJUSTBACK": ["Ajust", "Ajuster"],
+    "BACKGROUND": ["Background", "Fond"],
+    "HEXA": ["Hexagons", "Hexagones"],
+    "SEARCHBAR": ["Search bar", "Barre de recherche"],
+    "TEXT_TITLE": ["Text", "Texte"]
   };
 }
 
@@ -63,13 +68,12 @@ LangManager.prototype = {
     $("#lang").html(this.word("CHANGE_LANG"));
     $("#backColor").html(this.word("BACK_COLOR"));
     $("#gradientSize").html(this.word("GRADIENT_SIZE"));
-    $("#hexaSize").html(this.word("HEXA_SIZE"));
-    $("#save").html(this.word("SAVE"));
+    $("#hexaSize").html(this.word("SIZE"));
     $("#paramsHexaTitle").html(this.word("PARAMS_HEXA"));
     $("#deleteButton").html(this.word("DELETE"));
     $("#link").html(this.word("LINK"));
     $("#img").html(this.word("IMG"));
-    $("#imgSize").html(this.word("IMG_SIZE"));
+    $("#imgSize").html(this.word("SIZE"));
     $("#backcolorhexa").html(this.word("BACK_COLOR"));
     $("#searchBar").attr("placeholder", this.word("SEARCH_BAR"));
     $("#addHexa").html(this.word("ADD_HEXA"));
@@ -82,8 +86,16 @@ LangManager.prototype = {
     $("#marginSize").html(this.word("HEXA_MARGIN"));
     $("#showSearchBar").html(this.word("SHOW_SEARCHBAR"));
     $("#text").html(this.word("TEXT"));
-    $("#textColor").html(this.word("TEXT_COLOR"));
+    $("#textColor").html(this.word("BACK_COLOR"));
     $("#searchPos").html(this.word("SEARCHBAR_POS"));
+    $("#backImg").html(this.word("BACKIMG"));
+    $("#centerBack").html(this.word("CENTERBACK"));
+    $("#repeatBack").html(this.word("REPEATBACK"));
+    $("#ajustBack").html(this.word("AJUSTBACK"));
+    $("#bg_title").html(this.word("BACKGROUND"));
+    $("#hexa_title").html(this.word("HEXA"));
+    $("#search_title").html(this.word("SEARCHBAR"));
+    $("#text_title").html(this.word("TEXT_TITLE"));
 
     // LOGIN & REGISTER
     $("#username_lbl").html(this.word("USERNAME"));

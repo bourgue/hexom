@@ -96,6 +96,10 @@ function save(req) {
       userDoc.infos.lang = req.body.lang;
       userDoc.infos.show_searchbar = req.body.show_searchbar;
       userDoc.infos.search_pos = req.body.search_pos;
+      userDoc.infos.center_bg = req.body.center_bg;
+      userDoc.infos.repeat_bg = req.body.repeat_bg;
+      userDoc.infos.ajust_bg = req.body.ajust_bg;
+      userDoc.infos.back_img = req.body.back_img;
 
       userDoc.save();
     }

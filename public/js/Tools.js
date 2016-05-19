@@ -15,6 +15,10 @@ Tools.prototype = {
     data.lang = langManager.language;
     data.show_searchbar = showSearchBar;
     data.search_pos = searchPos;
+    data.center_bg = centerBack;
+    data.repeat_bg = repeatBack;
+    data.ajust_bg = ajustBack;
+    data.back_img = backImg;
 
     dataFromDB.infos = data;
 
@@ -25,7 +29,7 @@ Tools.prototype = {
       url: "./save"
     });
   },
-  uploadImg: function(file) {
+  uploadImg: function(file, background) {
     $("#loadImg").css({
       display: "block"
     });
@@ -43,8 +47,13 @@ Tools.prototype = {
         type: 'POST',
         url: "./upload"
       }).success(function(response) {
-        $("#urlImg").val(response.imgUrl);
-        ParamsWindowHexa.prototype.imgChange(response.imgUrl);
+        if (!background) {
+          $("#urlImg").val(response.imgUrl);
+          ParamsWindowHexa.prototype.imgChange(response.imgUrl);
+        } else {
+          $("#backImg_ipt").val(response.imgUrl);
+          ParamsWindow.prototype.backImgChange(response.imgUrl);
+        }
         $("#loadImg").css({
           display: "none"
         });
