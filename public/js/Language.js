@@ -92,10 +92,11 @@ LangManager.prototype = {
     $("#centerBack").html(this.word("CENTERBACK"));
     $("#repeatBack").html(this.word("REPEATBACK"));
     $("#ajustBack").html(this.word("AJUSTBACK"));
-    $("#bg_title").html(this.word("BACKGROUND"));
-    $("#hexa_title").html(this.word("HEXA"));
-    $("#search_title").html(this.word("SEARCHBAR"));
-    $("#text_title").html(this.word("TEXT_TITLE"));
+    $("#bg_grp.subtitle").html(this.word("BACKGROUND"));
+    $("#bgHexa_grp.subtitle").html(this.word("BACKGROUND"));
+    $("#hexa_grp.subtitle").html(this.word("HEXA"));
+    $("#search_grp.subtitle").html(this.word("SEARCHBAR"));
+    $("#text_grp.subtitle").html(this.word("TEXT_TITLE"));
 
     // LOGIN & REGISTER
     $("#username_lbl").html(this.word("USERNAME"));

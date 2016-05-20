@@ -8,6 +8,7 @@ $window_padding: 10px;
   z-index: 1;
   box-shadow: 0 0 30px -10px #000;
   border: 3px solid #000;
+  height:auto !important;
   .titre {
     font-size: 15px;
     margin-bottom: 10px;
@@ -31,6 +32,21 @@ $window_padding: 10px;
     padding-left: 10px;
     margin-left: -10px;
     font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+  }
+  .subtitle:hover{
+    background: #000;
+    border-color: #000;
+    color: #fff;
+  }
+  .subtitle.selected{
+    background: #000;
+    border-color: #000;
+    color: #fff;
+  }
+  .group{
+    display: none;
   }
   .close {
     float: right;

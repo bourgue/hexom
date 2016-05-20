@@ -14,14 +14,14 @@ function ParamsWindowHexa(id) {
     '<div class="titre" id="paramsHexaTitle"></div>' +
     '<ul>' +
     '<li>' + '<div id="link"></div>' + '<input id="url" type="text" value="' + hexaLink + '" maxLength=200 placeholder="ex: google.fr" autofocus/>' + '</li>' +
-    '<li>' + '<p id="text_title" class="subtitle"></p>' + '</li>'+
-    '<li>' + '<div id="text"></div>' + '<input id="text_ipt" type="text" value="' + hexaText + '" maxLength=30 placeholder="ex: Google" oninput="ParamsWindowHexa.prototype.textChange(htmlEncode(this.value))"/>' + '</li>' +
-    '<li>' + '<div id="textColor"></div>' + '<input id="textColor_ipt" value="' + hexaTextColor + '" class="jscolor {onFineChange:\'ParamsWindowHexa.prototype.textColorChange(this);\', uppercase:false, hash:true}"/>' + '</li>' +
-    '<li>' + '<p id="bg_title" class="subtitle"></p>' + '</li>'+
-    '<li>' + '<div id="backcolorhexa"></div>' + '<input id="colorHexa" value="' + hexaColor + '" class="jscolor {onFineChange:\'ParamsWindowHexa.prototype.colorChange(this);\', uppercase:false, hash:true}"/>' + '</li>' +
+    '<li>' + '<p id="text_grp" class="subtitle" onclick="ParamsWindow.prototype.clickOnSubtitle(this)"></p>' + '</li>'+
+    '<div id="text_grp" class="group"><li>' + '<div id="text"></div>' + '<input id="text_ipt" type="text" value="' + hexaText + '" maxLength=30 placeholder="ex: Google" oninput="ParamsWindowHexa.prototype.textChange(htmlEncode(this.value))"/>' + '</li>' +
+    '<li>' + '<div id="textColor"></div>' + '<input id="textColor_ipt" value="' + hexaTextColor + '" class="jscolor {onFineChange:\'ParamsWindowHexa.prototype.textColorChange(this);\', uppercase:false, hash:true}"/>' + '</li></div>' +
+    '<li>' + '<p id="bgHexa_grp" class="subtitle" onclick="ParamsWindow.prototype.clickOnSubtitle(this)"></p>' + '</li>'+
+    '<div id="bgHexa_grp" class="group"><li>' + '<div id="backcolorhexa"></div>' + '<input id="colorHexa" value="' + hexaColor + '" class="jscolor {onFineChange:\'ParamsWindowHexa.prototype.colorChange(this);\', uppercase:false, hash:true}"/>' + '</li>' +
     '<li>' + '<div id="img"></div><img src="/img/loader.gif" id="loadImg" maxLength=250 style="position:absolute;right:15px;transform:translateY(-20px);display:none;">' + '<input id="urlImg" name="imgInput" type="text" value="' + hexaImg + '" placeholder="ex: url.com/image.png" oninput="ParamsWindowHexa.prototype.imgChange(htmlEncode(this.value));"/>' + '</li>' +
     '<li>' + '<input type="file" accept="image/*" id="inputFile" onchange="ParamsWindowHexa.prototype.uploadImg()"><label for="inputFile" id="uploadButton" class="button"></label>' + '</li>' +
-    '<li>' + '<div id="imgSize"></div>' + '<input id="imgSize" value="' + hexaImgSize + '" max="400" min="8" step="2" type="range" oninput="ParamsWindowHexa.prototype.imgSizeChange(htmlEncode(this.value))"/>' + '</li>' +
+    '<li>' + '<div id="imgSize"></div>' + '<input id="imgSize" value="' + hexaImgSize + '" max="400" min="8" step="2" type="range" oninput="ParamsWindowHexa.prototype.imgSizeChange(htmlEncode(this.value))"/>' + '</li></div>' +
     '<li>' + '<div id="deleteButton" class="button" onclick="ParamsWindowHexa.prototype.deleteHexa();"></div>' + '</li>' +
     '<li>' + '<div id="okButton" class="button" onclick="ParamsWindowHexa.prototype.submit()"></div>' + '</li>' +
     '</ul>' +
