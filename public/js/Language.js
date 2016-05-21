@@ -11,7 +11,8 @@ function LangManager() {
   this.words = {
     "PARAMS_GENE": ["General settings", "Paramètres généraux"],
     "CHANGE_LANG": ["Change language :", "Changer la langue :"],
-    "BACK_COLOR": ["Color :", "Couleur :"],
+    "COLOR": ["Color :", "Couleur :"],
+    "COLORS": ["Colors :", "Couleurs :"],
     "GRADIENT_SIZE": ["Gradient size :", "Taille du dégradé :"],
     "SIZE": ["Size :", "Taille :"],
     "CREATE": ["CREATE", "CREER"],
@@ -20,23 +21,9 @@ function LangManager() {
     "DELETE": ["Delete", "Supprimer"],
     "SEARCH_BAR": ["Search on Google", "Chercher sur Google"],
     "IMG": ["Picture (url):", "Image (url):"],
-    // "IMG_SIZE": ["Picture size :", "Taille de l'image :"],
     "ADD_HEXA": ["Add hexagon", "Ajouter un hexagone"],
     "MODIF_HEXA": ["Modify hexagon", "Modifier un hexagone"],
-    "LOGIN": ["Sign in", "Se connecter"],
-    "USERNAME": ["Username :", "Nom d'utilisateur :"],
-    "PASSWORD": ["Password :", "Mot de passe :"],
-    "REGISTER": ["Sign up", "S'enregistrer"],
-    "EMAIL": ["Email address :", "Adresse e-mail :"],
-    "EMAIL_ERROR": ["Invalid email !", "E-mail invalide !"],
-    "USERNAME_ERROR": ["Username already taken !", "Nom d'utilisateur déjà prit !"],
-    "NEW_USER": ["Your account is created, you can sign in with it", "Votre compte est crée, vous pouvez vous connecter"],
-    "NO_ACCOUNT": ["This account doesn't exist !", "Ce compte n'existe pas !"],
-    "MDP_ERROR": ["Invalid password !", "Mot de passe incorrect !"],
-    "SAVE_CONFIRM": ["Your menu has been saved", "Votre menu a été sauvegardé"],
     "LOGOUT": ["Sign out", "Se déconnecter"],
-    "CONNECT_INFO": ["Sign in to save your menu", "Connectez-vous pour sauvegarder votre menu"],
-    "WELCOME": ["Welcome to HexaMenu", "Bienvenue sur HexaMenu"],
     "OK": ["Submit", "Valider"],
     "CONN": ["Sign in", "Connexion"],
     "NOACC": ["No account yet ?", "Pas encore de compte ?"],
@@ -46,7 +33,6 @@ function LangManager() {
     "HEXA_MARGIN": ["Spacing :", "Espacement :"],
     "SHOW_SEARCHBAR": ["Showed", "Affichée"],
     "TEXT": ["Text :", "Texte :"],
-    // "TEXT_COLOR": ["Text color :", "Couleur du texte :"],
     "SEARCHBAR_POS": ["Position :", "Position :"],
     "BACKIMG": ["Image :", "Image :"],
     "CENTERBACK": ["Center", "Centrer"],
@@ -55,7 +41,28 @@ function LangManager() {
     "BACKGROUND": ["Background", "Fond"],
     "HEXA": ["Hexagons", "Hexagones"],
     "SEARCHBAR": ["Search bar", "Barre de recherche"],
-    "TEXT_TITLE": ["Text", "Texte"]
+    "TEXT_TITLE": ["Text", "Texte"],
+
+    // LOGIN & REGISTER
+    "LOGIN": ["Sign in", "Se connecter"],
+    "USERNAME": ["Username :", "Nom d'utilisateur :"],
+    "PASSWORD": ["Password :", "Mot de passe :"],
+    "REGISTER": ["Sign up", "S'enregistrer"],
+    "EMAIL": ["Email address :", "Adresse e-mail :"],
+
+    // LOGIN ERRORS MESSAGES
+    "USERNAME_NOTEXIST": ["This account doesn't exist.", "Ce compte n'existe pas."],
+    "PASSWORD_WRONG": ["Incorrect password.", "Mauvais mot de passe."],
+
+    // REGISTER ERRORS MESSAGES
+    "USERNAME_INVALID": ["Invalid username.", "Nom d'utilisateur invalide."],
+    "USERNAME_SHORT": ["Username too short.", "Nom d'utilisateur trop court."],
+    "USERNAME_LONG": ["Username too long.", "Nom d'utilisateur trop long."],
+    "USERNAME_EXIST": ["Username already exist.", "Nom d'utilisateur déjà existant."],
+    "PASSWORD_SHORT": ["Password too short.", "Mot de passe trop court."],
+    "PASSWORD_LONG": ["Password too long.", "Mot de passe trop long."],
+    "EMAIL_INVALID": ["Invalid email.", "Email invalide."],
+    "EMAIL_EXIST": ["Email already exist.", "Email déjà existante."]
   };
 }
 
@@ -66,7 +73,7 @@ LangManager.prototype = {
   setLanguage: function() {
     $("#paramsTitle").html(this.word("PARAMS_GENE"));
     $("#lang").html(this.word("CHANGE_LANG"));
-    $("#backColor").html(this.word("BACK_COLOR"));
+    $("#backColor").html(this.word("COLORS"));
     $("#gradientSize").html(this.word("GRADIENT_SIZE"));
     $("#hexaSize").html(this.word("SIZE"));
     $("#paramsHexaTitle").html(this.word("PARAMS_HEXA"));
@@ -74,8 +81,7 @@ LangManager.prototype = {
     $("#link").html(this.word("LINK"));
     $("#img").html(this.word("IMG"));
     $("#imgSize").html(this.word("SIZE"));
-    $("#backcolorhexa").html(this.word("BACK_COLOR"));
-    $("#searchBar").attr("placeholder", this.word("SEARCH_BAR"));
+    $("#backcolorhexa").html(this.word("COLOR"));
     $("#addHexa").html(this.word("ADD_HEXA"));
     $("#generalParams").html(this.word("PARAMS_GENE"));
     $("#modifHexa").html(this.word("MODIF_HEXA"));
@@ -84,9 +90,10 @@ LangManager.prototype = {
     $("#hello").html(this.word("HELLO"));
     $("#uploadButton").html(this.word("UPLOAD_IMG"));
     $("#marginSize").html(this.word("HEXA_MARGIN"));
+    $("#searchBar").attr("placeholder", this.word("SEARCH_BAR"));
     $("#showSearchBar").html(this.word("SHOW_SEARCHBAR"));
     $("#text").html(this.word("TEXT"));
-    $("#textColor").html(this.word("BACK_COLOR"));
+    $("#textColor").html(this.word("COLOR"));
     $("#searchPos").html(this.word("SEARCHBAR_POS"));
     $("#backImg").html(this.word("BACKIMG"));
     $("#centerBack").html(this.word("CENTERBACK"));
@@ -105,13 +112,28 @@ LangManager.prototype = {
     $("#noacc").html(this.word("NOACC"));
     $("#signin_button").html(this.word("LOGIN"));
     $("#signup").html(this.word("REGISTER"));
+    $("#signup_button").html(this.word("REGISTER"));
     $("#already_acc").html(this.word("ALREADYACC"));
     $("#signin_button").html(this.word("LOGIN"));
     $("#register").html(this.word("REGISTER"));
     $("#logout_button").html(this.word("LOGOUT"));
+
+    // LOGIN ERRORS MESSAGES
+    $("#username_not_exist").html(this.word("USERNAME_NOTEXIST"));
+    $("#password_wrong").html(this.word("PASSWORD_WRONG"));
+
+    // REGISTER ERRORS MESSAGES
+    $("#username_invalid").html(this.word("USERNAME_INVALID"));
+    $("#username_short").html(this.word("USERNAME_SHORT"));
+    $("#username_long").html(this.word("USERNAME_LONG"));
+    $("#username_exist").html(this.word("USERNAME_EXIST"));
+    $("#password_short").html(this.word("PASSWORD_SHORT"));
+    $("#password_long").html(this.word("PASSWORD_LONG"));
+    $("#email_invalid").html(this.word("EMAIL_INVALID"));
+    $("#email_exist").html(this.word("EMAIL_EXIST"));
   },
   word: function(w){
-    return this.words[w][this.langId[this.language]] || "";
+    return this.words[w][this.langId[this.language]];
   },
   navigatorLang: function() {
     var navLang;

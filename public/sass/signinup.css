@@ -52,6 +52,9 @@ a:hover {
   color: #660000;
   text-decoration: none; }
 
+.error {
+  margin-top: 5px; }
+
 .flag {
   cursor: pointer; }
 
