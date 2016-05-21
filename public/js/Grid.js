@@ -14,12 +14,12 @@ function Grid() {
 
   this.hexagonsSize = {
     x: 100 * this.scale,
-    y: Math.round(Math.sqrt((100 * this.scale) * (100 * this.scale) + (58 * this.scale) * (58 * this.scale)) * 100 * this.scale) / 100 * this.scale
+    y: Math.round(Math.sqrt((100 * this.scale) * (100 * this.scale) + (57 * this.scale) * (57 * this.scale)) * 100 * this.scale) / 100 * this.scale
   };
 
   this.hexagonsDifference = {
     x: this.hexagonsSize.x - 100 * this.scale,
-    y: this.hexagonsSize.y - 58 * this.scale
+    y: this.hexagonsSize.y - 57 * this.scale
   };
 
   this.updateHexaPosition();

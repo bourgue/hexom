@@ -72,7 +72,7 @@ Tools.prototype = {
 
     var f = {
       x: grid.position.x - grid.hexagonsSize.x / 2 + grid.hexagonsDifference.x / 2 + 100 * grid.scale * hexPos.x + grid.hexagonsMargin * hexPos.x,
-      y: grid.position.y - grid.hexagonsSize.y / 2 + grid.hexagonsDifference.y / 2 + (57 + grid.hexagonsDifference.y / 2) * grid.scale * hexPos.y + grid.hexagonsMargin * hexPos.y
+      y: grid.position.y - grid.hexagonsSize.y / 2 + grid.hexagonsDifference.y / 2 + (57 + grid.hexagonsDifference.y / 2) * grid.scale * hexPos.y + grid.hexagonsMargin * hexPos.y + (grid.hexagonsSize.y - 57) / 4 + 4
     };
 
     if (hexPos.y % 2 !== 0)
