@@ -40,24 +40,34 @@ Tools.prototype = {
       var data = {};
       data.uri = reader.result;
       data.id = Math.random().toString(36).substring(7);
-
-      $.ajax({
-        contentType: 'application/json',
-        data: JSON.stringify(data),
-        type: 'POST',
-        url: "./upload"
-      }).success(function(response) {
+      if (data.uri.length < 5000000) {
+        $.ajax({
+          contentType: 'application/json',
+          data: JSON.stringify(data),
+          type: 'POST',
+          url: "./upload"
+        }).success(function(response) {
+          if (!background) {
+            $("#urlImg").val(response.imgUrl);
+            ParamsWindowHexa.prototype.imgChange(response.imgUrl);
+          } else {
+            $("#backImg_ipt").val(response.imgUrl);
+            ParamsWindow.prototype.backImgChange(response.imgUrl);
+          }
+          $("#loadImg").css({
+            display: "none"
+          });
+        });
+      } else {
         if (!background) {
-          $("#urlImg").val(response.imgUrl);
-          ParamsWindowHexa.prototype.imgChange(response.imgUrl);
+          $("#urlImg").val("Too large, ~4MB max.");
         } else {
-          $("#backImg_ipt").val(response.imgUrl);
-          ParamsWindow.prototype.backImgChange(response.imgUrl);
+          $("#backImg_ipt").val("Too large, ~4MB max.");
         }
         $("#loadImg").css({
           display: "none"
         });
-      });
+      }
     }, false);
 
     if (file) {
@@ -108,12 +118,16 @@ Tools.prototype = {
 
     return infos;
   },
-  exist: function(pos, array) {
-    var result = $.grep(array, function(e) {
+  exist: function(pos) {
+    var result = $.grep(grid.hexagons, function(e) {
       return e.position.x == pos.x && e.position.y == pos.y;
     });
 
-    if (result.length > 0)
+    var result2 = $.grep(grid.previewHexas, function(e) {
+      return e.position.x == pos.x && e.position.y == pos.y;
+    });
+
+    if (result.length + result2.length > 0)
       return true;
     else
       return false;

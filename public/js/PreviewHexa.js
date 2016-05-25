@@ -30,8 +30,7 @@ PreviewHexa.prototype = {
 
       grid.removePreviewHexa();
       var paramsWindowHexa = new ParamsWindowHexa(grid.hexagons.length - 1);
-    } else
-      $("#paramsWindowHexa").effect("shake");
+    }
   },
   updateRealPosition: function() {
     this.realPosition = tools.convertToRealPosition(this.position);

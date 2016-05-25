@@ -64,7 +64,7 @@ Grid.prototype = {
           };
         }
 
-        if (!tools.exist(tmp_pos, this.hexagons) && !tools.exist(tmp_pos, this.previewHexas)) {
+        if (!tools.exist(tmp_pos)) {
           this.addPreviewHexa(this.previewHexas.length, tmp_pos);
         }
       }

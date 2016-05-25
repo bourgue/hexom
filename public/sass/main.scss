@@ -45,6 +45,7 @@ body {
   transition: opacity 0.4s;
   background: url('../img/github_logo.png') center center;
   background-size: 100% 100%;
+  z-index:10;
 }
 #github_button:hover {
   opacity: .4;
@@ -62,4 +63,13 @@ a:focus {
 }
 .jscolor{
   border: 1px solid #000;
+}
+#user_info{
+  font-size: 18px;
+  position: absolute;
+  text-align:right;
+  right: 10px;
+  top:10px;
+  color: #000;
+  z-index:10;
 }

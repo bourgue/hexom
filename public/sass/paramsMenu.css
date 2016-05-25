@@ -24,20 +24,10 @@
   margin: 0; }
 
 #paramsMenu li:hover {
-  background: #111111;
+  background: #000;
   color: #fff; }
-
-li#connect, li#register, li#logout {
-  background-color: #111111;
-  color: #fff;
-  border-color: #000; }
 
 #paramsMenu li:last-child {
   border-width: 0px; }
-
-li#connect:hover, li#register:hover, li#logout:hover {
-  background-color: #ddd;
-  color: #000;
-  border-color: #ccc; }
 
 /*# sourceMappingURL=paramsMenu.css.map */
