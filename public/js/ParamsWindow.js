@@ -37,10 +37,6 @@ function ParamsWindow() {
   $("#closeIcon").click(function() {
     ParamsWindow.prototype.undoModifications();
   });
-
-  $("#importExport_grp.subtitle").click(function() {
-
-  });
 }
 
 ParamsWindow.prototype = {
@@ -90,19 +86,15 @@ ParamsWindow.prototype = {
       "class": "subtitle"
     });
     if ($('#' + subtitle.id + ".group").css("display") == "block") {
-      $('#' + subtitle.id + ".group").slideUp(500, function(){
-        $("#import_ipt").val("");
-        $("#codeError").hide();
-      });
+      $('#' + subtitle.id + ".group").slideUp(500);
     } else {
+
       if (subtitle.id == "importExport_grp") {
-        tools.save();
-        $("#export_p").html(JSON.stringify(dataFromDB.infos));
-      }
-      $('#' + subtitle.id + ".group").slideDown(500, function(){
         $("#import_ipt").val("");
         $("#codeError").hide();
-      });
+      }
+
+      $('#' + subtitle.id + ".group").slideDown(500);
       $('#' + subtitle.id + ".subtitle").attr({
         "class": "subtitle selected"
       });
@@ -169,9 +161,10 @@ ParamsWindow.prototype = {
   import: function(code) {
     if (tools.isJsonCorrect(code) && tools.isJsonCorrect(JSON.parse(code).hexagons)) {
       init(username, tools.setInfosValid(code));
+      $("#export_p").html(JSON.stringify(tools.setInfosValid(code)));
       $("#codeError").slideUp(180);
     } else {
-      if(code.length > 0)
+      if (code.length > 0)
         $("#codeError").slideDown(180);
       else
         $("#codeError").slideUp(180);

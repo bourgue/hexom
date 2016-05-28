@@ -110,7 +110,6 @@ function init(username, data) {
 
   paramsWindow.backImgChange(backImg);
 
-  dataFromDB.infos = data;
   $("#export_p").html(JSON.stringify(dataFromDB.infos));
 
   grid.update(data);
