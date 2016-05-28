@@ -131,5 +131,93 @@ Tools.prototype = {
       return true;
     else
       return false;
+  },
+  copyTextToClipboard: function(text) {
+    var textArea = document.createElement("textarea");
+
+    textArea.style.position = 'fixed';
+    textArea.style.top = 0;
+    textArea.style.left = 0;
+
+    textArea.style.width = '2em';
+    textArea.style.height = '2em';
+
+    textArea.style.padding = 0;
+
+    textArea.style.border = 'none';
+    textArea.style.outline = 'none';
+    textArea.style.boxShadow = 'none';
+
+    textArea.style.background = 'transparent';
+
+    textArea.value = text;
+
+    document.body.appendChild(textArea);
+
+    textArea.select();
+
+    try {
+      var successful = document.execCommand('copy');
+    } catch (err) {
+      console.log('Unable to copy \:\(');
+    }
+
+    document.body.removeChild(textArea);
+  },
+  isJsonCorrect: function(str) {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  },
+  setInfosValid: function(infosStr) {
+    var infos = JSON.parse(infosStr);
+
+    if (infos.hexa_size)
+      if (infos.hexa_size < 0.4) infos.hexa_size = 0.4;
+      else if (infos.hexa_size > 3) infos.hexa_size = 3;
+
+    if (infos.hexa_margin)
+      if (infos.hexa_margin < 0) infos.hexa_margin = 0;
+      else if (infos.hexa_margin > 200) infos.hexa_margin = 200;
+
+    if (infos.gradient_size)
+      if (infos.gradient_size < 0) infos.gradient_size = 0;
+      else if (infos.gradient_size > 300) infos.gradient_size = 300;
+
+    if (infos.bg_color)
+      if (infos.bg_color.length > 7) infos.bg_color = infos.bg_color.substring(0, 8);
+
+    if (infos.bg_color2)
+      if (infos.bg_color2.length > 7) infos.bg_color2 = infos.bg_color2.substring(0, 8);
+
+    if (infos.lang)
+      if (infos.lang.length > 2) infos.lang = infos.lang.substring(0, 3);
+
+    if (infos.search_pos)
+      if (infos.search_pos < 0) infos.search_pos = 0;
+      else if (infos.search_pos > 100) infos.search_pos = 100;
+
+    if (infos.back_img)
+      if (infos.back_img.length > 250) infos.back_img.substring(0, 251);
+
+    var hexagons = JSON.parse(infos.hexagons);
+
+    if (hexagons.length >= 0) hexagons[0] = {
+      "id": 0,
+      "color": "#000000",
+      "image": "/img/gear.png",
+      "imgSize": 80,
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    };
+
+    infos.hexagons = JSON.stringify(hexagons);
+
+    return infos;
   }
 };

@@ -7,7 +7,7 @@ function ParamsWindow() {
     '<li>' + '<p id="bg_grp" class="subtitle" onclick="ParamsWindow.prototype.clickOnSubtitle(this)"></p>' + '</li>' +
     '<div class="group" id="bg_grp"><li>' + '<div id="backColor"></div>' + '<div id="colorIpt_container"><input id="backgroundColor_ipt" class="jscolor {onFineChange:\'ParamsWindow.prototype.backgroundColorChange(this);\', uppercase:false, hash:true}"/>' + '<input id="backgroundColor2_ipt" class="jscolor {onFineChange:\'ParamsWindow.prototype.backgroundColor2Change(this);\', uppercase:false, hash:true}"/></div>' + '</li>' +
     '<li>' + '<div id="gradientSize"></div>' + '<input id="gradientSize_ipt" value="200" max="300" min="0" step="2" type="range" oninput="ParamsWindow.prototype.gradientSizeChange(this.value)"/>' + '</li>' +
-    '<li>' + '<div id="backImg"></div><img src="/img/loader.gif" id="loadImg" maxLength=250 style="position:absolute;right:15px;transform:translateY(-20px);display:none;">' + '<input id="backImg_ipt" name="backImg_ipt" type="text" value="' + backImg + '" placeholder="ex: url.com/image.png" oninput="ParamsWindow.prototype.backImgChange(htmlEncode(this.value));"/>' + '</li>' +
+    '<li>' + '<div id="backImg"></div><img src="/img/loader.gif" id="loadImg" style="position:absolute;right:15px;transform:translateY(-20px);display:none;">' + '<input id="backImg_ipt" name="backImg_ipt" type="text" maxLength="250" value="' + backImg + '" placeholder="ex: url.com/image.png" oninput="ParamsWindow.prototype.backImgChange(htmlEncode(this.value));"/>' + '</li>' +
     '<li>' + '<input type="file" accept="image/*" id="inputFile" onchange="ParamsWindow.prototype.uploadImg()"><label for="inputFile" id="uploadButton" class="button"></label>' + '</li>' +
     '<li>' + '<input type="checkbox" id="centerBack_cb" name="centerBack_cb" onchange="ParamsWindow.prototype.centerBackChange()" style="width:20px; display:inline;"><label for="centerBack_cb" id="centerBack" style="display:inline;font-weight:normal;"></label>' + '</li>' +
     '<li>' + '<input type="checkbox" id="repeatBack_cb" name="repeatBack_cb" onchange="ParamsWindow.prototype.repeatBackChange()" style="width:20px; display:inline;"><label for="repeatBack_cb" id="repeatBack" style="display:inline;font-weight:normal;"></label>' + '</li>' +
@@ -18,6 +18,10 @@ function ParamsWindow() {
     '<li>' + '<p id="search_grp" class="subtitle" onclick="ParamsWindow.prototype.clickOnSubtitle(this)"></p>' + '</li>' +
     '<div class="group" id="search_grp"><li>' + '<input type="checkbox" id="showSearchBar_cb" name="showSearchBar_cb" onchange="ParamsWindow.prototype.showSearchBarChange()" style="width:20px; display:inline;"><label for="showSearchBar_cb" id="showSearchBar" style="display:inline;font-weight:normal;"></label>' + '</li>' +
     '<li>' + '<div id="searchPos"></div>' + '<input id="searchPos_ipt" value="10" max="100" min="0" step="0.5" type="range" oninput="ParamsWindow.prototype.searchPosChange(this.value)"/>' + '</li></div>' +
+    '<li>' + '<p id="importExport_grp" class="subtitle" onclick="ParamsWindow.prototype.clickOnSubtitle(this)"></p>' + '</li>' +
+    '<div class="group" id="importExport_grp">' + '<li>' + '<div id="import"></div>' + '<input type="text" id="import_ipt" oninput="ParamsWindow.prototype.import(this.value)"/>' + '<div id="codeError"></div>' + '</li>' +
+    '<li>' + '<div id="export"></div>' + '<p id="export_p"></p>' + '</li>' +
+    '<li>' + '<div id="exportButton" class="button" onclick="ParamsWindow.prototype.export()"></div>' + '</li></div>' +
     '<li>' + '<div id="paramsSubmitButton" class="button" onclick="ParamsWindow.prototype.submit()"></div>' + '</li>' +
     '</ul>' +
     '</div>');
@@ -32,6 +36,10 @@ function ParamsWindow() {
 
   $("#closeIcon").click(function() {
     ParamsWindow.prototype.undoModifications();
+  });
+
+  $("#importExport_grp.subtitle").click(function() {
+
   });
 }
 
@@ -82,9 +90,19 @@ ParamsWindow.prototype = {
       "class": "subtitle"
     });
     if ($('#' + subtitle.id + ".group").css("display") == "block") {
-      $('#' + subtitle.id + ".group").slideUp(500);
+      $('#' + subtitle.id + ".group").slideUp(500, function(){
+        $("#import_ipt").val("");
+        $("#codeError").hide();
+      });
     } else {
-      $('#' + subtitle.id + ".group").slideDown(500);
+      if (subtitle.id == "importExport_grp") {
+        tools.save();
+        $("#export_p").html(JSON.stringify(dataFromDB.infos));
+      }
+      $('#' + subtitle.id + ".group").slideDown(500, function(){
+        $("#import_ipt").val("");
+        $("#codeError").hide();
+      });
       $('#' + subtitle.id + ".subtitle").attr({
         "class": "subtitle selected"
       });
@@ -144,6 +162,20 @@ ParamsWindow.prototype = {
     init(username, dataFromDB.infos);
 
     this.close();
+  },
+  export: function() {
+    tools.copyTextToClipboard($("#export_p").text());
+  },
+  import: function(code) {
+    if (tools.isJsonCorrect(code) && tools.isJsonCorrect(JSON.parse(code).hexagons)) {
+      init(username, tools.setInfosValid(code));
+      $("#codeError").slideUp(180);
+    } else {
+      if(code.length > 0)
+        $("#codeError").slideDown(180);
+      else
+        $("#codeError").slideUp(180);
+    }
   },
   submit: function() {
     tools.save();

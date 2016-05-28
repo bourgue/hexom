@@ -66,4 +66,8 @@ li input {
   top: 0;
   right: 0; }
 
+#codeError {
+  display: none;
+  color: #ff0000; }
+
 /*# sourceMappingURL=paramsWindows.css.map */

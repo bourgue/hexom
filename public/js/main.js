@@ -64,30 +64,31 @@ var fadeSpeed = 150;
 
 function init(username, data) {
   username = username;
+  data = tools.setInfosValid(JSON.stringify(data));
   backgroundColor = data.bg_color || "#e10000";
   backgroundColor2 = data.bg_color2 || "#670000";
   grid.scale = data.hexa_size || 1;
   backImg = data.back_img || "";
 
-  if(data.center_bg !== false) centerBack = true;
+  if (data.center_bg !== false) centerBack = true;
   else centerBack = false;
 
-  if(data.repeat_bg !== false) repeatBack = true;
+  if (data.repeat_bg !== false) repeatBack = true;
   else repeatBack = false;
 
-  if(data.ajust_bg !== false) ajustBack = true;
+  if (data.ajust_bg !== false) ajustBack = true;
   else ajustBack = false;
 
-  if(data.show_searchbar !== false) showSearchBar = true;
+  if (data.show_searchbar !== false) showSearchBar = true;
   else showSearchBar = false;
 
-  if(data.gradient_size !== 0) gradientSize = data.gradient_size || 300;
+  if (data.gradient_size !== 0) gradientSize = data.gradient_size || 300;
   else gradientSize = 0;
 
-  if(data.hexa_margin !== 0) grid.hexagonsMargin = data.hexa_margin || 10;
+  if (data.hexa_margin !== 0) grid.hexagonsMargin = data.hexa_margin || 10;
   else grid.hexagonsMargin = data.hexa_margin;
 
-  if(data.search_pos !== 0) searchPos = data.search_pos || 10;
+  if (data.search_pos !== 0) searchPos = data.search_pos || 10;
   else searchPos = data.search_pos;
 
   $("body").css({
@@ -110,6 +111,7 @@ function init(username, data) {
   paramsWindow.backImgChange(backImg);
 
   dataFromDB.infos = data;
+  $("#export_p").html(JSON.stringify(dataFromDB.infos));
 
   grid.update(data);
   search.update();
@@ -139,10 +141,10 @@ $(window).resize(function() {
   grid.updateHexaPosition();
 });
 
-function htmlEncode(value){
+function htmlEncode(value) {
   return $('<div/>').text(value).html();
 }
 
-function htmlDecode(value){
+function htmlDecode(value) {
   return $('<div/>').html(value).text();
 }

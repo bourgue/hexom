@@ -42,6 +42,12 @@ function LangManager() {
     "HEXA": ["Hexagons", "Hexagones"],
     "SEARCHBAR": ["Search bar", "Barre de recherche"],
     "TEXT_TITLE": ["Text", "Texte"],
+    "IMPORT_EXPORT": ["Import/Export", "Importer/Exporter"],
+    "EXPORT": ["Export :", "Exporter :"],
+    "IMPORT": ["Import :", "Importer :"],
+    "COPY_EXPORT_CODE": ["Copy the code", "Copier le code"],
+    "PASTE_HERE": ["Paste a code here", "Collez un code ici"],
+    "CODE_ERROR": ["This code isn't valid.", "Ce code n'est pas valide."],
 
     // LOGIN & REGISTER
     "LOGIN": ["Sign in", "Se connecter"],
@@ -104,6 +110,12 @@ LangManager.prototype = {
     $("#hexa_grp.subtitle").html(this.word("HEXA"));
     $("#search_grp.subtitle").html(this.word("SEARCHBAR"));
     $("#text_grp.subtitle").html(this.word("TEXT_TITLE"));
+    $("#importExport_grp.subtitle").html(this.word("IMPORT_EXPORT"));
+    $("#export").html(this.word("EXPORT"));
+    $("#import").html(this.word("IMPORT"));
+    $("#exportButton").html(this.word("COPY_EXPORT_CODE"));
+    $("#import_ipt").attr("placeholder", this.word("PASTE_HERE"));
+    $("#codeError").html(this.word("CODE_ERROR"));
 
     // LOGIN & REGISTER
     $("#username_lbl").html(this.word("USERNAME"));
@@ -132,7 +144,7 @@ LangManager.prototype = {
     $("#email_invalid").html(this.word("EMAIL_INVALID"));
     $("#email_exist").html(this.word("EMAIL_EXIST"));
   },
-  word: function(w){
+  word: function(w) {
     return this.words[w][this.langId[this.language]];
   },
   navigatorLang: function() {
