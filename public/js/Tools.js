@@ -5,26 +5,11 @@ function Tools() {
 Tools.prototype = {
   constructor: Tools,
   save: function() { // Send data to /save which will put it in the mongodb
-    var data = {};
-    data.hexagons = JSON.stringify(this.getHexaInfos());
-    data.hexa_size = grid.scale;
-    data.hexa_margin = grid.hexagonsMargin;
-    data.gradient_size = gradientSize;
-    data.bg_color = backgroundColor;
-    data.bg_color2 = backgroundColor2;
-    data.lang = langManager.language;
-    data.show_searchbar = showSearchBar;
-    data.search_pos = searchPos;
-    data.center_bg = centerBack;
-    data.repeat_bg = repeatBack;
-    data.ajust_bg = ajustBack;
-    data.back_img = backImg;
-
-    dataFromDB.infos = data;
+    dataFromDB.infos = this.setInfosValid(JSON.stringify(this.getActualInfos()));
 
     $.ajax({
       contentType: 'application/json',
-      data: JSON.stringify(data),
+      data: JSON.stringify(dataFromDB.infos),
       type: 'POST',
       url: "./save"
     });
@@ -118,6 +103,25 @@ Tools.prototype = {
 
     return infos;
   },
+  getActualInfos: function() {
+    var actInfos = {};
+
+    actInfos.hexagons = JSON.stringify(this.getHexaInfos());
+    actInfos.hexa_size = grid.scale;
+    actInfos.hexa_margin = grid.hexagonsMargin;
+    actInfos.gradient_size = gradientSize;
+    actInfos.bg_color = backgroundColor;
+    actInfos.bg_color2 = backgroundColor2;
+    actInfos.lang = langManager.language;
+    actInfos.show_searchbar = showSearchBar;
+    actInfos.search_pos = searchPos;
+    actInfos.center_bg = centerBack;
+    actInfos.repeat_bg = repeatBack;
+    actInfos.ajust_bg = ajustBack;
+    actInfos.back_img = backImg;
+
+    return actInfos;
+  },
   exist: function(pos) {
     var result = $.grep(grid.hexagons, function(e) {
       return e.position.x == pos.x && e.position.y == pos.y;
@@ -205,7 +209,7 @@ Tools.prototype = {
 
     var hexagons = JSON.parse(infos.hexagons);
 
-    if (hexagons.length >= 0) hexagons[0] = {
+    if (hexagons.length > 0) hexagons[0] = {
       "id": 0,
       "color": "#000000",
       "image": "/img/gear.png",

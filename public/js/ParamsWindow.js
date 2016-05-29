@@ -92,6 +92,7 @@ ParamsWindow.prototype = {
       if (subtitle.id == "importExport_grp") {
         $("#import_ipt").val("");
         $("#codeError").hide();
+        $("#export_p").text(JSON.stringify(tools.getActualInfos()));
       }
 
       $('#' + subtitle.id + ".group").slideDown(500);

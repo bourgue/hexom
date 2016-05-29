@@ -61,7 +61,6 @@ var grid = new Grid();
 
 var fadeSpeed = 150;
 
-
 function init(username, data) {
   username = username;
   data = tools.setInfosValid(JSON.stringify(data));
@@ -101,16 +100,14 @@ function init(username, data) {
   $("#gradientSize_ipt").val(gradientSize);
   $("#hexaSize_ipt").val(grid.scale);
   $("#marginSize_ipt").val(grid.hexagonsMargin);
-  $("#centerBack_cb").attr('checked', centerBack);
-  $("#repeatBack_cb").attr('checked', repeatBack);
-  $("#ajustBack_cb").attr('checked', ajustBack);
-  $("#showSearchBar_cb").attr('checked', showSearchBar);
+  $("#centerBack_cb").prop('checked', centerBack);
+  $("#repeatBack_cb").prop('checked', repeatBack);
+  $("#ajustBack_cb").prop('checked', ajustBack);
+  $("#showSearchBar_cb").prop('checked', showSearchBar);
   $("#searchPos_ipt").val(searchPos);
   $("#backImg_ipt").val(backImg);
 
   paramsWindow.backImgChange(backImg);
-
-  $("#export_p").html(JSON.stringify(dataFromDB.infos));
 
   grid.update(data);
   search.update();
@@ -123,6 +120,7 @@ var mouse = {
   x: 0,
   y: 0
 };
+
 $(document).mousedown(function(e) {
   mouse = {
     x: e.pageX,
