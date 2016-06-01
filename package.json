@@ -1,6 +1,6 @@
 {
-  "name": "HexaMenu",
-  "version": "0.0.1",
+  "name": "Hexom",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",

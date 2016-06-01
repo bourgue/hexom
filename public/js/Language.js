@@ -55,6 +55,8 @@ function LangManager() {
     "PASSWORD": ["Password :", "Mot de passe :"],
     "REGISTER": ["Sign up", "S'enregistrer"],
     "EMAIL": ["Email address :", "Adresse e-mail :"],
+    "TITLE_SIGNIN": ["Hexom - Sign in", "Hexom - Connexion"],
+    "TITLE_SIGNUP": ["Hexom - Sign up", "Hexom - S'enregistrer"],
 
     // LOGIN ERRORS MESSAGES
     "USERNAME_NOTEXIST": ["This account doesn't exist.", "Ce compte n'existe pas."],
@@ -129,6 +131,8 @@ LangManager.prototype = {
     $("#signin_button").html(this.word("LOGIN"));
     $("#register").html(this.word("REGISTER"));
     $("#logout_button").html(this.word("LOGOUT"));
+    $("#title_signin").html(this.word("TITLE_SIGNIN"));
+    $("#title_signup").html(this.word("TITLE_SIGNUP"));
 
     // LOGIN ERRORS MESSAGES
     $("#username_not_exist").html(this.word("USERNAME_NOTEXIST"));

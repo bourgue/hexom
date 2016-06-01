@@ -2,17 +2,20 @@ body {
   background: #000;
   color: #fff; }
 
-h1,
 h2 {
   text-align: center; }
 
-h1, h1 * {
-  font-size: 10vw;
+#logo {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   color: #cc0000;
   font-family: RussoOne;
   margin-bottom: 0; }
 
-.textbox, .button {
+.textbox,
+.button {
   border-radius: 4px; }
 
 .button {
@@ -63,28 +66,5 @@ a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); }
-
-#hexagon {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 800px;
-  height: auto; }
-
-#hexagon_line {
-  stroke-dasharray: 242;
-  animation: dash 40s linear infinite; }
-
-@keyframes dash {
-  to {
-    stroke-dashoffset: 2000; } }
-@media only screen and (min-width: 992px) {
-  h1 {
-    font-size: 100px; } }
-@media only screen and (max-width: 992px) {
-  #hexagon {
-    width: 80vw;
-    height: auto; } }
 
 /*# sourceMappingURL=signinup.css.map */
