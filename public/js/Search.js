@@ -9,11 +9,10 @@ function Search() {
 $("#searchBar").autocomplete({
   source: function(request, response) {
     $.getJSON("http://suggestqueries.google.com/complete/search?callback=?", {
-      "hl": langManager.langId[langManager.language], // Language
-      //  "ds":"yt", // Restrict lookup to youtube
-      "jsonp": "suggestCallBack", // jsonp callback function name
-      "q": request.term, // query term
-      "client": "youtube" // force youtube style response, i.e. jsonp
+      "hl": langManager.langId[langManager.language],
+      "jsonp": "suggestCallBack",
+      "q": request.term,
+      "client": "youtube"
     });
     suggestCallBack = function(data) {
       var suggestions = [];
@@ -22,7 +21,7 @@ $("#searchBar").autocomplete({
           "value": val[0]
         });
       });
-      suggestions.length = 5; // prune suggestions list to only 5 items
+      suggestions.length = 5;
       response(suggestions);
     };
   },
@@ -37,8 +36,8 @@ Search.prototype = {
     $("#searchBar").fadeOut(fadeSpeed);
   },
   update: function() {
-    $("#searchBar").css('top', 'calc(' + searchPos + '% - 25px)');
-    if (showSearchBar)
+    $("#searchBar").css('top', 'calc(' + infos.searchPos.value + '% - 25px)');
+    if (infos.showSearchbar.value)
       this.show();
     else
       this.hide();

@@ -82,24 +82,14 @@ function isNotLoggedIn(req, res, next) {
   return next();
 }
 
-function save(req) {
+function save(req, res) {
   User.findOne({
     'user.username': req.user.user.username
   }, function(err, userDoc) {
     if (userDoc) {
-      userDoc.infos.hexagons = req.body.hexagons;
-      userDoc.infos.hexa_size = req.body.hexa_size;
-      userDoc.infos.hexa_margin = req.body.hexa_margin;
-      userDoc.infos.gradient_size = req.body.gradient_size;
-      userDoc.infos.bg_color = req.body.bg_color;
-      userDoc.infos.bg_color2 = req.body.bg_color2;
-      userDoc.infos.lang = req.body.lang;
-      userDoc.infos.show_searchbar = req.body.show_searchbar;
-      userDoc.infos.search_pos = req.body.search_pos;
-      userDoc.infos.center_bg = req.body.center_bg;
-      userDoc.infos.repeat_bg = req.body.repeat_bg;
-      userDoc.infos.ajust_bg = req.body.ajust_bg;
-      userDoc.infos.back_img = req.body.back_img;
+      for (var prop in req.body) {
+          userDoc.infos[prop] = req.body[prop];
+      }
 
       userDoc.save();
     }

@@ -1,21 +1,3 @@
-// PARAMS WINDOW
-var backgroundColor;
-var backgroundColor2;
-var gradientSize;
-var showSearchBar;
-var searchPos;
-var backImg;
-var centerBack;
-var repeatBack;
-var ajustBack;
-
-//PARAMS WINDOW HEXA
-var hexa_id;
-var posInArray;
-var hexaColor;
-var hexaLink;
-var hexaImg;
-
 var params = false;
 var paramsMenuOpen = false;
 
@@ -52,68 +34,76 @@ var inputMinLength = 5;
 
 var username;
 
+var grid = new Grid();
 var langManager = new LangManager();
 var search = new Search();
 var tools = new Tools();
 var paramsWindow = new ParamsWindow();
 var paramsMenu = new ParamsMenu();
-var grid = new Grid();
+var paramsWindowHexa = new ParamsWindowHexa();
 
 var fadeSpeed = 150;
 
-function init(username, data) {
+function init(username, datas) {
   username = username;
-  data = tools.setInfosValid(JSON.stringify(data));
-  backgroundColor = data.bg_color || "#e10000";
-  backgroundColor2 = data.bg_color2 || "#670000";
-  grid.scale = data.hexa_size || 1;
-  backImg = data.back_img || "";
+  datas = tools.setInfosValid(datas);
 
-  if (data.center_bg !== false) centerBack = true;
-  else centerBack = false;
+  for (var data in datas) {
+    if (infos[data]) {
+      var inputId;
+      infos[data].value = datas[data];
 
-  if (data.repeat_bg !== false) repeatBack = true;
-  else repeatBack = false;
+      if (infos[data].type != Boolean) {
+        inputId = data + "_ipt";
+        $("#" + inputId).val(datas[data]);
+        infos[data].oninput(datas[data]);
+      } else {
+        inputId = data + "_cb";
+        $("#" + inputId).prop('checked', datas[data]);
+        infos[data].oninput(datas[data]);
+      }
+    }
+  }
 
-  if (data.ajust_bg !== false) ajustBack = true;
-  else ajustBack = false;
-
-  if (data.show_searchbar !== false) showSearchBar = true;
-  else showSearchBar = false;
-
-  if (data.gradient_size !== 0) gradientSize = data.gradient_size || 300;
-  else gradientSize = 0;
-
-  if (data.hexa_margin !== 0) grid.hexagonsMargin = data.hexa_margin || 10;
-  else grid.hexagonsMargin = data.hexa_margin;
-
-  if (data.search_pos !== 0) searchPos = data.search_pos || 10;
-  else searchPos = data.search_pos;
+  grid.init();
 
   $("body").css({
-    boxShadow: '0 0 ' + gradientSize + 'px ' + backgroundColor2 + ' inset',
-    backgroundColor: backgroundColor
+    boxShadow: '0 0 ' + infos.gradientSize.value + 'px ' + infos.backColor2.value + ' inset',
+    backgroundColor: infos.backColor.value
   });
 
-  $("#backgroundColor_ipt").val(backgroundColor);
-  $("#backgroundColor2_ipt").val(backgroundColor2);
-  $("#gradientSize_ipt").val(gradientSize);
-  $("#hexaSize_ipt").val(grid.scale);
-  $("#marginSize_ipt").val(grid.hexagonsMargin);
-  $("#centerBack_cb").prop('checked', centerBack);
-  $("#repeatBack_cb").prop('checked', repeatBack);
-  $("#ajustBack_cb").prop('checked', ajustBack);
-  $("#showSearchBar_cb").prop('checked', showSearchBar);
-  $("#searchPos_ipt").val(searchPos);
-  $("#backImg_ipt").val(backImg);
-
-  paramsWindow.backImgChange(backImg);
-
-  grid.update(data);
+  grid.update(tools.parseIfString(datas.hexagons));
   search.update();
 
-  langManager.language = data.lang;
+  langManager.lang = infos.lang.value;
   langManager.setLanguage();
+
+  // Init all jscolor
+  for(var i = 0; i < $(".jscolor").length; ++i){
+    $(".jscolor")[i].jscolor.fromString($(".jscolor")[i].value);
+  }
+}
+
+function subtitleClick(subtitle){
+  $('.group:not(#' + subtitle.id + ')').slideUp(500);
+  $(".subtitle").attr({
+    "class": "subtitle"
+  });
+  if ($('#' + subtitle.id + ".group").css("display") == "block") {
+    $('#' + subtitle.id + ".group").slideUp(500);
+  } else {
+
+    if (subtitle.id == "importExport_grp") {
+      $("#import_ipt").val("");
+      $("#codeError").hide();
+      $("#export_p").html(JSON.stringify(tools.compactInfos(infos)));
+    }
+
+    $('#' + subtitle.id + ".group").slideDown(500);
+    $('#' + subtitle.id + ".subtitle").attr({
+      "class": "subtitle selected"
+    });
+  }
 }
 
 var mouse = {

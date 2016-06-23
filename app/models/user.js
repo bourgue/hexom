@@ -9,19 +9,19 @@ var userSchema = mongoose.Schema({
     password: String
   },
   infos: {
-    hexa_size: Number,
-    hexa_margin: Number,
+    hexaSize: Number,
+    hexaMargin: Number,
     hexagons: String,
-    gradient_size: Number,
-    bg_color: String,
-    bg_color2: String,
+    gradientSize: Number,
+    backColor: String,
+    backColor2: String,
     lang: String,
-    show_searchbar: Boolean,
-    search_pos: Number,
-    center_bg: Boolean,
-    repeat_bg: Boolean,
-    ajust_bg: Boolean,
-    back_img: String
+    showSearchbar: Boolean,
+    searchPos: Number,
+    backCenter: Boolean,
+    backRepeat: Boolean,
+    backAjust: Boolean,
+    backImage: String
   }
 });
 

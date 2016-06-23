@@ -5,14 +5,18 @@ function Tools() {
 Tools.prototype = {
   constructor: Tools,
   save: function() { // Send data to /save which will put it in the mongodb
-    dataFromDB.infos = this.setInfosValid(JSON.stringify(this.getActualInfos()));
+    var compact = this.setInfosValid(this.compactInfos(infos));
+    compact.hexagons = JSON.stringify(compact.hexagons);
 
     $.ajax({
       contentType: 'application/json',
-      data: JSON.stringify(dataFromDB.infos),
+      data: JSON.stringify(compact),
       type: 'POST',
       url: "./save"
     });
+
+    dataFromDB.infos = compact;
+    dataFromDB.infos.hexagons = JSON.parse(dataFromDB.infos.hexagons);
   },
   uploadImg: function(file, background) {
     $("#loadImg").css({
@@ -45,7 +49,7 @@ Tools.prototype = {
         });
       } else {
         if (!background) {
-          $("#urlImg").val("Too large, ~4MB max.");
+          $("#image_ipt").val("Too large, ~4MB max.");
         } else {
           $("#backImg_ipt").val("Too large, ~4MB max.");
         }
@@ -66,29 +70,19 @@ Tools.prototype = {
     };
 
     var f = {
-      x: grid.position.x - grid.hexagonsSize.x / 2 + grid.hexagonsDifference.x / 2 + 100 * grid.scale * hexPos.x + grid.hexagonsMargin * hexPos.x,
-      y: grid.position.y - grid.hexagonsSize.y / 2 + grid.hexagonsDifference.y / 2 + (57 + grid.hexagonsDifference.y / 2) * grid.scale * hexPos.y + grid.hexagonsMargin * hexPos.y + (grid.hexagonsSize.y - 57) / 4 + 4
+      x: grid.position.x - grid.hexagonsSize.x / 2 + grid.hexagonsDifference.x / 2 + grid.hexagonsSize.x * hexPos.x + infos.hexaMargin.value * hexPos.x,
+      y: grid.position.y - grid.hexagonsSize.y / 2 + grid.hexagonsDifference.y / 2 + 86.5 * infos.hexaSize.value * hexPos.y + infos.hexaMargin.value * hexPos.y + 19
     };
 
     if (hexPos.y % 2 !== 0)
-      f.x += grid.hexagonsSize.x / 2 * grid.scale + grid.hexagonsMargin / 2;
+      f.x += 100 * infos.hexaSize.value / 2 + infos.hexaMargin.value / 2;
 
     return f;
   },
-  getHexagon: function(id, array) {
-    var result = $.grep(array, function(e) {
-      return e.id == id;
-    });
-
-    if (result.length > 0)
-      return result[0];
-    else
-      return false;
-  },
   getHexaInfos: function() {
     var infos = [];
-    for (var i = 0; i < grid.hexagons.length; ++i) {
-      var hexagon = grid.hexagons[i];
+    for (var i = 0; i < infos.hexagons.length; ++i) {
+      var hexagon = infos.hexagons[i];
       var data_tmp = {};
       data_tmp.id = hexagon.id;
       data_tmp.color = hexagon.color;
@@ -103,28 +97,9 @@ Tools.prototype = {
 
     return infos;
   },
-  getActualInfos: function() {
-    var actInfos = {};
-
-    actInfos.hexagons = JSON.stringify(this.getHexaInfos());
-    actInfos.hexa_size = grid.scale;
-    actInfos.hexa_margin = grid.hexagonsMargin;
-    actInfos.gradient_size = gradientSize;
-    actInfos.bg_color = backgroundColor;
-    actInfos.bg_color2 = backgroundColor2;
-    actInfos.lang = langManager.language;
-    actInfos.show_searchbar = showSearchBar;
-    actInfos.search_pos = searchPos;
-    actInfos.center_bg = centerBack;
-    actInfos.repeat_bg = repeatBack;
-    actInfos.ajust_bg = ajustBack;
-    actInfos.back_img = backImg;
-
-    return actInfos;
-  },
   exist: function(pos) {
     var result = $.grep(grid.hexagons, function(e) {
-      return e.position.x == pos.x && e.position.y == pos.y;
+      return e.prop.position.x == pos.x && e.prop.position.y == pos.y;
     });
 
     var result2 = $.grep(grid.previewHexas, function(e) {
@@ -176,40 +151,72 @@ Tools.prototype = {
     }
     return true;
   },
-  setInfosValid: function(infosStr) {
-    var infos = JSON.parse(infosStr);
+  parseIfString: function(str) {
+    if (this.isJsonCorrect(str)) {
+      try {
+        return JSON.parse(str);
+      } catch (e) {
+        return str;
+      }
+    } else {
+      return str;
+    }
+  },
+  setInfosValid: function(inf) {
+    for (var info in inf) {
+      if (infos[info]) {
+        if (infos[info].type == Number) {
+          if (inf[info] < infos[info].min)
+            inf[info] = infos[info].min;
+          else if (inf[info] > infos[info].max)
+            inf[info] = infos[info].max;
+        } else if (infos[info].type == String) {
+          if (inf[info].length > infos[info].maxLength)
+            inf[info] = inf[info].substring(0, infos[info].maxLength + 1);
+        }
+      }
+    }
+    return inf;
+  },
+  findHexaIndex: function(id) {
+    var index;
 
-    if (infos.hexa_size)
-      if (infos.hexa_size < 0.4) infos.hexa_size = 0.4;
-      else if (infos.hexa_size > 3) infos.hexa_size = 3;
+    for (var i = 0; i < grid.hexagons.length && !index; ++i) {
+      if (grid.hexagons[i].prop.id == id)
+        index = i;
+    }
 
-    if (infos.hexa_margin)
-      if (infos.hexa_margin < 0) infos.hexa_margin = 0;
-      else if (infos.hexa_margin > 200) infos.hexa_margin = 200;
+    return index;
+  },
+  findPreviewHexaIndex: function(id) {
+    var index;
 
-    if (infos.gradient_size)
-      if (infos.gradient_size < 0) infos.gradient_size = 0;
-      else if (infos.gradient_size > 300) infos.gradient_size = 300;
+    for (var i = 0; i < grid.previewHexas.length && !index; ++i) {
+      if (grid.previewHexas[i].id == id)
+        index = i;
+    }
 
-    if (infos.bg_color)
-      if (infos.bg_color.length > 7) infos.bg_color = infos.bg_color.substring(0, 8);
+    return index;
+  },
+  compactInfos: function(_infos) {
+    var cmpt_infos = {};
 
-    if (infos.bg_color2)
-      if (infos.bg_color2.length > 7) infos.bg_color2 = infos.bg_color2.substring(0, 8);
+    for (var info in _infos) {
+      // if is undefined, set the default value
+      cmpt_infos[info] = (typeof cmpt_infos[info] === 'undefined') ? _infos[info].value : _infos[info].defaultValue;
+    }
 
-    if (infos.lang)
-      if (infos.lang.length > 2) infos.lang = infos.lang.substring(0, 3);
+    cmpt_infos.hexagons = this.compactHexagons();
 
-    if (infos.search_pos)
-      if (infos.search_pos < 0) infos.search_pos = 0;
-      else if (infos.search_pos > 100) infos.search_pos = 100;
+    return cmpt_infos;
+  },
+  compactHexagons: function() {
+    var cmpt_hexas = [];
+    for (var i = 0; i < grid.hexagons.length; ++i) {
+      cmpt_hexas.push(grid.hexagons[i].prop);
+    }
 
-    if (infos.back_img)
-      if (infos.back_img.length > 250) infos.back_img.substring(0, 251);
-
-    var hexagons = JSON.parse(infos.hexagons);
-
-    if (hexagons.length > 0) hexagons[0] = {
+    cmpt_hexas[0] = {
       "id": 0,
       "color": "#000000",
       "image": "/img/gear.png",
@@ -220,8 +227,15 @@ Tools.prototype = {
       }
     };
 
-    infos.hexagons = JSON.stringify(hexagons);
+    return cmpt_hexas;
+  },
+  newId: function() {
+    var mostHighId = 0;
+    for (var i = 0; i < grid.hexagons.length; ++i) {
+      if (grid.hexagons[i].prop.id > mostHighId)
+        mostHighId = grid.hexagons[i].prop.id;
+    }
 
-    return infos;
+    return mostHighId + 1;
   }
 };

@@ -1,12 +1,12 @@
 function LangManager() {
-  this.language = "";
-
   this.navigatorLang();
 
   this.langId = {
     "en": 0,
     "fr": 1
   };
+
+  this.lang = 'fr';
 
   this.words = {
     "PARAMS_GENE": ["General settings", "Paramètres généraux"],
@@ -97,16 +97,17 @@ LangManager.prototype = {
     $("#okButton").html(this.word("OK"));
     $("#hello").html(this.word("HELLO"));
     $("#uploadButton").html(this.word("UPLOAD_IMG"));
-    $("#marginSize").html(this.word("HEXA_MARGIN"));
+    $("#uploadBackImgButton").html(this.word("UPLOAD_IMG"));
+    $("#hexaMargin").html(this.word("HEXA_MARGIN"));
     $("#searchBar").attr("placeholder", this.word("SEARCH_BAR"));
-    $("#showSearchBar").html(this.word("SHOW_SEARCHBAR"));
+    $("#showSearchbar").html(this.word("SHOW_SEARCHBAR"));
     $("#text").html(this.word("TEXT"));
     $("#textColor").html(this.word("COLOR"));
     $("#searchPos").html(this.word("SEARCHBAR_POS"));
-    $("#backImg").html(this.word("BACKIMG"));
-    $("#centerBack").html(this.word("CENTERBACK"));
-    $("#repeatBack").html(this.word("REPEATBACK"));
-    $("#ajustBack").html(this.word("AJUSTBACK"));
+    $("#backImage").html(this.word("BACKIMG"));
+    $("#center").html(this.word("CENTERBACK"));
+    $("#repeat").html(this.word("REPEATBACK"));
+    $("#ajust").html(this.word("AJUSTBACK"));
     $("#bg_grp.subtitle").html(this.word("BACKGROUND"));
     $("#bgHexa_grp.subtitle").html(this.word("BACKGROUND"));
     $("#hexa_grp.subtitle").html(this.word("HEXA"));
@@ -149,7 +150,7 @@ LangManager.prototype = {
     $("#email_exist").html(this.word("EMAIL_EXIST"));
   },
   word: function(w) {
-    return this.words[w][this.langId[this.language]];
+    return this.words[w][this.langId[this.lang]];
   },
   navigatorLang: function() {
     var navLang;
@@ -160,8 +161,8 @@ LangManager.prototype = {
       navLang = navigator.language;
 
     if (navLang.indexOf('fr') > -1)
-      this.language = 'fr';
+      return 'fr';
     else
-      this.language = 'en';
+      return 'en';
   }
 };

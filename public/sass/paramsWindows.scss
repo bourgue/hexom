@@ -1,29 +1,26 @@
 #paramsWindow {
   width: 185px;
   display: none;
-  z-index: 3;
+  z-index: 50;
 }
 #paramsWindowHexa {
   width: 185px;
-  z-index: 4;
+  z-index: 50;
 }
 li {
   list-style-type: none;
   margin-bottom: 10px;
 }
-li div {
-  display: table-cell;
-}
 #flagContainer {
-  display: static;
+  display: table-cell;
 }
 .flag {
   cursor: pointer;
   margin-left: 6px;
+  display: table-cell;
 }
 li input {
   width: 100%;
-  display: block;
   padding: 0;
   border: 0;
   margin: 0;

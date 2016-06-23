@@ -1,0 +1,62 @@
+<!-- input id must be like this : property + "_ipt", but if it's a checkbox it must be like this : property + "_cb" -->
+
+<div id="paramsWindowHexa" class="window unselectable">
+  <img src="/img/close.png" id="closeIcon" class="close"/>
+  <div class="titre" id="paramsHexaTitle"></div>
+  <ul>
+    <li>
+      <div id="link"></div>
+      <input id="link_ipt" type="text" placeholder="ex: google.fr" autofocus/>
+    </li>
+
+    <li>
+      <p id="text_grp" class="subtitle"></p>
+    </li>
+
+    <div id="text_grp" class="group">
+      <li>
+        <div id="text"></div>
+        <input id="text_ipt" type="text" placeholder="ex: Google"/>
+      </li>
+
+      <li>
+        <div id="textColor"></div>
+        <input id="textColor_ipt"/>
+      </li>
+    </div>
+
+    <li>
+      <p id="bgHexa_grp" class="subtitle"></p>
+    </li>
+
+    <div id="bgHexa_grp" class="group">
+      <li>
+        <div id="backcolorhexa"></div>
+        <input id="color_ipt"/>
+      </li>
+
+      <li>
+        <div id="img"></div><img src="/img/loader.gif" id="loadImg" style="position:absolute;right:15px;transform:translateY(-20px);display:none;">
+        <input id="image_ipt" type="text" placeholder="ex: url.com/image.png"/>
+      </li>
+
+      <li>
+        <input type="file" accept="image/*" id="inputFile" onchange="ParamsWindowHexa.prototype.uploadImg()">
+        <label for="inputFile" id="uploadButton" class="button"></label>
+      </li>
+
+      <li>
+        <div id="imgSize"></div>
+        <input id="imgSize_ipt" type="range"/>
+      </li>
+    </div>
+
+    <li>
+      <div id="deleteButton" class="button" onclick="paramsWindowHexa.hexagon.delete();"></div>
+    </li>
+
+    <li>
+      <div id="okButton" class="button" onclick="ParamsWindowHexa.prototype.submit()"></div>
+    </li>
+  </ul>
+</div>

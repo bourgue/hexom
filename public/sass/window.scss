@@ -1,6 +1,7 @@
 $window_padding: 10px;
 .window {
   padding: $window_padding;
+  display: none;
   background: #fff;
   font-size: 12px;
   float: right;

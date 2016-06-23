@@ -64,13 +64,13 @@ module.exports = function(passport) {
                             newUser.user.password = newUser.generateHash(password);
 
                             newUser.infos.hexagons = '[{ "id": 0, "color": "#000000", "image": "/img/gear.png", "imgSize": 80, "position": { "x": 0, "y": 0 }}]';
-                            newUser.infos.hexa_size = 1;
-                            newUser.infos.hexa_margin = 10;
-                            newUser.infos.gradient_size = 300;
-                            newUser.infos.bg_color = "#e10000";
-                            newUser.infos.bg_color2 = "#670000";
+                            newUser.infos.hexaSize = 1;
+                            newUser.infos.hexaMargin = 10;
+                            newUser.infos.gradientSize = 300;
+                            newUser.infos.backColor = "#e10000";
+                            newUser.infos.backColor2 = "#670000";
                             newUser.infos.lang = "fr";
-                            newUser.infos.show_searchbar = true;
+                            newUser.infos.showSearchbar = true;
 
                             newUser.save(function(err) {
                               if (err)

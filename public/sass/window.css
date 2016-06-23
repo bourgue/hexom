@@ -1,5 +1,6 @@
 .window {
   padding: 10px;
+  display: none;
   background: #fff;
   font-size: 12px;
   float: right;

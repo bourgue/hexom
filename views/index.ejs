@@ -36,6 +36,8 @@
 
     <a href="/logout" class="button" id="logout_button"></a>
 
+    <script src="/js/hexagonsProperties.js"></script>
+    <script src="/js/properties.js"></script>
     <script src="/js/Language.js"></script>
     <script src="/js/Tools.js"></script>
     <script src="/js/ParamsWindow.js"></script>
@@ -49,6 +51,7 @@
 
     <script>
       dataFromDB.infos = <%- infos %>;
+      dataFromDB.infos.hexagons = JSON.parse(dataFromDB.infos.hexagons);
       init("<%- username %>", dataFromDB.infos);
     </script>
   </body>

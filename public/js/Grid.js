@@ -1,36 +1,37 @@
 function Grid() {
-  this.position = {
-    x: $(window).width() / 2,
-    y: $(window).height() / 2
-  };
-  this.scale = 1;
+  this.position = {};
+
   this.previewHexas = [];
 
-  // This is the main array
-  // the hexagon which has 0 as id is the paramsHexa
   this.hexagons = [];
 
-  this.hexagonsMargin = 10;
+  this.hexagonsSize = {};
 
-  this.hexagonsSize = {
-    x: 100 * this.scale,
-    y: Math.round(Math.sqrt((100 * this.scale) * (100 * this.scale) + (57 * this.scale) * (57 * this.scale)) * 100 * this.scale) / 100 * this.scale
-  };
-
-  this.hexagonsDifference = {
-    x: this.hexagonsSize.x - 100 * this.scale,
-    y: this.hexagonsSize.y - 57 * this.scale
-  };
-
-  this.updateHexaPosition();
+  this.hexagonsDifference = {};
 }
 
 Grid.prototype = {
   constructor: Grid,
+  init: function(){
+    this.position = {
+      x: $(window).width() / 2,
+      y: $(window).height() / 2
+    };
+
+    this.hexagonsSize = {
+      x: 100 * infos.hexaSize.value,
+      y: Math.sqrt((100 * infos.hexaSize.value) * (100 * infos.hexaSize.value) + (57 * infos.hexaSize.value) * (57 * infos.hexaSize.value))
+    };
+
+    this.hexagonsDifference = {
+      x: this.hexagonsSize.x - 100,
+      y: this.hexagonsSize.y - 57
+    };
+  },
 
   // ADD
-  addHexagon: function(id, pos, color, link, text, textColor, image, imgSize) {
-    var hexagon = new Hexagon(id, pos, color, link, text, textColor, image, imgSize);
+  addHexagon: function(properties) {
+    var hexagon = new Hexagon(properties);
     this.hexagons.push(hexagon);
   },
   addPreviewHexa: function(id, pos) {
@@ -44,23 +45,23 @@ Grid.prototype = {
     previewing = true;
 
     for (var i = 0; i < this.hexagons.length; ++i) {
+      var hexagon = this.hexagons[i];
+
       for (var j = 0; j < around.length; ++j) {
         var tmp_pos = {
           x: 0,
           y: 0
         };
 
-        var hexagon = tools.getHexagon(i, this.hexagons);
-
-        if (hexagon.position.y % 2 !== 0) {
+        if (hexagon.prop.position.y % 2 !== 0) {
           tmp_pos = {
-            x: hexagon.position.x - around[j].x,
-            y: hexagon.position.y - around[j].y
+            x: hexagon.prop.position.x - around[j].x,
+            y: hexagon.prop.position.y - around[j].y
           };
         } else {
           tmp_pos = {
-            x: hexagon.position.x + around[j].x,
-            y: hexagon.position.y + around[j].y
+            x: hexagon.prop.position.x + around[j].x,
+            y: hexagon.prop.position.y + around[j].y
           };
         }
 
@@ -77,6 +78,8 @@ Grid.prototype = {
   },
 
   updateHexaPosition: function() {
+    grid.init();
+
     for (var i = 0; i < this.hexagons.length; ++i) {
       var hexagon = this.hexagons[i];
       hexagon.updateRealPosition();
@@ -88,18 +91,27 @@ Grid.prototype = {
     }
   },
   update: function(data) {
+    grid.init();
+
     $(".hex").remove();
     this.hexagons = [];
 
-    for (var i = 0; i < JSON.parse(data.hexagons).length; ++i) {
-      var hexa = JSON.parse(data.hexagons)[i];
+    for (var i = 0; i < data.length; ++i) {
+      var hexa = data[i];
 
       if (hexa.id === 0) {
         hexa.image = "/img/gear.png";
         hexa.imgSize = 80;
       }
 
-      this.addHexagon(i, hexa.position, hexa.color, hexa.link, hexa.text, hexa.textColor, hexa.image, hexa.imgSize);
+      for(var p in hexa_prop){
+        if(!hexa[p]){
+          if(hexa_prop[p].defaultValue !== undefined){
+            hexa[p] = hexa_prop[p].defaultValue;
+          }
+        }
+      }
+      this.addHexagon(hexa);
     }
 
     this.updateHexaPosition();

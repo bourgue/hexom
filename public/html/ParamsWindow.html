@@ -1,0 +1,115 @@
+<!-- input id must be like this : property + "_ipt" -->
+
+<div id="paramsWindow" class="window unselectable">
+  <img src="/img/close.png" id="closeIcon" class="close"/>
+  <div class="titre" id="paramsTitle"></div>
+
+  <ul id="paramsList">
+    <li>
+      <div id="lang" style="display: table-cell;"></div>
+      <div id="flagContainer"><img src="/img/us.png" id="en" class="flag" onclick="ParamsWindow.prototype.langChange(this.id);"/>
+        <img src="/img/fr.png" class="flag" id="fr" onclick="ParamsWindow.prototype.langChange(this.id);"/></div>
+    </li>
+
+    <li>
+      <p id="bg_grp" class="subtitle"></p>
+    </li>
+
+    <div class="group" id="bg_grp">
+      <li>
+        <div id="backColor"></div>
+        <div id="backColorIpt_container">
+          <input id="backColor_ipt" style="width: 49%;"/>
+          <input id="backColor2_ipt" style="width: 49%;"/>
+        </div>
+      </li>
+
+      <li>
+        <div id="gradientSize"></div>
+        <input id="gradientSize_ipt" type="range"/>
+      </li>
+
+      <li>
+        <div id="backImage"></div><img src="/img/loader.gif" id="loadImg" style="position:absolute;right:15px;transform:translateY(-20px);display:none;">
+        <input id="backImage_ipt" type="text" placeholder="ex: url.com/image.png"/>
+      </li>
+
+      <li>
+        <input type="file" accept="image/*" id="inputFile" onchange="ParamsWindow.prototype.uploadImg()">
+        <label for="inputFile" id="uploadBackImgButton" class="button"></label>
+      </li>
+
+      <li>
+        <input type="checkbox" id="backCenter_cb" name="backCenter_cb">
+        <label for="backCenter_cb" id="center" class="cb-label"></label>
+      </li>
+
+      <li>
+        <input type="checkbox" id="backRepeat_cb" name="backRepeat_cb">
+        <label for="backRepeat_cb" id="repeat" class="cb-label"></label>
+      </li>
+
+      <li>
+        <input type="checkbox" id="backAjust_cb" name="backAjust_cb">
+        <label for="backAjust_cb" id="ajust" class="cb-label"></label>
+      </li>
+    </div>
+
+    <li>
+      <p id="hexa_grp" class="subtitle"></p>
+    </li>
+
+    <div class="group" id="hexa_grp">
+      <li>
+        <div id="hexaSize"></div>
+        <input id="hexaSize_ipt" type="range"/>
+      </li>
+
+      <li>
+        <div id="hexaMargin"></div>
+        <input id="hexaMargin_ipt" type="range"/>
+      </li>
+    </div>
+
+    <li>
+      <p id="search_grp" class="subtitle"></p>
+    </li>
+
+    <div class="group" id="search_grp">
+      <li>
+        <input type="checkbox" id="showSearchbar_cb" name="showSearchbar_cb">
+        <label for="showSearchbar_cb" id="showSearchbar" class="cb-label"></label>
+      </li>
+
+      <li>
+        <div id="searchPos"></div>
+        <input id="searchPos_ipt" type="range"/>
+      </li>
+    </div>
+
+    <li>
+      <p id="importExport_grp" class="subtitle"></p>
+    </li>
+
+    <div class="group" id="importExport_grp">
+      <li>
+        <div id="import"></div>
+        <input type="text" id="import_ipt" oninput="ParamsWindow.prototype.import(this.value)"/>
+        <div id="codeError"></div>
+      </li>
+
+      <li>
+        <div id="export"></div>
+        <p id="export_p"></p>
+      </li>
+
+      <li>
+        <div id="exportButton" class="button" onclick="ParamsWindow.prototype.export()"></div>
+      </li>
+    </div>
+
+    <li>
+      <div id="paramsSubmitButton" class="button" onclick="ParamsWindow.prototype.submit()"></div>
+    </li>
+  </ul>
+</div>

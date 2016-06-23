@@ -3,14 +3,14 @@
 function PreviewHexa(id, position) {
   this.id = id;
   this.position = position;
-  this.realPosition = tools.convertToRealPosition(position);
+  var realPosition = tools.convertToRealPosition(position);
 
   $("#previewContainer").append('<div id="' + id + '"></div>');
 
   $('#' + id).attr({
       class: 'previewHexa',
       onclick: 'PreviewHexa.prototype.click(this)',
-      style: 'transform:scale(' + grid.scale + ') rotate(120deg); left: ' + this.realPosition.x + 'px; top: ' + this.realPosition.y + 'px;'
+      style: 'transform:scale(' + infos.hexaSize.value + ') rotate(120deg); left: ' + realPosition.x + 'px; top: ' + realPosition.y + 'px;'
     })
     .append('<div class="hex-in1" id="' + id + '"></div>');
 
@@ -26,16 +26,61 @@ PreviewHexa.prototype = {
       var id = hexa.id;
       $('#' + id).remove();
 
-      grid.addHexagon(grid.hexagons.length, tools.getHexagon(id, grid.previewHexas).position, "#ffffff", '', '', "#000000", '', 100);
+      var prop = {
+        id: tools.newId(),
+        position: grid.previewHexas[tools.findPreviewHexaIndex(id)].position
+      };
 
+      for(var p in hexa_prop){
+        if(!prop[p]){
+          if(hexa_prop[p].defaultValue !== undefined){
+            prop[p] = hexa_prop[p].defaultValue;
+          }
+        }
+      }
+
+      grid.addHexagon(prop);
       grid.removePreviewHexa();
-      var paramsWindowHexa = new ParamsWindowHexa(grid.hexagons.length - 1);
+      paramsWindowHexa.open(prop.id);
     }
   },
   updateRealPosition: function() {
-    this.realPosition = tools.convertToRealPosition(this.position);
+    realPosition = tools.convertToRealPosition(this.position);
     $('#' + this.id + '.previewHexa').attr({
-      style: 'transform:scale(' + grid.scale + ') rotate(120deg); left: ' + this.realPosition.x + 'px; top: ' + this.realPosition.y + 'px;'
+      style: 'transform:scale(' + infos.hexaSize.value + ') rotate(120deg); left: ' + realPosition.x + 'px; top: ' + realPosition.y + 'px;'
     });
   }
 };
+
+/*
+
+ActiveRecord::Schema.define(version: 20160607130516) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "title"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "work_id"
+    t.boolean  "show_infos",         default: true
+  end
+
+  add_index "categories", ["work_id"], name: "index_categories_on_work_id"
+
+  create_table "works", force: :cascade do |t|
+    t.string   "title"
+    t.string   "image"
+    t.text     "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "category_id"
+  end
+
+  add_index "works", ["category_id"], name: "index_works_on_category_id"
+
+end
+
+*/

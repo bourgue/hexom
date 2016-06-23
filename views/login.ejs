@@ -48,7 +48,7 @@
     <script src="/js/Language.js"></script>
     <script>
       var langMan = new LangManager();
-      langMan.navigatorLang();
+      langMan.lang = langMan.navigatorLang();
       langMan.setLanguage();
       function changeLang(lang) {
         langMan.language = lang;
