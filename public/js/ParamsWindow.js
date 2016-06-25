@@ -1,15 +1,5 @@
 function ParamsWindow() {
-    $("#paramsWindow").draggable({
-      containment: "body",
-      scroll: false,
-      handle: "#paramsTitle"
-    });
 
-    $("#paramsWindow").hide();
-
-    $("#closeIcon").click(function() {
-      ParamsWindow.prototype.undoModifications();
-    });
 }
 
 ParamsWindow.prototype = {
@@ -56,6 +46,16 @@ ParamsWindow.prototype = {
 
     $(".subtitle").attr("onclick", "subtitleClick(this)");
     jscolor.installByClassName("jscolor");
+
+    $("#paramsWindow").draggable({
+      containment: "body",
+      scroll: false,
+      handle: "#paramsTitle"
+    });
+
+    $("#closeIcon").click(function() {
+      ParamsWindow.prototype.undoModifications();
+    });
   },
   close: function() {
     $("#paramsWindow").fadeOut(fadeSpeed, function() {

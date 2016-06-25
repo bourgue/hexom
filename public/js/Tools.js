@@ -7,7 +7,6 @@ Tools.prototype = {
   save: function() { // Send data to /save which will put it in the mongodb
     var compact = this.setInfosValid(this.compactInfos(infos));
     compact.hexagons = JSON.stringify(compact.hexagons);
-    console.log(compact);
 
     $.ajax({
       contentType: 'application/json',
