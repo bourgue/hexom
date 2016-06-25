@@ -122,3 +122,16 @@ label.cb-label {
   -ms-user-select: none;
   user-select: none;
 }
+
+#video{
+ position: relative;
+ background: transparent;
+}
+
+.ytplayer-container{
+ position: absolute;
+ top: 50vh;
+ left: 50vw;
+ transform: translate(-50%, -50%);
+ z-index: -1;
+}

@@ -33,7 +33,6 @@ var inputMaxLength = 20;
 var inputMinLength = 5;
 
 var username;
-
 var grid = new Grid();
 var langManager = new LangManager();
 var search = new Search();
@@ -66,11 +65,6 @@ function init(username, datas) {
   }
 
   grid.init();
-
-  $("body").css({
-    boxShadow: '0 0 ' + infos.gradientSize.value + 'px ' + infos.backColor2.value + ' inset',
-    backgroundColor: infos.backColor.value
-  });
 
   grid.update(tools.parseIfString(datas.hexagons));
   search.update();

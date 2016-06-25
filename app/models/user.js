@@ -12,16 +12,17 @@ var userSchema = mongoose.Schema({
     hexaSize: Number,
     hexaMargin: Number,
     hexagons: String,
-    gradientSize: Number,
+    shadowSize: Number,
     backColor: String,
-    backColor2: String,
+    shadowColor: String,
     lang: String,
     showSearchbar: Boolean,
     searchPos: Number,
     backCenter: Boolean,
     backRepeat: Boolean,
     backAjust: Boolean,
-    backImage: String
+    backImage: String,
+    videoId: String
   }
 });
 

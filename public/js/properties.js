@@ -22,14 +22,14 @@ var infos = {
       grid.updateHexaPosition();
     }
   },
-  gradientSize: {
+  shadowSize: {
     type: Number,
     min: 0,
     max: 300,
     step: 2,
     defaultValue: 300,
     oninput: function(value){
-      $("body").css('box-shadow', '0 0 ' + value + 'px ' + infos.backColor2.value + ' inset');
+      $("body").css('box-shadow', '0 0 ' + value + 'px ' + infos.shadowColor.value + ' inset');
     }
   },
   backColor: {
@@ -41,13 +41,13 @@ var infos = {
       $("body").css('background-color', value);
     }
   },
-  backColor2: {
+  shadowColor: {
     type: String,
     special: "color",
     maxLength: 7,
     defaultValue: "#670000",
     oninput: function(value){
-      $("body").css('box-shadow', '0 0 ' + infos.gradientSize.value + 'px ' + value + ' inset');
+      $("body").css('box-shadow', '0 0 ' + infos.shadowSize.value + 'px ' + value + ' inset');
     }
   },
   lang: {
@@ -117,6 +117,24 @@ var infos = {
       infos.backCenter.oninput(infos.backCenter.value);
       infos.backRepeat.oninput(infos.backRepeat.value);
       infos.backAjust.oninput(infos.backAjust.value);
+    }
+  },
+  videoId: {
+    type: String,
+    maxLength: 11,
+    defaultValue: "",
+    oninput: function(value){
+      $("#video").empty();
+
+      if(value.length > 10){
+        $('#video').YTPlayer({
+          fitToBackground: true,
+          videoId: value,
+          mute: false,
+          start: 0,
+          pauseOnScroll: false
+        });
+      }
     }
   }
 };

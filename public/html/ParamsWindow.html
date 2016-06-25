@@ -7,8 +7,8 @@
   <ul id="paramsList">
     <li>
       <div id="lang" style="display: table-cell;"></div>
-      <div id="flagContainer"><img src="/img/us.png" id="en" class="flag" onclick="ParamsWindow.prototype.langChange(this.id);"/>
-        <img src="/img/fr.png" class="flag" id="fr" onclick="ParamsWindow.prototype.langChange(this.id);"/></div>
+      <div id="flagContainer"><img src="/img/us.png" id="en" class="flag" onclick="langManager.lang = this.id; langManager.setLanguage();"/>
+        <img src="/img/fr.png" class="flag" id="fr" onclick="langManager.lang = this.id; langManager.setLanguage();"/></div>
     </li>
 
     <li>
@@ -18,15 +18,17 @@
     <div class="group" id="bg_grp">
       <li>
         <div id="backColor"></div>
-        <div id="backColorIpt_container">
-          <input id="backColor_ipt" style="width: 49%;"/>
-          <input id="backColor2_ipt" style="width: 49%;"/>
-        </div>
+          <input id="backColor_ipt"/>
       </li>
 
       <li>
-        <div id="gradientSize"></div>
-        <input id="gradientSize_ipt" type="range"/>
+        <div id="shadowColor"></div>
+        <input id="shadowColor_ipt"/>
+      </li>
+
+      <li>
+        <div id="shadowSize"></div>
+        <input id="shadowSize_ipt" type="range"/>
       </li>
 
       <li>
@@ -52,6 +54,11 @@
       <li>
         <input type="checkbox" id="backAjust_cb" name="backAjust_cb">
         <label for="backAjust_cb" id="ajust" class="cb-label"></label>
+      </li>
+
+      <li>
+        <div id="youtubeVid"></div>
+        <input type="text" id="videoId_ipt" placeholder="K-HzFACAedk"/>
       </li>
     </div>
 

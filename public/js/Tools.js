@@ -7,6 +7,7 @@ Tools.prototype = {
   save: function() { // Send data to /save which will put it in the mongodb
     var compact = this.setInfosValid(this.compactInfos(infos));
     compact.hexagons = JSON.stringify(compact.hexagons);
+    console.log(compact);
 
     $.ajax({
       contentType: 'application/json',
@@ -84,14 +85,11 @@ Tools.prototype = {
     for (var i = 0; i < infos.hexagons.length; ++i) {
       var hexagon = infos.hexagons[i];
       var data_tmp = {};
-      data_tmp.id = hexagon.id;
-      data_tmp.color = hexagon.color;
-      data_tmp.image = hexagon.image;
-      data_tmp.imgSize = hexagon.imgSize;
-      data_tmp.link = hexagon.link;
-      data_tmp.text = hexagon.text;
-      data_tmp.textColor = hexagon.textColor;
-      data_tmp.position = hexagon.position;
+
+      for(var p in hexagon){
+        data_tmp[p] = hexagon[p];
+      }
+
       infos.push(data_tmp);
     }
 

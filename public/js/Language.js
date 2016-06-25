@@ -12,11 +12,10 @@ function LangManager() {
     "PARAMS_GENE": ["General settings", "Paramètres généraux"],
     "CHANGE_LANG": ["Change language :", "Changer la langue :"],
     "COLOR": ["Color :", "Couleur :"],
-    "COLORS": ["Colors :", "Couleurs :"],
-    "GRADIENT_SIZE": ["Gradient size :", "Taille du dégradé :"],
+    "SHADOW_SIZE": ["Shadow size :", "Taille de l'ombre :"],
     "SIZE": ["Size :", "Taille :"],
     "CREATE": ["CREATE", "CREER"],
-    "PARAMS_HEXA": ["Hexagon settings", "Paramètres de l\'hexagone"],
+    "PARAMS_HEXA": ["Hexagon settings", "Paramètres de l'hexagone"],
     "LINK": ["Link :", "Lien :"],
     "DELETE": ["Delete", "Supprimer"],
     "SEARCH_BAR": ["Search on Google", "Chercher sur Google"],
@@ -48,6 +47,9 @@ function LangManager() {
     "COPY_EXPORT_CODE": ["Copy the code", "Copier le code"],
     "PASTE_HERE": ["Paste a code here", "Collez un code ici"],
     "CODE_ERROR": ["This code isn't valid.", "Ce code n'est pas valide."],
+    "YOUTUBE_VIDEO": ["Youtube video ID:", "ID de la vidéo Youtube:"],
+    "SHADOW_COLOR": ["Shadow color", "Couleur de l'ombre"],
+    "SOUND": ["Sound", "Son"],
 
     // LOGIN & REGISTER
     "LOGIN": ["Sign in", "Se connecter"],
@@ -81,8 +83,8 @@ LangManager.prototype = {
   setLanguage: function() {
     $("#paramsTitle").html(this.word("PARAMS_GENE"));
     $("#lang").html(this.word("CHANGE_LANG"));
-    $("#backColor").html(this.word("COLORS"));
-    $("#gradientSize").html(this.word("GRADIENT_SIZE"));
+    $("#backColor").html(this.word("COLOR"));
+    $("#shadowSize").html(this.word("SHADOW_SIZE"));
     $("#hexaSize").html(this.word("SIZE"));
     $("#paramsHexaTitle").html(this.word("PARAMS_HEXA"));
     $("#deleteButton").html(this.word("DELETE"));
@@ -119,6 +121,9 @@ LangManager.prototype = {
     $("#exportButton").html(this.word("COPY_EXPORT_CODE"));
     $("#import_ipt").attr("placeholder", this.word("PASTE_HERE"));
     $("#codeError").html(this.word("CODE_ERROR"));
+    $("#youtubeVid").html(this.word("YOUTUBE_VIDEO"));
+    $("#shadowColor").html(this.word("SHADOW_COLOR"));
+    $("#videoSound").html(this.word("SOUND"));
 
     // LOGIN & REGISTER
     $("#username_lbl").html(this.word("USERNAME"));

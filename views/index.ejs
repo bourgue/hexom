@@ -15,6 +15,7 @@
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery-ui/jquery-ui.min.js"></script>
     <script src="/js/jscolor.min.js"></script>
+    <script src="/js/jquery.youtubebackground.js"></script>
 
     <title>Hexom</title>
   </head>
@@ -36,6 +37,8 @@
 
     <a href="/logout" class="button" id="logout_button"></a>
 
+    <div id="video"></div>
+
     <script src="/js/hexagonsProperties.js"></script>
     <script src="/js/properties.js"></script>
     <script src="/js/Language.js"></script>
@@ -50,9 +53,15 @@
     <script src="/js/main.js"></script>
 
     <script>
+    $.get("/html/ParamsWindow.html", function(data){
+      $("body").prepend(data);
+
       dataFromDB.infos = <%- infos %>;
       dataFromDB.infos.hexagons = JSON.parse(dataFromDB.infos.hexagons);
       init("<%- username %>", dataFromDB.infos);
+
+      paramsWindow.init();
+    });
     </script>
   </body>
 </html>

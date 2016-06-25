@@ -1,25 +1,15 @@
 function ParamsWindow() {
-  $.get("/html/ParamsWindow.html", function(data){
-      $("body").prepend(data);
+    $("#paramsWindow").draggable({
+      containment: "body",
+      scroll: false,
+      handle: "#paramsTitle"
+    });
 
-      $(".subtitle").attr("onclick", "subtitleClick(this)");
+    $("#paramsWindow").hide();
 
-      $("#paramsWindow").draggable({
-        containment: "body",
-        scroll: false,
-        handle: "#paramsTitle"
-      });
-
-      $("#paramsWindow").hide();
-
-      $("#closeIcon").click(function() {
-        ParamsWindow.prototype.undoModifications();
-      });
-
-      ParamsWindow.prototype.init();
-
-      jscolor.installByClassName("jscolor");
-  });
+    $("#closeIcon").click(function() {
+      ParamsWindow.prototype.undoModifications();
+    });
 }
 
 ParamsWindow.prototype = {
@@ -63,6 +53,9 @@ ParamsWindow.prototype = {
         }
       }
     }
+
+    $(".subtitle").attr("onclick", "subtitleClick(this)");
+    jscolor.installByClassName("jscolor");
   },
   close: function() {
     $("#paramsWindow").fadeOut(fadeSpeed, function() {
