@@ -58,9 +58,7 @@ Tools.prototype = {
         } else {
           $("#backImage_ipt").val("Too large, ~4MB max.");
         }
-        $(".loadImg").css({
-          display: "none"
-        });
+        $(".loadImg").hide();
       }
     }, false);
 

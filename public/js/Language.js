@@ -49,6 +49,14 @@ function LangManager() {
     "YOUTUBE_VIDEO": ["Youtube video ID:", "ID de la vidéo Youtube:"],
     "SHADOW_COLOR": ["Shadow color", "Couleur de l'ombre"],
     "SOUND": ["Sound", "Son"],
+    "SHOW_MESSAGES": ["Show helps", "Afficher les aides"],
+
+    // MESSAGES
+    "WELCOME": ["Welcome to Hexom !", "Bienvenue sur Hexom !"],
+    "WHERE_ADD_HEXA": ["Choose where you want to add the hexagon", "Choisissez où ajouter l'hexagone"],
+    "MODIFY_HEXA_PROP": ["Modify the hexagon properties", "Modifiez les paramètres de l'hexagone"],
+    "MODIFY_GENE_PROP": ["Modify the general settings", "Modifiez les paramètres généraux"],
+    "CHOOSE_HEXA_TO_MOD": ["Choose the hexagon to modify", "Choisissez l'hexagone à modifier"],
 
     // LOGIN & REGISTER
     "CONN": ["Sign in", "Connexion"],
@@ -124,6 +132,14 @@ LangManager.prototype = {
     $("#youtubeVid").html(this.word("YOUTUBE_VIDEO"));
     $("#shadowColor").html(this.word("SHADOW_COLOR"));
     $("#videoSound").html(this.word("SOUND"));
+    $("#showMessages").html(this.word("SHOW_MESSAGES"));
+
+    // MESSAGES
+    $("#welcome_mess").html(this.word("WELCOME"));
+    $("#whereaddhexa_mess").html(this.word("WHERE_ADD_HEXA"));
+    $("#modifyhexaprop_mess").html(this.word("MODIFY_HEXA_PROP"));
+    $("#modifygeneralprop_mess").html(this.word("MODIFY_GENE_PROP"));
+    $("#choosehexatomod_mess").html(this.word("CHOOSE_HEXA_TO_MOD"));
 
     // LOGIN & REGISTER
     $("#username_lbl").html(this.word("USERNAME"));

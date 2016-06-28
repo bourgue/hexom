@@ -91,6 +91,8 @@ ParamsWindowHexa.prototype = {
     for(var i = 0; i < $(".jscolor").length; ++i){
       $(".jscolor")[i].jscolor.fromString($(".jscolor")[i].value);
     }
+
+    messages.open("modifyhexaprop");
   },
   close: function() {
     $("#paramsWindowHexa").fadeOut(fadeSpeed, function() {
@@ -99,6 +101,8 @@ ParamsWindowHexa.prototype = {
     });
 
     this.hexagon = undefined;
+
+    messages.close("modifyhexaprop");
   },
   uploadImg: function() {
     tools.uploadImg(document.getElementById("inputFileHexa").files[0], false);

@@ -70,11 +70,14 @@ Grid.prototype = {
         }
       }
     }
+
+    messages.open("whereaddhexa");
   },
   removePreviewHexa: function() {
     $(".previewHexa").remove();
     this.previewHexas = [];
     previewing = false;
+    messages.close("whereaddhexa");
   },
 
   updateHexaPosition: function() {

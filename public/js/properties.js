@@ -136,5 +136,16 @@ var infos = {
         });
       }
     }
+  },
+  showMessages: {
+    type: Boolean,
+    defaultValue: true,
+    oninput: function(value){
+      if(!value){
+        $("#messagesContainer").fadeOut(300);
+      }else{
+        $("#messagesContainer").fadeIn(300);
+      }
+    }
   }
 };

@@ -29,14 +29,16 @@ ParamsMenu.prototype = {
     if(params){
       paramsWindow.undoModifications();
     }
-    
+
     ParamsWindowHexa.prototype.close();
     grid.removePreviewHexa();
     modifying = false;
+    messages.closeAll();
   },
   modif: function() {
     this.closeAll();
     modifying = true;
+    messages.open("choosehexatomod");
   },
   generalParams: function() {
     this.closeAll();

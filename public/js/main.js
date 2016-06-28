@@ -40,6 +40,7 @@ var tools = new Tools();
 var paramsWindow = new ParamsWindow();
 var paramsMenu = new ParamsMenu();
 var paramsWindowHexa = new ParamsWindowHexa();
+var messages = new Messages();
 
 var fadeSpeed = 150;
 
@@ -133,3 +134,12 @@ function htmlEncode(value) {
 function htmlDecode(value) {
   return $('<div/>').html(value).text();
 }
+
+$.fn.extend({
+    animateCss: function (animationName) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        $(this).addClass('animated ' + animationName).one(animationEnd, function() {
+            $(this).removeClass('animated ' + animationName);
+        });
+    }
+});

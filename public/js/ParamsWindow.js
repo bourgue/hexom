@@ -80,10 +80,12 @@ ParamsWindow.prototype = {
       });
     });
     params = false;
+    messages.close("modifygeneralprop");
   },
   open: function() {
     $("#paramsWindow").fadeIn(fadeSpeed);
     params = true;
+    messages.open("modifygeneralprop");
   },
   uploadImg: function() {
     tools.uploadImg(document.getElementById("inputFile").files[0], true);

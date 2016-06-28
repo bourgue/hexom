@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/sass/paramsWindows.css"/>
     <link rel="stylesheet" href="/sass/searchBar.css"/>
     <link rel="stylesheet" href="/sass/window.css"/>
+    <link rel="stylesheet" href="/sass/messages.css"/>
 
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery-ui/jquery-ui.min.js"></script>
@@ -37,10 +38,13 @@
 
     <a href="/logout" class="button" id="logout_button"></a>
 
+    <div id="messagesContainer"></div>
+
     <div id="video"></div>
 
     <script src="/js/hexagonsProperties.js"></script>
     <script src="/js/properties.js"></script>
+    <script src="/js/Messages.js"></script>
     <script src="/js/Language.js"></script>
     <script src="/js/Tools.js"></script>
     <script src="/js/ParamsWindow.js"></script>
@@ -61,6 +65,9 @@
       init("<%- username %>", dataFromDB.infos);
 
       paramsWindow.init();
+
+      if(dataFromDB.infos.hexagons.length <= 1)
+        messages.open("welcome");
     });
     </script>
   </body>

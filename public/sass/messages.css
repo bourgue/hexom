@@ -1,0 +1,15 @@
+#messagesContainer .messages {
+  color: #fff;
+  display: none;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 4px 4px 0 0;
+  background: rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  z-index: 999; }
+
+/*# sourceMappingURL=messages.css.map */

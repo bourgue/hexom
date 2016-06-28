@@ -72,6 +72,7 @@ module.exports = function(passport) {
                             newUser.infos.lang = "fr";
                             newUser.infos.showSearchbar = true;
                             newUser.infos.searchPos = 10;
+                            newUser.infos.showMessages = true;
 
                             newUser.save(function(err) {
                               if (err)

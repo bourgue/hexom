@@ -41,6 +41,7 @@ Hexagon.prototype = {
     } else {
       if (modifying && !editing) {
         paramsWindowHexa.open(hexa.id);
+        messages.close("choosehexatomod");
       } else if (!previewing && !editing && !params) {
         var hexagon = grid.hexagons[tools.findHexaIndex(hexa.id)];
 

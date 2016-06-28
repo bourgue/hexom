@@ -22,7 +22,8 @@ var userSchema = mongoose.Schema({
     backRepeat: Boolean,
     backAjust: Boolean,
     backImage: String,
-    videoId: String
+    videoId: String,
+    showMessages: Boolean
   }
 });
 
