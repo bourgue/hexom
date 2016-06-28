@@ -4,9 +4,6 @@
 @font-face {
   font-family: RobotoCondensed;
   src: url("../font/RobotoCondensed-Regular.ttf"); }
-@font-face {
-  font-family: RussoOne;
-  src: url("../font/RussoOne-Regular.ttf"); }
 * {
   margin: 0;
   padding: 0;

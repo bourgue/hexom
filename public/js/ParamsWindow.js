@@ -12,26 +12,39 @@ ParamsWindow.prototype = {
           inputId = prop + "_ipt";
 
           // add input properties
-          if ($("#" + inputId).attr("type") == "range") {
-            $("#" + inputId).attr({
+          if (infos[prop].type == Number) {
+            $("#" + inputId).slider({
+              prop: prop,
+              range: "min",
               min: infos[prop].min,
               max: infos[prop].max,
-              step: infos[prop].step
+              step: infos[prop].step,
+              slide: function(event, ui){
+                var p = $("#" + ui.handle.parentElement.id).slider("option").prop;
+                infos[p].value = ui.value;
+                infos[p].oninput(ui.value);
+              }
             });
-          } else if ($("#" + inputId).attr("type") == "text") {
+          } else if (infos[prop].type == String) {
             $("#" + inputId).attr({
               maxLength: infos[prop].maxLength
             });
+
+            if (infos[prop].special == "color") {
+              $("#" + inputId).attr({
+                class: 'jscolor {onFineChange:\'infos.' + prop + '.value = this.toHEXString().toLowerCase(); infos.' + prop + '.oninput(this.toHEXString().toLowerCase());\', uppercase:false, hash:true}'
+              });
+            } else{
+              $("#" + inputId).attr({
+                oninput: "infos." + prop + ".value = htmlEncode(this.value); infos." + prop + ".oninput(htmlEncode(this.value))"
+              });
+            }
           }
 
           // add oninput attribute
           if (infos[prop].special == "color") {
             $("#" + inputId).attr({
               class: 'jscolor {onFineChange:\'infos.' + prop + '.value = this.toHEXString().toLowerCase(); infos.' + prop + '.oninput(this.toHEXString().toLowerCase());\', uppercase:false, hash:true}'
-            });
-          } else {
-            $("#" + inputId).attr({
-              oninput: 'infos.' + prop + '.value = htmlEncode(this.value); infos.' + prop + '.oninput(htmlEncode(this.value));'
             });
           }
         } else {

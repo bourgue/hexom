@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/sass/main.css"/>
     <link rel="stylesheet" href="/sass/signinup.css"/>
+    <link rel="stylesheet" href="/sass/animate.min.css">
 
     <script src="/js/jquery.min.js"></script>
 
@@ -15,7 +16,7 @@
     <div id="flagContainer" style="position:absolute; right:5px; top:0;"><img src="/img/us.png" id="en" class="flag" onclick="changeLang(this.id);"/><img src="/img/fr.png" class="flag" id="fr" onclick="changeLang(this.id);" style="margin-left:5px;"/></div>
 
     <div class="container">
-      <div class="row">
+      <div class="row animated bounceIn">
         <img src="/img/logo_medium.png" id="logo"/>
         <div class="col-xs-8 col-xs-offset-2">
           <h2 id="register"></h2>
@@ -57,7 +58,7 @@
       langMan.navigatorLang();
       langMan.setLanguage();
       function changeLang(lang) {
-        langMan.language = lang;
+        langMan.lang = lang;
         langMan.setLanguage();
       }
     </script>

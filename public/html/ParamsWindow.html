@@ -7,8 +7,10 @@
   <ul id="paramsList">
     <li>
       <div id="lang" style="display: table-cell;"></div>
-      <div id="flagContainer"><img src="/img/us.png" id="en" class="flag" onclick="langManager.lang = this.id; langManager.setLanguage();"/>
-        <img src="/img/fr.png" class="flag" id="fr" onclick="langManager.lang = this.id; langManager.setLanguage();"/></div>
+      <div id="flagContainer">
+        <img src="/img/us.png" id="en" class="flag" onclick="langManager.lang = this.id; langManager.setLanguage();"/>
+        <img src="/img/fr.png" class="flag" id="fr" onclick="langManager.lang = this.id; langManager.setLanguage();"/>
+      </div>
     </li>
 
     <li>
@@ -18,26 +20,26 @@
     <div class="group" id="bg_grp">
       <li>
         <div id="backColor"></div>
-          <input id="backColor_ipt"/>
+          <input id="backColor_ipt">
       </li>
 
       <li>
         <div id="shadowColor"></div>
-        <input id="shadowColor_ipt"/>
+        <input id="shadowColor_ipt">
       </li>
 
       <li>
         <div id="shadowSize"></div>
-        <input id="shadowSize_ipt" type="range"/>
+        <div id="shadowSize_ipt"></div>
       </li>
 
       <li>
-        <div id="backImage"></div><img src="/img/loader.gif" id="loadImg" style="position:absolute;right:15px;transform:translateY(-20px);display:none;">
-        <input id="backImage_ipt" type="text" placeholder="ex: url.com/image.png"/>
+        <div id="backImage"></div><img src="/img/loader.gif" class="loadImg" style="position:absolute;right:15px;transform:translateY(-20px);display:none;">
+        <input id="backImage_ipt" type="text" placeholder="ex: url.com/image.png">
       </li>
 
       <li>
-        <input type="file" accept="image/*" id="inputFile" onchange="ParamsWindow.prototype.uploadImg()">
+        <input type="file" accept="image/*" id="inputFile" onchange="paramsWindow.uploadImg()">
         <label for="inputFile" id="uploadBackImgButton" class="button"></label>
       </li>
 
@@ -58,7 +60,7 @@
 
       <li>
         <div id="youtubeVid"></div>
-        <input type="text" id="videoId_ipt" placeholder="K-HzFACAedk"/>
+        <input type="text" id="videoId_ipt" placeholder="K-HzFACAedk">
       </li>
     </div>
 
@@ -69,12 +71,12 @@
     <div class="group" id="hexa_grp">
       <li>
         <div id="hexaSize"></div>
-        <input id="hexaSize_ipt" type="range"/>
+        <div id="hexaSize_ipt"></div>
       </li>
 
       <li>
         <div id="hexaMargin"></div>
-        <input id="hexaMargin_ipt" type="range"/>
+        <div id="hexaMargin_ipt"></div>
       </li>
     </div>
 
@@ -90,7 +92,7 @@
 
       <li>
         <div id="searchPos"></div>
-        <input id="searchPos_ipt" type="range"/>
+        <div id="searchPos_ipt"></div>
       </li>
     </div>
 
@@ -101,7 +103,7 @@
     <div class="group" id="importExport_grp">
       <li>
         <div id="import"></div>
-        <input type="text" id="import_ipt" oninput="ParamsWindow.prototype.import(this.value)"/>
+        <input type="text" id="import_ipt" oninput="ParamsWindow.prototype.import(this.value)">
         <div id="codeError"></div>
       </li>
 

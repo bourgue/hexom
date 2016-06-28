@@ -66,11 +66,12 @@ module.exports = function(passport) {
                             newUser.infos.hexagons = '[{ "id": 0, "color": "#000000", "image": "/img/gear.png", "imgSize": 80, "position": { "x": 0, "y": 0 }}]';
                             newUser.infos.hexaSize = 1;
                             newUser.infos.hexaMargin = 10;
-                            newUser.infos.gradientSize = 300;
+                            newUser.infos.shadowSize = 300;
                             newUser.infos.backColor = "#e10000";
-                            newUser.infos.backColor2 = "#670000";
+                            newUser.infos.shadowColor = "#670000";
                             newUser.infos.lang = "fr";
                             newUser.infos.showSearchbar = true;
+                            newUser.infos.searchPos = 10;
 
                             newUser.save(function(err) {
                               if (err)

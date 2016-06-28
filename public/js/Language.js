@@ -24,7 +24,6 @@ function LangManager() {
     "MODIF_HEXA": ["Modify hexagon", "Modifier un hexagone"],
     "LOGOUT": ["Sign out", "Se déconnecter"],
     "OK": ["Submit", "Valider"],
-    "CONN": ["Sign in", "Connexion"],
     "NOACC": ["No account yet ?", "Pas encore de compte ?"],
     "ALREADYACC": ["Already have an account ?", "Vous avez déjà un compte ?"],
     "HELLO": ["Hello, ", "Bonjour, "],
@@ -52,6 +51,7 @@ function LangManager() {
     "SOUND": ["Sound", "Son"],
 
     // LOGIN & REGISTER
+    "CONN": ["Sign in", "Connexion"],
     "LOGIN": ["Sign in", "Se connecter"],
     "USERNAME": ["Username :", "Nom d'utilisateur :"],
     "PASSWORD": ["Password :", "Mot de passe :"],

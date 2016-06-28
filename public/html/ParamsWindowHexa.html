@@ -36,18 +36,18 @@
       </li>
 
       <li>
-        <div id="img"></div><img src="/img/loader.gif" id="loadImg" style="position:absolute;right:15px;transform:translateY(-20px);display:none;">
-        <input id="image_ipt" type="text" placeholder="ex: url.com/image.png"/>
+        <div id="img"></div><img src="/img/loader.gif" class="loadImg" style="position:absolute;right:15px;transform:translateY(-20px);display:none;">
+        <input id="image_ipt" type="text" placeholder="ex: url.com/image.png">
       </li>
 
       <li>
-        <input type="file" accept="image/*" id="inputFile" onchange="ParamsWindowHexa.prototype.uploadImg()">
-        <label for="inputFile" id="uploadButton" class="button"></label>
+        <input type="file" accept="image/*" id="inputFileHexa" onchange="paramsWindowHexa.uploadImg()">
+        <label for="inputFileHexa" id="uploadButton" class="button"></label>
       </li>
 
       <li>
         <div id="imgSize"></div>
-        <input id="imgSize_ipt" type="range"/>
+        <div id="imgSize_ipt"></div>
       </li>
     </div>
 

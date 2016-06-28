@@ -6,10 +6,7 @@
   font-family: RobotoCondensed;
   src: url('../font/RobotoCondensed-Regular.ttf');
 }
-@font-face {
-  font-family: RussoOne;
-  src: url('../font/RussoOne-Regular.ttf');
-}
+
 * {
   margin: 0;
   padding: 0;
@@ -122,6 +119,8 @@ label.cb-label {
   -ms-user-select: none;
   user-select: none;
 }
+
+// YOUTUBE
 
 #video{
  position: relative;

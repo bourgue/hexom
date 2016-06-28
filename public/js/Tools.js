@@ -1,5 +1,5 @@
 function Tools() {
-  //Tools constructor
+
 }
 
 Tools.prototype = {
@@ -19,9 +19,8 @@ Tools.prototype = {
     dataFromDB.infos.hexagons = JSON.parse(dataFromDB.infos.hexagons);
   },
   uploadImg: function(file, background) {
-    $("#loadImg").css({
-      display: "block"
-    });
+    if(!background) $("#paramsWindowHexa .loadImg").show();
+    else $("#paramsWindow .loadImg").show();
 
     var reader = new FileReader();
 
@@ -29,6 +28,7 @@ Tools.prototype = {
       var data = {};
       data.uri = reader.result;
       data.id = Math.random().toString(36).substring(7);
+
       if (data.uri.length < 5000000) {
         $.ajax({
           contentType: 'application/json',
@@ -37,23 +37,28 @@ Tools.prototype = {
           url: "./upload"
         }).success(function(response) {
           if (!background) {
-            $("#urlImg").val(response.imgUrl);
-            ParamsWindowHexa.prototype.imgChange(response.imgUrl);
+            $("#paramsWindowHexa .loadImg").hide();
+
+            $("#image_ipt").val(response.imgUrl);
+
+            paramsWindowHexa.hexagon.prop.image = response.imgUrl;
+            hexa_prop.image.oninput(paramsWindowHexa.hexagon.prop.id, response.imgUrl);
           } else {
-            $("#backImg_ipt").val(response.imgUrl);
-            ParamsWindow.prototype.backImgChange(response.imgUrl);
+            $("#paramsWindow .loadImg").hide();
+
+            $("#backImage_ipt").val(response.imgUrl);
+
+            infos.backImage.value = response.imgUrl;
+            infos.backImage.oninput(response.imgUrl);
           }
-          $("#loadImg").css({
-            display: "none"
-          });
         });
       } else {
         if (!background) {
           $("#image_ipt").val("Too large, ~4MB max.");
         } else {
-          $("#backImg_ipt").val("Too large, ~4MB max.");
+          $("#backImage_ipt").val("Too large, ~4MB max.");
         }
-        $("#loadImg").css({
+        $(".loadImg").css({
           display: "none"
         });
       }
@@ -199,12 +204,15 @@ Tools.prototype = {
     var cmpt_infos = {};
 
     for (var info in _infos) {
-      // if is undefined, set the default value
-      cmpt_infos[info] = (typeof cmpt_infos[info] === 'undefined') ? _infos[info].value : _infos[info].defaultValue;
+      if(typeof _infos[info] !== 'undefined'){
+        if(typeof _infos[info].value !== 'undefined')
+          cmpt_infos[info] =  _infos[info].value;
+        else
+          cmpt_infos[info] =  _infos[info].defaultValue;
+      }
     }
 
     cmpt_infos.hexagons = this.compactHexagons();
-
     return cmpt_infos;
   },
   compactHexagons: function() {

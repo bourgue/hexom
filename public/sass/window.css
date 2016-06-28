@@ -52,5 +52,22 @@
     height: 8px; }
   .window ul:last-child {
     margin-bottom: -10px; }
+  .window .ui-slider {
+    background: #fff;
+    border-color: #ccc;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 0; }
+    .window .ui-slider .ui-slider-handle, .window .ui-slider .ui-state-active {
+      height: 0.7em;
+      width: 0.7em;
+      border: 0;
+      top: 0;
+      display: none;
+      margin: 0;
+      border-radius: 0; }
+    .window .ui-slider .ui-slider-range {
+      background: #000;
+      border-radius: 0; }
 
 /*# sourceMappingURL=window.css.map */

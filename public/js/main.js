@@ -54,7 +54,11 @@ function init(username, datas) {
 
       if (infos[data].type != Boolean) {
         inputId = data + "_ipt";
-        $("#" + inputId).val(datas[data]);
+        if(infos[data].type == Number)
+          $("#" + inputId).slider({value: datas[data]});
+        else
+          $("#" + inputId).val(datas[data]);
+
         infos[data].oninput(datas[data]);
       } else {
         inputId = data + "_cb";
