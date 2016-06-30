@@ -6,7 +6,7 @@ function LangManager() {
     "fr": 1
   };
 
-  this.lang = 'fr';
+  this.actLang = undefined;
 
   this.words = {
     "PARAMS_GENE": ["General settings", "Paramètres généraux"],
@@ -88,7 +88,9 @@ function LangManager() {
 
 LangManager.prototype = {
   constructor: LangManager,
-  setLanguage: function() {
+  setLanguage: function(lang) {
+    this.actLang = lang;
+
     $("#paramsTitle").html(this.word("PARAMS_GENE"));
     $("#lang").html(this.word("CHANGE_LANG"));
     $("#backColor").html(this.word("COLOR"));
@@ -171,7 +173,7 @@ LangManager.prototype = {
     $("#email_exist").html(this.word("EMAIL_EXIST"));
   },
   word: function(w) {
-    return this.words[w][this.langId[this.lang]];
+    return this.words[w][this.langId[this.actLang]];
   },
   navigatorLang: function() {
     var navLang;

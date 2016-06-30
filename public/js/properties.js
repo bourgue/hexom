@@ -55,7 +55,6 @@ var infos = {
     maxLength: 2,
     defaultValue: 'fr',
     oninput: function(value){
-      langManager.setLanguage();
     }
   },
   showSearchbar: {

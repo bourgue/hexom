@@ -13,7 +13,7 @@
     <title id="title_signup">Hexom</title>
   </head>
   <body>
-    <div id="flagContainer" style="position:absolute; right:5px; top:0;"><img src="/img/us.png" id="en" class="flag" onclick="changeLang(this.id);"/><img src="/img/fr.png" class="flag" id="fr" onclick="changeLang(this.id);" style="margin-left:5px;"/></div>
+    <div id="flagContainer" style="position:absolute; right:5px; top:0;"><img src="/img/us.png" id="en" class="flag" onclick="langMan.setLanguage(this.id);"/><img src="/img/fr.png" class="flag" id="fr" onclick="langMan.setLanguage(this.id);" style="margin-left:5px;"/></div>
 
     <div class="container">
       <div class="row animated bounceIn">
@@ -55,12 +55,7 @@
     <script src="/js/Language.js"></script>
     <script>
       var langMan = new LangManager();
-      langMan.navigatorLang();
-      langMan.setLanguage();
-      function changeLang(lang) {
-        langMan.lang = lang;
-        langMan.setLanguage();
-      }
+      langMan.setLanguage(langMan.navigatorLang());
     </script>
   </body>
 </html>

@@ -12,7 +12,7 @@ function ParamsWindowHexa() {
         handle: "#paramsHexaTitle"
       });
 
-      langManager.setLanguage();
+      langManager.setLanguage(infos.lang.value);
 
       $("#paramsWindowHexa #closeIcon").click(function() {
         ParamsWindowHexa.prototype.undoModifications();

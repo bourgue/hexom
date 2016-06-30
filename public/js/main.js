@@ -75,7 +75,7 @@ function init(username, datas) {
   search.update();
 
   langManager.lang = infos.lang.value;
-  langManager.setLanguage();
+  langManager.setLanguage(infos.lang.value);
 
   // Init all jscolor
   for(var i = 0; i < $(".jscolor").length; ++i){

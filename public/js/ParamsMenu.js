@@ -16,9 +16,13 @@ ParamsMenu.prototype = {
     $("#paramsMenu").fadeIn(fadeSpeed);
 
     paramsMenuOpen = true;
-    if(grid.hexagons.length > 1 && $("#modifHexa").length === 0){
-      $("#paramsMenu ul").append('<li id="modifHexa" onclick="ParamsMenu.prototype.modif()"></li>');
-      langManager.setLanguage();
+    if(grid.hexagons.length > 1){
+      if($("#modifHexa").length < 1){
+        $("#paramsMenu ul").append('<li id="modifHexa" onclick="ParamsMenu.prototype.modif()"></li>');
+        langManager.setLanguage(infos.lang.value);
+      }
+    }else{
+      $("#modifHexa").remove();
     }
   },
   close: function() {
