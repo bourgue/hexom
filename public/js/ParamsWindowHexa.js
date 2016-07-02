@@ -50,8 +50,7 @@ ParamsWindowHexa.prototype = {
             });
           } else if (hexa_prop[prop].type == String) {
             $("#" + inputId).attr({
-              maxLength: hexa_prop[prop].maxLength,
-
+              maxLength: hexa_prop[prop].maxLength
             });
 
             if (hexa_prop[prop].special == "color") {

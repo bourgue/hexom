@@ -1,12 +1,11 @@
 function ParamsMenu() {
-  $("body").prepend('<div id="paramsMenu" class="unselectable">' +
-    '<ul>' +
-    '<li id="generalParams" onclick="ParamsMenu.prototype.generalParams()"></li>' +
-    '<li id="addHexa" onclick="ParamsMenu.prototype.addHexa()"></li>' +
-    '</ul>' +
-    '</div>');
+  $.get("/html/ParamsMenu.html", function(data){
+    $("body").prepend(data);
 
-  $("#paramsMenu").hide();
+    $("#paramsMenu").hide();
+
+    langManager.setLanguage(infos.lang.value);
+  });
 }
 
 ParamsMenu.prototype = {
